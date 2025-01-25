@@ -34,8 +34,8 @@
   - [ ] Rewrite instead of altering def
 
 ### Structure
-- [ ] Add acknowledgements, abstract before TOC
-- [ ] Add conventions before chapter 1
+- [x] Add acknowledgements, abstract before TOC
+- [x] Add conventions before chapter 1
 - [ ] Remove conclusion
 - [ ] Intro:
   - [ ] Remove titles
