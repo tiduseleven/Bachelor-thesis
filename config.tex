@@ -1,0 +1,176 @@
+%==============================================================
+%====== FICHIER DE CONFIGURATION DU TRAVAIL DE MATURITÉ =======
+%==============================================================
+% Vous trouverez les instructions de compilation du fichier
+% source principal main.tex dans la documentation se trouvant 
+% dans le fichier DocumentationTMlatex.pdf
+
+% Il est indispensable de remplir ce fichier !!!!!!!!!
+
+
+%---------------------------------------------------------------
+%-------------- La page de titre et page de garde --------------
+%---------------------------------------------------------------
+
+% Le titre du travail de maturité.
+\newcommand{\worktitle}{The axioms of n-exact categories}
+% Le sous-titre du travail. S'il n'y a pas de soustitre, laissez vide, pour un sous-titre sur plusieurs lignes, mettez un linebreak:
+\newcommand{\worksubtitle}{}
+
+% Texte au milieu de la page de titre.
+\newcommand{\worktype}{Bachelor's thesis}
+
+% L'auteur/ les auteurs
+\newcommand{\theauthor}{Thomas Rosset}
+\newcommand{\theadress}{Herman Krags Veg 45}
+\newcommand{\lieu}{7050 Trondheim}
+%si un seul auteur mettre partout des accolades vides {}
+\newcommand{\theauthorB}{}
+\newcommand{\theadressB}{}
+\newcommand{\lieuB}{}
+
+% La date de soumission du travail.
+\newcommand{\workdatemonth}{Spring}
+\newcommand{\workdateyear}{2025}
+
+% Le thème du séminaire
+\newcommand{\seminar}{}
+
+% Définition du pied de page de titre en fonction de la langue (E nglish, F rancais or D eutsch)
+% en décommentant la bonne ligne.
+%\newcommand{\titlepagefooter}{\titlepagefooterE}
+%\newcommand{\titlepagefooter}{\titlepagefooterD}
+\newcommand{\titlepagefooter}{\titlepagefooterF}
+
+\newcommand{\enseignant}{Johanne Hauglang}
+% Noter éventuellement la(les) branche(s) concernée(s)
+\newcommand{\branche}{Abstract Algebra} % commenter cette ligne 
+						% s'il y a une branche à préciser
+						% et décommenter la suivante
+%\newcommand{\branche}{nom de la branche}
+
+
+
+%---------------------------------------------------------------
+%------- Avant-propos, glossaire, remerciements, index ----------
+%---------------------------------------------------------------
+
+% Pour insérer un avant-propos : commentez décommentez Y es ou N o.
+% Le fichier à remplir du texte désiré est pagesspeciales/avantpropos.tex
+\newcommand{\unavantpropos}{Y}
+%\newcommand{\unavantpropos}{N}
+
+% Pour insérer un glossaire : commentez décommentez Y es ou N o.
+% Le fichier à remplir du texte désiré est pagesspeciales/glossaire.tex
+%\newcommand{\unglossaire}{Y}
+\newcommand{\unglossaire}{N}
+
+% Pour insérer des remerciements : commentez décommentez Y es ou N o.
+% Le fichier à remplir du texte désiré est pagesspeciales/remerciements.tex
+%\newcommand{\desremerciements}{Y}
+\newcommand{\desremerciements}{Y}
+
+% Pour insérer un index : commentez décommentez Y es ou N o.
+% Il faut alors mettre les clés d'index avec \index{mot} et faire un make index.
+%\newcommand{\unindex}{Y}
+\newcommand{\unindex}{N}
+
+
+%---------------------------------------------------------------
+%------------ Chapitres et annexes -----------------------------
+%---------------------------------------------------------------
+% Le nombre de chapitres désirés
+\newcommand{\nbchap}{3}
+% Le nombre d'annexes désirées
+\newcommand{\nbannexes}{}
+
+
+%---------------------------------------------------------------
+%--- Listes des figures, tables, listings, abréviations --------
+%---------------------------------------------------------------
+% Définition des noms des listes
+%\renewcommand{\listfigurename}{Liste des figures} % Nom original = Table des figures
+%\renewcommand{\listtablename}{Liste des tables} % Nom original = Liste des tableaux
+%\renewcommand{\lstlistlistingname}{Liste des codes sources}  % Nom original = Listings
+
+% Pour insérer une liste des figures : commentez décommentez Y es ou N o.
+\newcommand{\unelistefig}{Y}
+%\newcommand{\unelistefig}{N}
+
+% Pour insérer une liste des tables : commentez décommentez Y es ou N o.
+%\newcommand{\unelistetbl}{Y}
+\newcommand{\unelistetbl}{N}
+
+% Pour insérer une liste des listings : commentez décommentez Y es ou N o.
+\newcommand{\unelistelst}{N}
+%\newcommand{\unelistelst}{N}
+
+% Pour insérer une liste des abréviations/notation : commentez décommentez Y es ou N o.
+%\newcommand{\unelisteabreviations}{Y}
+\newcommand{\unelisteabreviations}{N}
+
+
+%---------------------------------------------------------------
+%-------------- Objets flottants -------------------------------
+%---------------------------------------------------------------
+% Définitions des titres des figures, tables, listings...
+% English: Figure, Table, Listing (default)
+% German: Abbildung, Tabelle, Listing
+% French: Figure, Table, Listing
+\renewcommand{\figurename}{Figure}
+\renewcommand{\tablename}{Table}
+
+
+%---------------------------------------------------------------
+%---------------- Figures --------------------------------------
+%---------------------------------------------------------------
+% Chemin vers le répertoire des figures. Vous pouvez ajouter d'autres chemins entre accolades
+% à l'intérieur des accolades principales.
+\graphicspath{{./images/}}
+
+% Insertion de figures ; copier coller dans les chapitres en fonction des besoins
+%\tmfigureB{NomFigureSansExtension}{Légende}{fig:votreLabel}	% Taille grande
+%\tmfigureN{NomFigureSansExtension}{Légende}{fig:votreLabel}	% Taille normale
+%\tmfigureS{NomFigureSansExtension}{Légende}{fig:votreLabel}	% Taille petite
+%\tmfigureT{NomFigureSansExtension}{Légende}{fig:votreLabel}	% Taille très petite
+
+
+%---------------------------------------------------------------
+%--------------- Insertion de code : listings ------------------
+%---------------------------------------------------------------
+% Seul latex est appelé par défaut. On peut charger d'autres languages pour les listings
+% selon le modèle de la ligne suivante. Voir le package listings pour les langages disponibles.
+%\lstloadlanguages{HTML,PHP,TeX}
+% Il faut ensuite placer [...,language=HTML,...] après l'appel \begin{lstlisting} pour définir
+% le language à utiliser dans un script particulier
+
+
+%---------------------------------------------------------------
+%--------------- Version provisoire ----------------------------
+%---------------------------------------------------------------
+
+% Si vous travaillez avec une version provisoire, cette commande imprime un filigrane
+% en haut à gauche de chaque page. Commentez la pour la version finale.
+%\reviewtimetoday{\today}{* Draft Version *}
+
+
+%---------------------------------------------------------------
+%---------------- Le texte -------------------------------------
+%---------------------------------------------------------------
+% Réglage de l'indentation de la première ligne de chaque paragraphe
+\parindent=0in		% pas d'indentation
+%\parindent=0.1in	% petite indentation
+%\parindent=0.2in	% moyenne indentation
+%\parindent=0.3in	% grande indentation
+
+% Si vous désirez commenter du code latex sur plusieurs lignes, utilisez la forme :
+%\begin{comment} ... \end{comment}
+
+
+%---------------------------------------------------------------
+%----------------- Un index ------------------------------------
+%---------------------------------------------------------------
+
+% Il n'est pas nécessaire de réaliser un index. Par défaut, il n'y en a pas. Décommentez si vous en voulez un.
+% Pour construire le fichier d'index idx, il doit être compilé avec makeindex en ligne de commande.
+%\usepackage{makeidx} \makeindex

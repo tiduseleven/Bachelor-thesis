@@ -1,0 +1,34 @@
+\chapter*{Déclaration sur l'honneur}
+\addcontentsline{toc}{chapter}{Déclaration sur l'honneur}
+
+
+\begin{multicols}{2}
+\theauthor\\
+\theadress\\
+\lieu\\
+\columnbreak
+
+\theauthorB\ \\
+\theadressB\ \\
+\lieuB\
+\end{multicols}
+
+\ifthenelse{\equal{\theauthorB}{}}
+{Je certifie}
+{Nous certifions}
+que le travail
+
+\begin{center}
+{\Large\sf \worktitle}\\
+{\large\sf \worksubtitle}
+\end{center}
+
+
+a été réalisé par
+\ifthenelse{\equal{\theauthorB}{}}{moi}{nous}
+conformément au \squote{Guide de travail} des collèges et aux \squote{Lignes directrices} de la DICS concernant la réalisation du \worktype.
+
+\vspace{4cm}
+Lieu, date: Bulle, 21.03.2020
+
+%\includegraphics{images/annexes/signatures.png}

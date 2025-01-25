@@ -1,0 +1,76 @@
+\chapter{An Introduction to Exact Categories} \label{chapter:exact}
+
+\section{Motivation}
+When studying abelian categories, there are many convenient properties related to monics and epics. Let us recall a few:
+
+\begin{prop} \label{prop:popb_abelian}
+    In an abelian category, the following properties hold:
+    \begin{itemize}
+        \item the pushout of a monic is a monic;
+        \item the pullback of a monic is a monic;
+        \item the pushout of an epic is an epic;
+        \item the pullback of an epic is an epic.
+    \end{itemize}
+\end{prop}
+
+Another nice property is the following:
+
+\begin{prop} \label{prop:kercoker}
+    In an abelian category,
+    \begin{itemize}
+        \item every monic is a kernel of its cokernel;
+        \item every epic is a cokernel of its kernel.
+    \end{itemize}
+\end{prop}
+
+This allows us to conclude many properties about kernels and cokernels:
+
+\begin{prop} \label{prop:ab_is_exact}
+    In an abelian category, the class of kernels and the class of cokernels are closed under isomorphism. Furthermore, the following hold:
+    \begin{itemize}[align=right]
+        \item[\textnormal{[E0]}] For any object $C \in \cat{C}$, the identity morphism $1_C$ is a kernel;
+        \item[\textnormal{[E0$^{\op}$]}] For any object $C \in \cat{C}$, the identity morphism $1_C$ is a cokernel;
+        \item[\emph{[E1]}] The class of kernels is closed under composition;
+        \item[\emph{[E1$^{\op}$]}] The class of cokernels is closed under composition;  
+        \item[\emph{[E2]}] The pushout of a kernel along any morphism is a kernel;
+        \item[\emph{[E2$^{\op}$]}] The pullback of a cokernel along any morphism is a cokernel.
+    \end{itemize}
+\end{prop}
+
+\begin{preuve}
+    It is clear that kernels and cokernels are closed under isomorphism.
+
+    E0 and E0$^{\op}$ follow directly from the fact that the identity morphism is both the kernel and cokernel of the zero map.
+
+    We can deduce E1 and E1$^{\op}$ by recalling that composing monics (respectively epics) gives us monics and that monics are kernels of their cokernel (respectively epics are cokernels of their kernel).
+
+    As for E2, recall that kernels are always monic. Thus, by \ref{prop:popb_abelian}, the pushout of a kernel is monic as well. But then, by \ref{prop:kercoker}, it is a kernel of its cokernel, thus it is a kernel.
+    The proof for E2$^{\op}$ is similar.
+\end{preuve}
+
+\section{Exact Categories}
+Based on the observations from the last section, one can define a more general notion that encapsulates the idea of short exact sequences, namely exact categories. To do so, let us first define kernel-cokernel pairs.
+
+\begin{defn}
+    Let $\cat{A}$ be an additive category. A \emph{kernel-cokernel pair} $(i,p)$ in $\cat{A}$ is a pair of composable morphisms $A \xra{i} B \xra{p} C$ such that $i$ is a kernel of $p$ and $p$ is a cokernel of $i$.
+\end{defn}
+
+In the context of abelian categories, we notice that kernel-cokernel pairs indeed give rise to short exact sequences in the usual sense. In a general additive category, however, we cannot say the same since we have no guarantee that kernels and cokernels even exist for arbitrary morphisms, and thus we are unsure that $\Img{i}$ exists. But we will use our intuition from abelian categories to expand the notion of short exact sequences to additive categories.
+
+\begin{defn}
+    Let $\cat{A}$ be an additive category and $\cat{E}$ a class of kernel-cokernel pairs on $\cat{A}$. We say that $A \xra{i} B$ is an \emph{admissible monic} if there is a morphism $B \xra{p} C$ in $\cat{A}$ such that $(i,p) \in \cat{E}$. Dually, $B \xra{q} C$ is an \emph{admissible epic} if there exists a morphism $A \xra{j} B$ such that $(j,q) \in \cat{E}$.
+
+    A class $\cat{E}$ of kernel-cokernel pairs is called an \emph{exact structure} on $\cat{A}$ if it is closed under isomorphisms and satisfies the following axioms:
+    \begin{itemize}[align=right]
+        \item[{[E0]}] For any object $A \in \cat{A}$, the identity morphism $1_A$ is an admissible monic;
+        \item[{[E0$^{\op}$]}] For any object $A \in \cat{A}$, the identity morphism $1_A$ is an admissible epic;
+        \item[{[E1]}] The class of admissible monics is closed under composition;
+        \item[{[E1$^{\op}$]}] The class of admissible epics is closed under composition;
+        \item[{[E2]}] The pushout of an admissible monic along any morphism exists and is an admissible monic;
+        \item[{[E2$^{\op}$]}] The pullback of an admissible epic along any morphism exists and is an admissible epic.
+    \end{itemize}
+    An \emph{exact category} is a pair $(\cat{A},\cat{E})$ where $\cat{A}$ is an additive category and $\cat{E}$ is an exact structure on $\cat{A}$. In that context, elements of $\cat{E}$ are called \emph{short exact sequences}.
+\end{defn}
+
+
+

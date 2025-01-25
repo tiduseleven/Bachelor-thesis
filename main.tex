@@ -1,0 +1,132 @@
+%==============================================================
+%============= Modèle de Travail de Maturité ================== %==============================================================
+
+% On obtient le document final de la manière suivante :
+% première compilation avec LaTeX
+% seconde compilation avec LaTeX
+% création de l'index : makeindex
+% création de la biblographie : bibtex
+% troisième compilation avec LaTeX
+% éventuellement quatrième compilation avec LaTeX
+% transformer le dvi e ps puis en PDF
+% removed unused options: idxtotoc,bibtotoc,
+\documentclass[12pt,a4paper,english,titlepage,twoside]{book}
+
+%-------------------------
+%------ PRÉAMBULE --------
+%-------------------------
+
+% Toutes les commandes techniques sont définies dans le fichier TM.sty
+% Normalement, vous n'avez pas à y toucher
+% Mais, il doit être présent
+\usepackage{TM}
+
+% Initialisation des paramètres du travail de maturité
+% Il faut impérativement remplir ce fichier
+
+
+% Définit le style des entête et pieds de page.
+\pagestyle{fancy}
+
+% Les ressources web sont définies dans une bibliographie à part.
+%\newcites{web}{Webographie}
+
+
+
+%---------------------------------
+%------ DEBUT DU DOCUMENT --------
+%---------------------------------
+
+\begin{document}
+\include{config}
+% Nettoyage des entête et pieds de page.
+\pagestyle{empty}
+
+% Inclusion de la page de titre.
+\include{pagesspeciales/pagetitre}
+
+% Inclusion de la page de garde.
+\include{pagesspeciales/pagegarde}
+\setcounter{page}{3}
+
+
+
+% table des matières (fichier .toc)
+\tableofcontents
+%\renewcommand{\contentsname}{Table des matières} % Pour changer le titre
+
+
+\addtolength{\parskip}{0.5\baselineskip} % espace inter-paragraphe (0.25 pour interligne simple)
+%\remerciements
+%\avantpropos
+\pagestyle{fancy}
+%------------------------------
+% ----- CORPS DU DOCUMENT -----
+%------------------------------
+
+\include{chapitres/introduction}
+
+\leschapitres
+
+\include{chapitres/conclusion}
+
+\glossaire
+
+
+%--------------------------
+% ----- BIBLIOGRAPHIE -----
+%--------------------------
+%\renewcommand{\bibname}{Bibliographie}	 %Titre de la bibliographie en français
+\bibliographystyle{plain}				% Style de la bibliographie
+% Pour avoir toutes les références de vos fichiers bibtex dans la bibliographie,
+% vous pouvez décommenter les lignes suivantes. Autrement, seules les références 
+% cités apparaîtrons dans la bibliographie.
+% \nocite{*}
+%\nociteweb{*}
+\bibliography{mainbib}
+\addcontentsline{toc}{chapter}{Bibliography}
+
+%-------------------
+% ----- TABLES -----
+%-------------------
+
+% Liste des figures
+%\listefig
+
+% Liste des tables
+\listetbl
+
+% Ici vient la liste des listing/codes
+% Définition du nom de la liste des listings
+% Décommentez la ligne suivante et celle après les tirets si nécessaire
+
+% Correction d'un petit bug de listing
+\corrbug
+
+% Liste des codes
+\listelst 
+
+% Liste des abreviations
+\listeabreviations
+
+
+%-------------------
+%----- ANNEXES -----
+%-------------------
+
+\lesannexes
+
+% Si nécessaire, l'index est placé ici.
+\lindex
+
+%\include{pagesspeciales/annexe1}
+%\include{pagesspeciales/declaration}
+
+
+
+
+
+\end{document}
+%--------------------------
+%---- FIN DU DOCUMENT -----
+%--------------------------
