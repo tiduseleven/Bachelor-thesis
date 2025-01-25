@@ -10,7 +10,7 @@
 % éventuellement quatrième compilation avec LaTeX
 % transformer le dvi e ps puis en PDF
 % removed unused options: idxtotoc,bibtotoc,
-\documentclass[12pt,a4paper,english,titlepage,twoside]{book}
+\documentclass[10pt,a5paper,english,titlepage,twoside]{book}
 
 %-------------------------
 %------ PRÉAMBULE --------
@@ -41,15 +41,17 @@
 \include{config}
 % Nettoyage des entête et pieds de page.
 \pagestyle{empty}
-
+\pagenumbering{gobble}
 % Inclusion de la page de titre.
 \include{pagesspeciales/pagetitre}
 
 % Inclusion de la page de garde.
 \include{pagesspeciales/pagegarde}
+\include{pagesspeciales/remerciements}
+\include{pagesspeciales/abstract}
 \setcounter{page}{3}
 
-
+\pagenumbering{arabic}
 
 % table des matières (fichier .toc)
 \tableofcontents
@@ -65,7 +67,7 @@
 %------------------------------
 
 \include{chapitres/introduction}
-
+\include{pagesspeciales/abreviations}
 \leschapitres
 
 \include{chapitres/conclusion}

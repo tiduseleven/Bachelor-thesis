@@ -8,8 +8,8 @@
 ## Writing thesis
 
 ### Formatting etc.
-- [ ] Change format to A5
-- [ ] Change all n's to math mode
+- [X] Change format to A5
+- [X] Change all n's to math mode
 - [ ] Add intros to chapters:
   - [ ] Chapter 1
   - [ ] Chapter 2
