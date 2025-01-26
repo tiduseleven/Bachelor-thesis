@@ -36,7 +36,7 @@
 ### Structure
 - [x] Add acknowledgements, abstract before TOC
 - [x] Add conventions before chapter 1
-- [ ] Remove conclusion
+- [x] Remove conclusion
 - [ ] Intro:
   - [ ] Remove titles
   - [ ] intro to intro
