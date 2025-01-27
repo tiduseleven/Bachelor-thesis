@@ -2,11 +2,18 @@
 As a way to generalize the notion of abelian categories, one can look at a general additive category on which we define a certain notion of short exact sequences that has very similar properties to the abelian category counterpart. This chapter aims to motivate the definition of these so-called exact categories, to later define them formally and generalize some classical results from abelian categories.
 
 In this chapter, the word kernel (respectively cokernel) will usually refer to the kernel morphism (respectively cokernel morphism), not the object. The content of this chapter is inspired by both the lecture notes of MA3204 Homological algebra \cite{homalg} and the article about exact categories by Theo Bühler \cite{Buhler2010Jan}.
+
 \section{Motivation}
-When studying abelian categories, there are many convenient properties related to monics and epics. Let us recall a few:
+When studying abelian categories, there are many convenient properties related to monics and epics, and that are used in order to prove results about short exact sequences. Let us recall a few:
 
 \begin{prop} \label{prop:popb_abelian}
-    In an abelian category, the following properties hold:
+    In an abelian category, 
+    \begin{itemize}
+        \item every monic is a kernel of its cokernel;
+        \item every epic is a cokernel of its kernel.
+    \end{itemize}
+
+    Furthermore, the following properties hold:
     \begin{itemize}
         \item the pushout of a monic is a monic;
         \item the pullback of a monic is a monic;
@@ -15,18 +22,11 @@ When studying abelian categories, there are many convenient properties related t
     \end{itemize}
 \end{prop}
 
-Another nice property is the following, which further illustrates the behavior of monics and epics in abelian categories:
-This property is particularly useful because it allows us to understand the structure of morphisms in abelian categories in terms of kernels and cokernels. Specifically, it tells us that monics and epics can be characterized by their relationship to kernels and cokernels, respectively. This characterization is crucial for many proofs and constructions in category theory, as it provides a way to decompose and analyze morphisms using well-understood concepts. Additionally, this property highlights the symmetry between monics and epics in abelian categories, which is a recurring theme in the study of exact sequences and homological algebra.
+We refer the reader to \cite[Sections~12,13]{homalg} for the proofs of these facts.
 
-\begin{prop} \label{prop:kercoker}
-    In an abelian category,
-    \begin{itemize}
-        \item every monic is a kernel of its cokernel;
-        \item every epic is a cokernel of its kernel.
-    \end{itemize}
-\end{prop}
+Fundamentally, this tells us that every monic and every epic fits into a short exact sequence, and that taking the pullback or pushout of a morphism that is part of a short exact sequence gives rise to another short exact sequence. Indeed, if $A \xrat{f} B$ is monic, then it fits into the short exact sequence $\ses{A}{B}{\Cok{f}}{f}{\cok{f}}$. Furthermore, since morphisms that are part of a short exact sequence are either monic or epic, they will once again be monic or epic after a pullback or pushout, thus will once again fit in a short exact sequence.
 
-This allows us to conclude many properties about kernels and cokernels:
+These results allow us to conclude many properties about kernels and cokernels:
 
 \begin{prop} \label{prop:ab_is_exact}
     Let $\cat{A}$ be an abelian category and let $\cat{E}$ be the class of short exact sequences. $\cat{E}$ is closed under isomorphism. That is, if $0 \rightarrow A \xra{f} B \xra{g} C \rightarrow 0$ is a short exact sequence and we can form the commutative diagram 
@@ -69,9 +69,15 @@ This allows us to conclude many properties about kernels and cokernels:
 
     We can deduce [E1] and [E1$^{\op}$] by recalling that composing monics (respectively epics) gives us monics and that monics are kernels of their cokernel (respectively epics are cokernels of their kernel).
 
-    As for [E2], recall that kernels are always monic. Thus, by \ref{prop:popb_abelian}, the pushout of a kernel is monic as well. But then, by \ref{prop:kercoker}, it is a kernel of its cokernel, thus it is a kernel.
+    As for [E2], recall that kernels are always monic. Thus, by \ref{prop:popb_abelian}, the pushout of a kernel is monic as well. But then, by \ref{prop:popb_abelian} again, it is a kernel of its cokernel, thus it is a kernel.
     The proof for [E2$^{\op}$] is similar.
 \end{preuve}
+
+\begin{rmk}
+    We can in a very similar way prove that the pullback of a kernel (respectively the pushout of a cokernel) is a kernel (respectively cokernel), however we choose not to include this as it turns out to be unnecessary for many results.
+\end{rmk}
+
+
 
 \section{Exact Categories}
 Based on the observations from the last section, one can define a more general notion that encapsulates the idea of short exact sequences, namely exact categories. To do so, let us first define kernel-cokernel pairs.
