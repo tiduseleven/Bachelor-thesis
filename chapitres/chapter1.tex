@@ -1,5 +1,7 @@
 \chapter{An Introduction to Exact Categories} \label{chapter:exact}
+As a way to generalize the notion of abelian categories, one can look at a general additive category on which we define a certain notion of short exact sequences that has very similar properties to the abelian category counterpart. This chapter aims to motivate the definition of these so-called exact categories, to later define them formally and generalize some classical results from abelian categories.
 
+In this chapter, the word kernel (respectively cokernel) will usually refer to the kernel morphism (respectively cokernel morphism), not the object. The content of this chapter is inspired by both the lecture notes of MA3204 Homological algebra \cite{homalg} and the article about exact categories by Theo Bühler \cite{Buhler2010Jan}.
 \section{Motivation}
 When studying abelian categories, there are many convenient properties related to monics and epics. Let us recall a few:
 
@@ -13,7 +15,8 @@ When studying abelian categories, there are many convenient properties related t
     \end{itemize}
 \end{prop}
 
-Another nice property is the following:
+Another nice property is the following, which further illustrates the behavior of monics and epics in abelian categories:
+This property is particularly useful because it allows us to understand the structure of morphisms in abelian categories in terms of kernels and cokernels. Specifically, it tells us that monics and epics can be characterized by their relationship to kernels and cokernels, respectively. This characterization is crucial for many proofs and constructions in category theory, as it provides a way to decompose and analyze morphisms using well-understood concepts. Additionally, this property highlights the symmetry between monics and epics in abelian categories, which is a recurring theme in the study of exact sequences and homological algebra.
 
 \begin{prop} \label{prop:kercoker}
     In an abelian category,
@@ -26,10 +29,32 @@ Another nice property is the following:
 This allows us to conclude many properties about kernels and cokernels:
 
 \begin{prop} \label{prop:ab_is_exact}
-    In an abelian category, the class of kernels and the class of cokernels are closed under isomorphism. Furthermore, the following hold:
+    Let $\cat{A}$ be an abelian category and let $\cat{E}$ be the class of short exact sequences. $\cat{E}$ is closed under isomorphism. That is, if $0 \rightarrow A \xra{f} B \xra{g} C \rightarrow 0$ is a short exact sequence and we can form the commutative diagram 
+    
+    % https://q.uiver.app/#q=WzAsMTAsWzIsMCwiQSJdLFs0LDAsIkIiXSxbNiwwLCJDIl0sWzIsMiwiQSciXSxbNCwyLCJCJyJdLFs2LDIsIkMnIl0sWzAsMCwiMCJdLFswLDIsIjAiXSxbOCwwLCIwIl0sWzgsMiwiMCJdLFswLDEsImYiLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtb25vIn19fV0sWzEsMiwiZyIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dLFswLDMsImEiXSxbMSw0LCJiIl0sWzMsNCwiZiciXSxbNCw1LCJnJyJdLFsyLDUsImMiXSxbNiwwXSxbMiw4XSxbNywzXSxbNSw5XV0=
+    \[\begin{tikzcd}[ampersand replacement=\&,sep=scriptsize]
+        0 \&\& A \&\& B \&\& C \&\& 0 \\
+        \\
+        0 \&\& {A'} \&\& {B'} \&\& {C'} \&\& 0
+        \arrow[from=1-1, to=1-3]
+        \arrow["f"', tail, from=1-3, to=1-5]
+        \arrow["a", from=1-3, to=3-3]
+        \arrow["g"', two heads, from=1-5, to=1-7]
+        \arrow["b", from=1-5, to=3-5]
+        \arrow[from=1-7, to=1-9]
+        \arrow["c", from=1-7, to=3-7]
+        \arrow[from=3-1, to=3-3]
+        \arrow["{f'}", from=3-3, to=3-5]
+        \arrow["{g'}", from=3-5, to=3-7]
+        \arrow[from=3-7, to=3-9]
+    \end{tikzcd}\]
+
+    where the vertical arrows are isomorphisms, then $0 \xra{} A' \xra{f'} B' \xra{g'} C' \xra{} 0$ is a short exact sequence.
+
+    Furthermore, the following hold:
     \begin{itemize}[align=right]
-        \item[\textnormal{[E0]}] For any object $C \in \cat{C}$, the identity morphism $1_C$ is a kernel;
-        \item[\textnormal{[E0$^{\op}$]}] For any object $C \in \cat{C}$, the identity morphism $1_C$ is a cokernel;
+        \item[\textnormal{[E0]}] For any object $A \in \cat{A}$, the identity morphism $1_A$ is a kernel;
+        \item[\textnormal{[E0$^{\op}$]}] For any object $A \in \cat{A}$, the identity morphism $1_A$ is a cokernel;
         \item[\emph{[E1]}] The class of kernels is closed under composition;
         \item[\emph{[E1$^{\op}$]}] The class of cokernels is closed under composition;  
         \item[\emph{[E2]}] The pushout of a kernel along any morphism is a kernel;
@@ -38,14 +63,14 @@ This allows us to conclude many properties about kernels and cokernels:
 \end{prop}
 
 \begin{preuve}
-    It is clear that kernels and cokernels are closed under isomorphism.
+    It is clear that the class of short exact sequences is closed under isomorphism, since. Indeed, $\ses{A}{B}{C}{f}{g}$ is a short exact sequence if and only if $f$ is a kernel of $g$ and $g$ is a cokernel of $f$. The result follows from the fact that kernels and cokernels are preserved by isomorphisms.
 
-    E0 and E0$^{\op}$ follow directly from the fact that the identity morphism is both the kernel and cokernel of the zero map.
+    [E0] and [E0$^{\op}$] follow directly from the fact that the identity morphism is both the kernel and cokernel of the zero map.
 
-    We can deduce E1 and E1$^{\op}$ by recalling that composing monics (respectively epics) gives us monics and that monics are kernels of their cokernel (respectively epics are cokernels of their kernel).
+    We can deduce [E1] and [E1$^{\op}$] by recalling that composing monics (respectively epics) gives us monics and that monics are kernels of their cokernel (respectively epics are cokernels of their kernel).
 
-    As for E2, recall that kernels are always monic. Thus, by \ref{prop:popb_abelian}, the pushout of a kernel is monic as well. But then, by \ref{prop:kercoker}, it is a kernel of its cokernel, thus it is a kernel.
-    The proof for E2$^{\op}$ is similar.
+    As for [E2], recall that kernels are always monic. Thus, by \ref{prop:popb_abelian}, the pushout of a kernel is monic as well. But then, by \ref{prop:kercoker}, it is a kernel of its cokernel, thus it is a kernel.
+    The proof for [E2$^{\op}$] is similar.
 \end{preuve}
 
 \section{Exact Categories}
@@ -58,7 +83,7 @@ Based on the observations from the last section, one can define a more general n
 In the context of abelian categories, we notice that kernel-cokernel pairs indeed give rise to short exact sequences in the usual sense. In a general additive category, however, we cannot say the same since we have no guarantee that kernels and cokernels even exist for arbitrary morphisms, and thus we are unsure that $\Img{i}$ exists. But we will use our intuition from abelian categories to expand the notion of short exact sequences to additive categories. First, let us recall what it means for a class to be closed under isomorphism.
 
 \begin{defn}
-    Let $\cat{A}$ be an additive category and $\cat{E}$ be a class of kernel-cokernel pairs in $\cat{A}$. We call a morphism $A \xra{i} B$ an \emph{admissible monic} (or \emph{inflation}) if there exists a morphism $B \xra{p} C$ such that $(i,p) \in \cat{E}$. Dually, we call a morphism $B \xra{q} C$ an \emph{admissible epic} (or \emph{deflation}) if there exists a morphism $A \xra{j} B$ such that $(j,q) \in \cat{E}$. We use $A \xrat{i} B$ for admissible monics, and $B \xrath{p} C$ for admissible epics.  We say $\cat{E}$ is closed under isomorphism if whenever we have $A \xra{i} B \xra{p} C \in \cat{E}$ and the following commutative diagram
+    Let $\cat{A}$ be an additive category and $\cat{E}$ be a class of kernel-cokernel pairs in $\cat{A}$. We call a morphism $A \xra{i} B$ an \emph{admissible monic} (or \emph{inflation}) if there exists a morphism $B \xra{p} C$ such that $(i,p) \in \cat{E}$. Dually, we call a morphism $B \xra{q} C$ an \emph{admissible epic} (or \emph{deflation}) if there exists a morphism $A \xra{j} B$ such that $(j,q) \in \cat{E}$. We use $A \xrat{i} B$ for admissible monics, and $B \xrath{p} C$ for admissible epics. We say $\cat{E}$ is closed under isomorphism if whenever we have $A \xra{i} B \xra{p} C \in \cat{E}$ and the following commutative diagram
 
         % https://q.uiver.app/#q=WzAsNixbMCwwLCJBIl0sWzIsMCwiQiJdLFs0LDAsIkMiXSxbMCwyLCJBJyJdLFsyLDIsIkInIl0sWzQsMiwiQyciXSxbMCwxLCJpIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibW9ubyJ9fX1dLFsxLDIsInAiLDIseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbMCwzLCJhIl0sWzEsNCwiYiJdLFszLDQsImoiXSxbNCw1LCJxIl0sWzIsNSwiYyJdXQ==
     \[\begin{tikzcd}[ampersand replacement=\&]
@@ -99,14 +124,14 @@ Since all vertical arrows are isomorphisms, we can conclude that $(j,p) \in \cat
 We can now proceed to define exact categories, basing our definition on the properties we established for abelian categories:
 
 \begin{defn}
-    Let $\cat{A}$ be an additive category. An \emph{exact structure} on $\cat{A}$ is a class $\cat{E}$ of kernel-cokernel pairs in $\cat{A}$ that is closed under isomorphism and satisfying the following axioms:
+    Let $\cat{A}$ be an additive category. An \emph{exact structure} on $\cat{A}$ is a class $\cat{E}$ of kernel-cokernel pairs in $\cat{A}$ that is closed under isomorphism and satisfies the following axioms:
     \begin{itemize}[align=right]
         \item[{[E0]}] For all objects $A \in \cat{A}$, the identity morphism $1_A$ is an admissible monic;
         \item[{[E0$^{\op}$]}] For all objects $A \in \cat{A}$, the identity morphism $1_A$ is an admissible epic;
         \item[{[E1]}] The composition of two admissible monics yields an admissible monic;
         \item[{[E1$^{\op}$]}] The composition of two admissible epics yields an admissible epic;
-        \item[{[E2]}] The pushout of an admissible monic along any morphism yields an admissible monic
-        \item[{[E2$^{\op}$]}] The pullback of an admissible epic along any morphism yields an admissible epic
+        \item[{[E2]}] The pushout of an admissible monic along any morphism yields an admissible monic;
+        \item[{[E2$^{\op}$]}] The pullback of an admissible epic along any morphism yields an admissible epic.
     \end{itemize}
     The last two axioms can be summarized by the following commutative diagrams:
 
