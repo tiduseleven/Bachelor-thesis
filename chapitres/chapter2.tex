@@ -1,8 +1,8 @@
 \chapter{Expanding to $n$-exact categories}\label{chapter:nexact}
-After generalizing from abelian categories to exact categories, we can go one step further by looking at longer exact sequences. When not said otherwise, $\cat{A}$ denotes an additive category.
+After generalizing from abelian categories to exact categories, we can go one step further by looking at longer exact sequences. When not stated otherwise, $\cat{A}$ denotes an additive category.
 
 \section{Working in higher degrees}
-Before defining $n$-exact categories, there are many prerequisites that need to be addressed. Firstly, we will need a way to properly describe what the equivalent of a kernel-cokernel pair would be in that new context. As a result, it makes sense to define $n$-kernels and $n$-cokernels, which require the notion of weak kernel (respectively weak cokernel).
+Before defining $n$-exact categories, there are many prerequisites that need to be addressed. Firstly, we will need a way to properly describe what the equivalent of a kernel-cokernel pair would be in this new context. As a result, it makes sense to define $n$-kernels and $n$-cokernels, which require the notion of weak kernel (respectively weak cokernel).
 
 \begin{defn}
     Let $A \xra{f} B$ be a morphism in $\cat{A}$. A \emph{weak kernel} of $f$ is an object $K \in \cat{A}$ with a morphism $K \xra{k} A$ such that the sequence of abelian groups
@@ -33,7 +33,7 @@ Before defining $n$-exact categories, there are many prerequisites that need to 
         \item For $K \xra{g} A$ a weak kernel of $A \xra{f} B$, the sequence being exact lets us know that
         \begin{enumerate}
             \item The composition $g \cdot f$ is 0
-            \item For any morphism $C \xra{h} f$ such that $h \cdot f = 0$, there exists a morphism $C \xra{\hat{h}} K$ such that $\hat{h} \cdot g = h$.
+            \item For any morphism $C \xra{h} A$ such that $h \cdot f = 0$, there exists a morphism $C \xra{\hat{h}} K$ such that $\hat{h} \cdot g = h$.
         \end{enumerate}
 
         That last point can be summarized by the following diagram:
@@ -57,7 +57,7 @@ Before defining $n$-exact categories, there are many prerequisites that need to 
     In summary, weak cokernels and weak kernels have a very similar property to that of cokernels and kernels, except that we lose uniqueness in our factoring of morphisms.
 \end{rmks}
 
-This notion is quite fundamental in the elaboration of n-kernels and n-cokernels:
+This notion is quite fundamental in the elaboration of $n$-kernels and $n$-cokernels:
 
 \begin{defn}
     Let $X^0 \xra{d^0} X^1$ be a morphism in $\cat{A}$. An \emph{$n$-kernel} of $d^0$ is a sequence 
@@ -101,7 +101,6 @@ This notion is quite fundamental in the elaboration of n-kernels and n-cokernels
 \end{rmk}
 
 Now that we have a suitable notion of higher kernels and cokernels, we can consider the concept of $n$-exact sequences in the most logical way.
-
 
 \begin{defn}
     An \emph{$n$-exact sequence} in $\cat{A}$ is a chain complex 
@@ -151,7 +150,7 @@ There are two final notions that need to be covered before proceeding with the d
 \end{defn}
 
 \begin{rmk}
-    Let $A \xra{f} B$ and $B' \xra{b} B$ be two morphisms in $\cat{A}$ and consider the pullback of $f$ along $g$:
+    Let $B^1 \xra{d_B^1} B^2$ and $A^2 \xra{f^2} B^2$ be two morphisms in $\cat{A}$ and consider the pullback of $d_B^1$ along $f^2$:
 
     \[\begin{tikzcd}[ampersand replacement=\&, sep=small]
         {A^1} \&\& {A^2} \\
@@ -163,7 +162,7 @@ There are two final notions that need to be covered before proceeding with the d
         \arrow["d_B^1"', shorten <=5pt, shorten >=5pt, from=3-1, to=3-3]
     \end{tikzcd}\]
 
-    Clearly $f$ is a morphism of complexes since the square commutes. Thus we can consider its cone:
+    Clearly $f = (f^1, f^2)$ is a morphism of complexes since the square commutes. Thus we can consider its cone:
 
     % https://q.uiver.app/#q=WzAsNixbMCwwLCJDKGYpOiJdLFsxLDAsIjAiXSxbMywwLCJBXjEiXSxbNSwwLCJBXjIgXFxiaWdvcGx1cyBCXjEiXSxbNywwLCJCXjIiXSxbOSwwLCIwIl0sWzEsMl0sWzIsMywiZF9DXjEiXSxbMyw0LCJkX0NeMiJdLFs0LDVdXQ==
     \[\begin{tikzcd}[ampersand replacement=\&,sep=small]
@@ -234,22 +233,21 @@ All of this preliminary work being done, we can finally proceed to define $n$-ex
 
 \section{$n$-exact categories}
 
-With the proper tools put in place, it is quite straightforward to expand the definition of exact categories to longer exact sequences. Similar to what was done in chapter 1, we proceed admissible $n$-exact sequences, monics and epics:
+With the proper tools put in place, it is quite straightforward to expand the definition of exact categories to longer exact sequences. Similar to what was done in chapter 1, we proceed with admissible $n$-exact sequences, monics, and epics:
 
 \begin{defn}
     Let $\cat{E}$ be a class of $n$-exact sequences in $\cat{A}$. An \emph{$\cat{E}$-admissible $n$-exact sequence} is an $n$-exact sequence that is in $\cat{E}$. 
     An \emph{$\cat{E}$-admissible monic} is a morphism $d_X^{0}: X^0 \rightarrow X^1$ such that there is an $\cat{E}$-admissible $n$-exact sequence $X^0 \xra{d_X^{0}} X^1 \xra{d_X^{1}} \ldots \xra{d_X^n} X^{n+1}$. 
     Dually, an \emph{$\cat{E}$-admissible epic} is a morphism $d_X^n: X^n \rightarrow X^{n+1}$ such that there is an $\cat{E}$-admissible $n$-exact sequence $X^0\xra{d_X^{0}} \ldots \xra{d_X^{n-1}} X^n \xra{d_X^{n}} X^{n+1}$.
     
-
     Whenever the context is clear, we will simply say admissible $n$-exact sequence (respectively admissible monic, admissible epic).
-    We shall write $X^{0} \xratshit{d_{X}^{0}} X^{1}$ for admissible monics and $X^{n} \xrathshit{d_X^n} X^{n+1}$ for admissible epics. Huh
+    We shall write $X^{0} \xratshit{d_{X}^{0}} X^{1}$ for admissible monics and $X^{n} \xrathshit{d_X^n} X^{n+1}$ for admissible epics.
 \end{defn}
 
 The following definition simply adapts the axioms of exact categories to the definitions given in the previous section:
 
 \begin{defn}
-    Let $\cat{E}$ be a class of $n$-exact sequences on $\cat{A}$. $\cat{E}$ is said to be an \emph{$n$-exact structure} on $\cat{A}$ if it is closed under weak isomorphisms and it satisifies the following axioms:
+    Let $\cat{E}$ be a class of $n$-exact sequences on $\cat{A}$. $\cat{E}$ is said to be an \emph{$n$-exact structure} on $\cat{A}$ if it is closed under weak isomorphisms and it satisfies the following axioms:
 
     \begin{itemize}[align=right]
         \item[{[E0]}] The sequence $0 \rightarrowtail 0 \rightarrow \ldots \twoheadrightarrow 0$ is an admissible $n$-exact sequence;
