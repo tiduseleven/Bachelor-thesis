@@ -1,10 +1,10 @@
 \chapter{An Introduction to Exact Categories} \label{chapter:exact}
 As a way to generalize the notion of abelian categories, one can look at a general additive category on which we define a certain notion of short exact sequences that has very similar properties to the abelian category counterpart. This chapter aims to motivate the definition of these so-called exact categories, to later define them formally and generalize some classical results from abelian categories.
 
-In this chapter, the word kernel (respectively cokernel) will usually refer to the kernel morphism (respectively cokernel morphism), not the object. The content of this chapter is inspired by both the lecture notes of MA3204 Homological algebra \cite{homalg} and the article about exact categories by Theo Bühler \cite{Buhler2010Jan}.
+In this chapter, the word kernel (respectively cokernel) will usually refer to the kernel morphism (respectively cokernel morphism), not the object. The content of this chapter is inspired by both the lecture notes of MA3204 Homological Algebra \cite{homalg} and the article about exact categories by Theo Bühler \cite{Buhler2010Jan}.
 
 \section{Motivation}
-When studying abelian categories, there are many convenient properties related to monics and epics, and that are used in order to prove results about short exact sequences. Let us recall a few:
+When studying abelian categories, there are many convenient properties related to monics and epics, which are used to prove results about short exact sequences. Let us recall a few:
 
 \begin{prop} \label{prop:popb_abelian}
     In an abelian category, 
@@ -63,7 +63,7 @@ These results allow us to conclude many properties about kernels and cokernels:
 \end{prop}
 
 \begin{preuve}
-    It is clear that the class of short exact sequences is closed under isomorphism, since. Indeed, $\ses{A}{B}{C}{f}{g}$ is a short exact sequence if and only if $f$ is a kernel of $g$ and $g$ is a cokernel of $f$. The result follows from the fact that kernels and cokernels are preserved by isomorphisms.
+    It is clear that the class of short exact sequences is closed under isomorphism. Indeed, $\ses{A}{B}{C}{f}{g}$ is a short exact sequence if and only if $f$ is a kernel of $g$ and $g$ is a cokernel of $f$. The result follows from the fact that kernels and cokernels are preserved by isomorphisms.
 
     [E0] and [E0$^{\op}$] follow directly from the fact that the identity morphism is both the kernel and cokernel of the zero map.
 
@@ -77,8 +77,6 @@ These results allow us to conclude many properties about kernels and cokernels:
     We can in a very similar way prove that the pullback of a kernel (respectively the pushout of a cokernel) is a kernel (respectively cokernel), however we choose not to include this as it turns out to be unnecessary for many results.
 \end{rmk}
 
-
-
 \section{Exact Categories}
 Based on the observations from the last section, one can define a more general notion that encapsulates the idea of short exact sequences, namely exact categories. To do so, let us first define kernel-cokernel pairs.
 
@@ -91,8 +89,8 @@ In the context of abelian categories, we notice that kernel-cokernel pairs indee
 \begin{defn}
     Let $\cat{A}$ be an additive category and $\cat{E}$ be a class of kernel-cokernel pairs in $\cat{A}$. We call a morphism $A \xra{i} B$ an \emph{admissible monic} (or \emph{inflation}) if there exists a morphism $B \xra{p} C$ such that $(i,p) \in \cat{E}$. Dually, we call a morphism $B \xra{q} C$ an \emph{admissible epic} (or \emph{deflation}) if there exists a morphism $A \xra{j} B$ such that $(j,q) \in \cat{E}$. We use $A \xrat{i} B$ for admissible monics, and $B \xrath{p} C$ for admissible epics. We say $\cat{E}$ is closed under isomorphism if whenever we have $A \xra{i} B \xra{p} C \in \cat{E}$ and the following commutative diagram
 
-        % https://q.uiver.app/#q=WzAsNixbMCwwLCJBIl0sWzIsMCwiQiJdLFs0LDAsIkMiXSxbMCwyLCJBJyJdLFsyLDIsIkInIl0sWzQsMiwiQyciXSxbMCwxLCJpIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibW9ubyJ9fX1dLFsxLDIsInAiLDIseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbMCwzLCJhIl0sWzEsNCwiYiJdLFszLDQsImoiXSxbNCw1LCJxIl0sWzIsNSwiYyJdXQ==
-    \[\begin{tikzcd}[ampersand replacement=\&]
+    % https://q.uiver.app/#q=WzAsNixbMCwwLCJBIl0sWzIsMCwiQiJdLFs0LDAsIkMiXSxbMCwyLCJBJyJdLFsyLDIsIkInIl0sWzQsMiwiQyciXSxbMCwxLCJpIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibW9ubyJ9fX1dLFsxLDIsInAiLDIseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbMCwzLCJhIl0sWzEsNCwiYiJdLFszLDQsImoiXSxbNCw1LCJxIl0sWzIsNSwiYyJdXQ==
+    \[\begin{tikzcd}[ampersand replacement=\&,sep=scriptsize]
         A \&\& B \&\& C \\
         \\
         {A'} \&\& {B'} \&\& {C'}

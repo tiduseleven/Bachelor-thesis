@@ -11,7 +11,7 @@
 - [X] Change format to A5
 - [X] Change all n's to math mode
 - [ ] Add intros to chapters:
-  - [ ] Chapter 1
+  - [x] Chapter 1
   - [ ] Chapter 2
   - [ ] Chapter 3
 - [ ] Intros should contain:
