@@ -21,17 +21,18 @@
 
 ### Writing
 - [ ] Chapter 1:
-  - [ ] Check closed under iso, might be for SES not for seperate classes
+  - [x] Check closed under iso, might be for SES not for seperate classes
   - [ ] Recall some props about SES
-  - [ ] Clarify usually kernels and cokernels refer to maps (not objects)
+  - [x] Clarify usually kernels and cokernels refer to maps (not objects)
   - [ ] Maybe it makes more sense to have monics/epics instead of kernels/cokernels?
-  - [ ] Brackets around axioms in text
-  - [ ] Explain why we don't include the dual of PO/PB in axioms
-  - [ ] Expand texts between results
+  - [x] Brackets around axioms in text
+  - [x] Explain why we don't include the dual of PO/PB in axioms
+  - [x] Expand texts between results
   - [ ] Recall what Im is
-  - [ ] Recall what closed under iso is for exact categories
-  - [ ] Conflations instead of SES?
-  - [ ] Rewrite instead of altering def
+    - Will be done in notation/terminology
+  - [x] Recall what closed under iso is for exact categories
+  - [x] Conflations instead of SES?
+  - [x] Rewrite instead of altering def
 
 ### Structure
 - [x] Add acknowledgements, abstract before TOC
