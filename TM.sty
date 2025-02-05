@@ -65,17 +65,25 @@
 \newcommand{\oset}[2]{%
   {\mathop{#2}\limits^{\vbox to -.5\ex@{\kern-\tw@\ex@
    \hbox{\scriptsize #1}\vss}}}}
+
+%\newcommand{\oset}[2]{%
+%  {\mathop{#2}\limits^{\vbox{\kern-.7ex\hbox{$\scriptstyle #1$}}}}}
+
+
 \newcommand{\ses}[5]{0\rightarrow#1\xrightarrow{#4}#2\xrightarrow{#5}#3\rightarrow0}
 \newcommand{\op}{^{\textnormal{op}}}
 \newcommand{\xra}[1]{\xrightarrow{#1}}
 \newcommand{\xrat}[1]{\ \oset{#1}{\rightarrowtail}\ }
+\newcommand{\xratshit}[1]{\overset{#1}{\rightarrowtail}}
 \newcommand{\xrath}[1]{\ \oset{#1}{\twoheadrightarrow}\ }
+\newcommand{\xrathshit}[1]{\overset{#1}{\twoheadrightarrow}}
 \newcommand{\Img}[1]{\textnormal{Im }#1}
 \newcommand{\Ker}[1]{\textnormal{Ker }#1}
 \newcommand{\Cok}[1]{\textnormal{Cok }#1}
 \newcommand{\cok}[1]{\textnormal{cok}#1}
 \newcommand{\Coim}[1]{\textnormal{Coim }#1}
 \newcommand{\Ch}[1]{\Chlen{}{#1}}
+\newcommand{\Hcat}[1]{\textnormal{H}\left(#1\right)}
 \newcommand{\Chlen}[2]{\textnormal{Ch}^{#1}\left(#2\right)}
 \newcommand{\C}[1]{C\left(#1\right)}
 

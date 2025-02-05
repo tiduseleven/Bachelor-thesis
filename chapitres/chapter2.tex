@@ -215,3 +215,83 @@ Basing ourselves on this result, we can generalize the notion of pullback and pu
 
     The definition for the $n$-pullback of a chain complex is dual. That is, given a complex $Y$ in $\Chlen{n}{\cat{A}}$ and a morphism $f^n: X^n \rightarrow Y^n$, an \emph{$n$-pullback of $Y$ along $f^n$} is a morphism of complexes $f: X \rightarrow Y$ such that in its cone $C = \C{f}$, the sequence $(d_C^{-1}, \ldots, d_C^{n-1})$ is an $n$-kernel of $d_C^n$.
 \end{defn}
+
+The last notion required for defining $n$-exact categories is that of weak isomorphisms:
+
+\begin{defn}
+    Let $X$ and $Y$ be two $n$-exact sequences in $\cat{A}$. We say $f: X \rightarrow Y$ is a \emph{weak isomorphism} of complexes if there is $k \in \left\{0, 1, \ldots, n\right\}$ such that $f^k$ and $f^{k+1}$ are isomorphisms.
+\end{defn}
+
+When $n = 1$, we note that weak isomorphisms are isomorphisms of short exact sequences, though the result is not immediate. For the sake of conciseness, we will not give a proof of this result. In the general case, however, weak isomorphisms are not necessarily isomorphisms, but a weaker result still holds:
+
+\begin{prop}
+    Let $X$ and $Y$ be two $n$-exact sequences in $\cat{A}$ and let $f : X \rightarrow Y$ be a morphism of complexes. If $f^k$ and $f^{k+1}$ are isomorphisms for some $k \in \left\{0, 1, \ldots, n\right\}$, then $f$ induces an isomorphism in $\Hcat{\cat{A}}$.
+\end{prop}
+
+The proof of this result can be found in \cite[Chapter~2, Proposition~2.7]{Jasso2016Aug}.
+
+All of this preliminary work being done, we can finally proceed to define $n$-exact categories.
+
+\section{$n$-exact categories}
+
+With the proper tools put in place, it is quite straightforward to expand the definition of exact categories to longer exact sequences. Similar to what was done in chapter 1, we proceed admissible $n$-exact sequences, monics and epics:
+
+\begin{defn}
+    Let $\cat{E}$ be a class of $n$-exact sequences in $\cat{A}$. An \emph{$\cat{E}$-admissible $n$-exact sequence} is an $n$-exact sequence that is in $\cat{E}$. 
+    An \emph{$\cat{E}$-admissible monic} is a morphism $d_X^{0}: X^0 \rightarrow X^1$ such that there is an $\cat{E}$-admissible $n$-exact sequence $X^0 \xra{d_X^{0}} X^1 \xra{d_X^{1}} \ldots \xra{d_X^n} X^{n+1}$. 
+    Dually, an \emph{$\cat{E}$-admissible epic} is a morphism $d_X^n: X^n \rightarrow X^{n+1}$ such that there is an $\cat{E}$-admissible $n$-exact sequence $X^0\xra{d_X^{0}} \ldots \xra{d_X^{n-1}} X^n \xra{d_X^{n}} X^{n+1}$.
+    
+
+    Whenever the context is clear, we will simply say admissible $n$-exact sequence (respectively admissible monic, admissible epic).
+    We shall write $X^{0} \xratshit{d_{X}^{0}} X^{1}$ for admissible monics and $X^{n} \xrathshit{d_X^n} X^{n+1}$ for admissible epics. Huh
+\end{defn}
+
+The following definition simply adapts the axioms of exact categories to the definitions given in the previous section:
+
+\begin{defn}
+    Let $\cat{E}$ be a class of $n$-exact sequences on $\cat{A}$. $\cat{E}$ is said to be an \emph{$n$-exact structure} on $\cat{A}$ if it is closed under weak isomorphisms and it satisifies the following axioms:
+
+    \begin{itemize}[align=right]
+        \item[{[E0]}] The sequence $0 \rightarrowtail 0 \rightarrow \ldots \twoheadrightarrow 0$ is an admissible $n$-exact sequence;
+        \item[{[E1]}] The composition of two admissible monics yields an admissible monic;
+        \item[{[E1$^{\op}$]}] The composition of two admissible epics yields an admissible epic;
+        \item[{[E2]}] If $X: X^0 \xratshit{d_X^0} \ldots \xrathshit{d_X^n} X^{n+1}$ is an admissible $n$-exact sequence and $X^0 \xra{f^0} Y^0$ is a morphism in $\cat{A}$, there exists an $n$-pushout of $(d_X^0, \ldots, d_X^{n-1})$ along $f^0$
+        % https://q.uiver.app/#q=WzAsMTEsWzAsMCwiWDoiXSxbMCwyLCJZOiJdLFsyLDAsIlheMCJdLFsyLDIsIlleMCJdLFs0LDAsIlheMSJdLFs0LDIsIlleMSJdLFs2LDAsIlxcbGRvdHMiXSxbNiwyLCJcXGxkb3RzIl0sWzgsMCwiWF5uIl0sWzgsMiwiWV5uIl0sWzEwLDAsIlhee24rMX0iXSxbMCwxLCJmIl0sWzIsNCwiZF9YXjAiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtb25vIn19fV0sWzMsNSwiZF9ZXnswfSIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1vbm8ifSwiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzIsMywiZl4wIl0sWzQsNSwiZl4xIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzQsNiwiZF9YXjEiXSxbNSw3LCJkX1leezF9IiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzYsOCwiZF9YXntuLTF9Il0sWzcsOSwiZF9ZXntuLTF9IiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzgsOSwiZl5uIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzgsMTAsImRfWF57bn0iLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifSwiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV1d
+        \[\begin{tikzcd}[ampersand replacement=\&,sep=small]
+            {X:} \&\& {X^0} \&\& {X^1} \&\& \ldots \&\& {X^n} \&\& {X^{n+1}} \\
+            \\
+            {Y:} \&\& {Y^0} \&\& {Y^1} \&\& \ldots \&\& {Y^n}
+            \arrow["f", from=1-1, to=3-1]
+            \arrow["{d_X^0}", tail, from=1-3, to=1-5]
+            \arrow["{f^0}", from=1-3, to=3-3]
+            \arrow["{d_X^1}", from=1-5, to=1-7]
+            \arrow["{f^1}", dashed, from=1-5, to=3-5]
+            \arrow["{d_X^{n-1}}", from=1-7, to=1-9]
+            \arrow["{d_X^{n}}", dotted, two heads, from=1-9, to=1-11]
+            \arrow["{f^n}", dashed, from=1-9, to=3-9]
+            \arrow["{d_Y^{0}}", dashed, tail, from=3-3, to=3-5]
+            \arrow["{d_Y^{1}}", dashed, from=3-5, to=3-7]
+            \arrow["{d_Y^{n-1}}", dashed, from=3-7, to=3-9]
+        \end{tikzcd}\]
+        such that $d_Y^0$ is an admissible monic;
+        \item[{[E2$^{\op}$]}] If $Y: Y^0 \xratshit{d_Y^0} \ldots \xrathshit{d_Y^n} Y^{n+1}$ is an admissible $n$-exact sequence and $X^{n+1} \xra{f^{n+1}} Y^{n+1}$ is a morphism in $\cat{A}$, there is an $n$-pullback of $(d_Y^1, \ldots, d_Y^n)$ along $f^{n+1}$
+        % https://q.uiver.app/#q=WzAsMTEsWzAsMCwiWDoiXSxbMCwyLCJZOiJdLFs0LDAsIlheMSJdLFs2LDAsIlxcbGRvdHMiXSxbOCwwLCJYXntufSJdLFs0LDIsIlleMSJdLFs2LDIsIlxcbGRvdHMiXSxbOCwyLCJZXntufSJdLFsxMCwyLCJZXntuKzF9Il0sWzEwLDAsIlhee24rMX0iXSxbMiwyLCJZXjAiXSxbMCwxLCJmIl0sWzIsMywiZF9YXjEiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMyw0LCJkX1hee24tMX0iLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbNSw2LCJkX1leMSJdLFs2LDcsImRfWV57bi0xfSJdLFs3LDgsImRfWV5uIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV0sWzQsOSwiZF9YXntufSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbOSw4LCJmXntuKzF9Il0sWzEwLDUsImRfWV4wIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibW9ubyJ9LCJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifX19XSxbMiw1LCJmXjEiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbNCw3LCJmXm4iLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
+        \[\begin{tikzcd}[ampersand replacement=\&,sep=small]
+            {X:} \&\&\&\& {X^1} \&\& \ldots \&\& {X^{n}} \&\& {X^{n+1}} \\
+            \\
+            {Y:} \&\& {Y^0} \&\& {Y^1} \&\& \ldots \&\& {Y^{n}} \&\& {Y^{n+1}}
+            \arrow["f", from=1-1, to=3-1]
+            \arrow["{d_X^1}", dashed, from=1-5, to=1-7]
+            \arrow["{f^1}", dashed, from=1-5, to=3-5]
+            \arrow["{d_X^{n-1}}", dashed, from=1-7, to=1-9]
+            \arrow["{d_X^{n}}", dashed, two heads, from=1-9, to=1-11]
+            \arrow["{f^n}"{description}, dashed, from=1-9, to=3-9]
+            \arrow["{f^{n+1}}", from=1-11, to=3-11]
+            \arrow["{d_Y^0}", dotted, tail, from=3-3, to=3-5]
+            \arrow["{d_Y^1}", from=3-5, to=3-7]
+            \arrow["{d_Y^{n-1}}", from=3-7, to=3-9]
+            \arrow["{d_Y^n}", two heads, from=3-9, to=3-11]
+        \end{tikzcd}\]
+        such that $d_X^n$ is an admissible epic.
+    \end{itemize}
+\end{defn}
