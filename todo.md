@@ -33,6 +33,15 @@
   - [x] Recall what closed under iso is for exact categories
   - [x] Conflations instead of SES?
   - [x] Rewrite instead of altering def
+  - [ ] Add examples of exact categories:
+    - [ ] Extension-closed subcategories of abelian categories; mention that the definition is dual
+
+- [ ] Chapter 2:
+  - [ ] Detail that it makes sense to work up to homotopy. not isomorphism
+  - [ ] Explain why E0 is equiv to the one from Buhler
+  - [ ] Mention n-abelian categories
+  - [ ] n-exact examples:
+    - [ ] AR-quivers and stuff
 
 ### Structure
 - [x] Add acknowledgements, abstract before TOC

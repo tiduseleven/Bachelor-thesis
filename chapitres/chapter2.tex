@@ -1,5 +1,7 @@
 \chapter{Expanding to $n$-exact categories}\label{chapter:nexact}
-After generalizing from abelian categories to exact categories, we can go one step further by looking at longer exact sequences. When not stated otherwise, $\cat{A}$ denotes an additive category.
+After generalizing from abelian categories to exact categories, we can go one step further by looking at longer exact sequences. First, we will redefine the notions needed for exact categories, but in a more general context. Then we will proceed to define $n$-exact categories, and give some concrete example of such categories.
+
+When not stated otherwise, $\cat{A}$ denotes an additive category. The contents of this chapter are based on \cite{Jasso2016Aug}.
 
 \section{Working in higher degrees}
 Before defining $n$-exact categories, there are many prerequisites that need to be addressed. Firstly, we will need a way to properly describe what the equivalent of a kernel-cokernel pair would be in this new context. As a result, it makes sense to define $n$-kernels and $n$-cokernels, which require the notion of weak kernel (respectively weak cokernel).
@@ -50,11 +52,13 @@ Before defining $n$-exact categories, there are many prerequisites that need to 
             \arrow["0"', shift right=2, curve={height=-15pt}, from=3-1, to=1-5]
         \end{tikzcd}\]
 
-        These two points follow from exactness in the middle term. Indeed, since $\Img{(- \cdot k)} = \Ker{(- \cdot f)}$, any map that, once post-composed with $f$, gives the $0$ map, is in the image of the post-composition with $k$, i.e. can be factored (not necessarily uniquely!) as $\hat{h} \cdot k$. In particular, if we consider $C' = K$, we conclude that $k = 1_K \cdot k \in \Img{(- \cdot k)} = \Ker{(- \cdot f)}$, i.e. $k \cdot f = 0$.
+        These two points follow from exactness in the middle term. Indeed, since $\Img{(- \cdot k)} = \Ker{(- \cdot f)}$, any map $h: C \rightarrow A$ such that $h\cdot f = 0$, is in the image of the post-composition with $k$, i.e. can be factored (not necessarily uniquely!) as $\hat{h} \cdot k$. In particular, if we consider $C' = K$, we conclude that 
+        \[k = 1_K \cdot k \in \Img{(- \cdot k)} = \Ker{(- \cdot f)},\]
+        i.e. $k \cdot f = 0$.
         The result for weak cokernels is dual.
     \end{enumerate}
 
-    In summary, weak cokernels and weak kernels have a very similar property to that of cokernels and kernels, except that we lose uniqueness in our factoring of morphisms.
+    In summary, weak cokernels and weak kernels have a very similar property to that of cokernels and kernels, except that uniqueness in our factoring of morphisms is not guaranteed. In other words, the only difference is that a weak kernel is not necessarily monic, and a weak cokernel is not necessarily epic.
 \end{rmks}
 
 This notion is quite fundamental in the elaboration of $n$-kernels and $n$-cokernels:
@@ -64,7 +68,7 @@ This notion is quite fundamental in the elaboration of $n$-kernels and $n$-coker
 
     % https://q.uiver.app/#q=WzAsNCxbMCwwLCJLXjAiXSxbMiwwLCJLXjEiXSxbNiwwLCJLXm4iXSxbNCwwLCJcXGxkb3RzIl0sWzAsMV0sWzEsM10sWzMsMl1d
     \[\begin{tikzcd}[ampersand replacement=\&,sep=scriptsize]
-        {X^{-n}} \&\& {X^{-n+1}} \&\& \ldots \&\& {X^0}
+        {X^{-n}} \&\& {X^{-n+1}} \&\& \cdots \&\& {X^0}
         \arrow["d^{-n}",from=1-1, to=1-3]
         \arrow["d^{-n+1}", from=1-3, to=1-5]
         \arrow["d^{0}", from=1-5, to=1-7]
@@ -73,7 +77,7 @@ This notion is quite fundamental in the elaboration of $n$-kernels and $n$-coker
     such that the sequence induced by applying the functor $\cat{A}(C', -)$
     % https://q.uiver.app/#q=WzAsNSxbMiwwLCJcXGNhdHtBfShDJywgWF57LW59KSJdLFs0LDAsIlxcY2F0e0F9KEMnLCBYXnstbisxfSkiXSxbOCwwLCJcXGNhdHtBfShDJywgWF57MH0pIl0sWzYsMCwiXFxsZG90cyJdLFswLDAsIjAiXSxbMCwxLCItIFxcY2RvdCBkXnstbn0iXSxbMSwzLCItIFxcY2RvdCBkXnstbisxfSJdLFszLDIsIi0gXFxjZG90IGReey0xfSJdLFs0LDBdXQ==
     \[\begin{tikzcd}[ampersand replacement=\&,sep=small]
-        0 \&\& {\cat{A}(C', X^{-n})} \&\& {\cat{A}(C', X^{-n+1})} \&\& \ldots \&\& {\cat{A}(C', X^{1})}
+        0 \&\& {\cat{A}(C', X^{-n})} \&\& {\cat{A}(C', X^{-n+1})} \&\& \cdots \&\& {\cat{A}(C', X^{1})}
         \arrow[from=1-1, to=1-3]
         \arrow["{- \cdot d^{-n}}", from=1-3, to=1-5]
         \arrow["{- \cdot d^{-n+1}}", from=1-5, to=1-7]
@@ -87,7 +91,7 @@ This notion is quite fundamental in the elaboration of $n$-kernels and $n$-coker
 
     % https://q.uiver.app/#q=WzAsNCxbMCwwLCJYXjEiXSxbMiwwLCJYXjIiXSxbNCwwLCJcXGxkb3RzIl0sWzYsMCwiWF57bisxfSJdLFswLDEsImReMSJdLFsxLDIsImReMiJdLFsyLDMsImRebiJdXQ==
     \[\begin{tikzcd}[ampersand replacement=\&,sep=small]
-        {X^1} \&\& {X^2} \&\& \ldots \&\& {X^{n+1}}
+        {X^1} \&\& {X^2} \&\& \cdots \&\& {X^{n+1}}
         \arrow["{d^1}", from=1-1, to=1-3]
         \arrow["{d^2}", from=1-3, to=1-5]
         \arrow["{d^n}", from=1-5, to=1-7]
@@ -97,31 +101,33 @@ This notion is quite fundamental in the elaboration of $n$-kernels and $n$-coker
 \end{defn}
 
 \begin{rmk}
-    In the case $n=1$, we get back to our usual definition of kernels and cokernels.
+    In the case $n=1$, this indeed coincides with the usual definition of kernels and cokernels.
 \end{rmk}
 
 Now that we have a suitable notion of higher kernels and cokernels, we can consider the concept of $n$-exact sequences in the most logical way.
 
 \begin{defn}
     An \emph{$n$-exact sequence} in $\cat{A}$ is a chain complex 
-    \[X^0 \xra{d^0} X^1 \xra{d^1} \ldots \xra{d^{n-1}} X^n \xra{d^n} X^{n+1}\]
-    such that $(d^0, \ldots, d^{n-1})$ is an $n$-kernel of $d^n$ and $(d^1, \ldots, d^n)$ is an $n$-cokernel of $d^0$.
+    \[X^0 \xra{d^0} X^1 \xra{d^1} \cdots \xra{d^{n-1}} X^n \xra{d^n} X^{n+1}\]
+    such that $(d^0, \ldots, d^{n-1})$ is an $n$-kernel of $d^n$ and $(d^1, \ldots, d^n)$ is an ${n\text{-cokernel}}$ of $d^0$.
 \end{defn}
 
 \begin{rmk}
-    Once again, we notice that when $n=1$, we get back to our usual notion of short exact sequence.
+    Once again, when $n=1$, we get back to our usual notion of short exact sequence.
 \end{rmk}
 
-There are two final notions that need to be covered before proceeding with the definition of $n$-exact categories: that of $n$-pullback/$n$-pushout, and weak isomorphisms. Before covering these concepts, let us first remember what the cone of a morphism of complexes is:
+There are two final notions that need to be covered before proceeding with the definition of $n$-exact categories: that of $n$-pullback, $n$-pushout, and weak isomorphisms. Before covering these concepts, let us first remember what the cone of a morphism of complexes is:
 
 \begin{defn}
-    Let $X$ and $Y$ be two complexes in $\Ch{\cat{A}}$ and $f: X \rightarrow Y$ be a morphism of complexes, or diagrammatically:
+    \begin{sloppypar}
+    Let $X$ and $Y$ be two complexes in $\Ch{\cat{A}}$ and ${f: X \rightarrow Y}$ be a morphism of complexes, or diagrammatically:
+    \end{sloppypar}
 
     % https://q.uiver.app/#q=WzAsMTIsWzAsMCwiWCJdLFswLDIsIlkiXSxbMiwwLCJcXGxkb3RzIl0sWzQsMCwiWF57bi0xfSJdLFs2LDAsIlhebiJdLFsyLDIsIlxcbGRvdHMiXSxbNCwyLCJZXntuLTF9Il0sWzYsMiwiWV5uIl0sWzgsMCwiWF57bisxfSJdLFs4LDIsIllee24rMX0iXSxbMTAsMCwiXFxsZG90cyJdLFsxMCwyLCJcXGxkb3RzIl0sWzAsMSwiZiJdLFsyLDNdLFszLDQsImRfWF57bi0xfSJdLFs1LDZdLFs2LDcsImRfWV57bi0xfSJdLFs0LDgsImRfWF5uIl0sWzcsOSwiZF9ZXntufSJdLFs4LDEwXSxbOSwxMV0sWzgsOSwiZl57bisxfSJdLFs0LDcsImZebiJdLFszLDYsImZee24tMX0iXV0=
     \[\begin{tikzcd}[ampersand replacement=\&,sep=small]
-        X \&\& \ldots \&\& {X^{n-1}} \&\& {X^n} \&\& {X^{n+1}} \&\& \ldots \\
+        X: \&\& \cdots \&\& {X^{n-1}} \&\& {X^n} \&\& {X^{n+1}} \&\& \cdots \\
         \\
-        Y \&\& \ldots \&\& {Y^{n-1}} \&\& {Y^n} \&\& {Y^{n+1}} \&\& \ldots
+        Y: \&\& \cdots \&\& {Y^{n-1}} \&\& {Y^n} \&\& {Y^{n+1}} \&\& \cdots
         \arrow["f", from=1-1, to=3-1]
         \arrow[from=1-3, to=1-5]
         \arrow["{d_X^{n-1}}", from=1-5, to=1-7]
@@ -138,16 +144,18 @@ There are two final notions that need to be covered before proceeding with the d
 
     The \emph{cone} of $f$, denoted $\C{f}$, is the following complex
 
-    % https://q.uiver.app/#q=WzAsNSxbMCwwLCJDKGYpOiJdLFsxLDAsIlxcbGRvdHMiXSxbMywwLCJYXm4gXFxiaWdvcGx1cyBZXntuLTF9Il0sWzUsMCwiWF57bisxfSBcXGJpZ29wbHVzIFlee259Il0sWzcsMCwiXFxsZG90cyJdLFsxLDJdLFsyLDMsImRfQ15uIl0sWzMsNF1d
+    % https://q.uiver.app/#q=WzAsNSxbMCwwLCJDKGYpOiJdLFsxLDAsIlxcY2RvdHMiXSxbMywwLCJYXm4gXFxiaWdvcGx1cyBZXntuLTF9Il0sWzUsMCwiWF57bisxfSBcXGJpZ29wbHVzIFlee259Il0sWzcsMCwiXFxjZG90cyJdLFsxLDJdLFsyLDMsImRfQ157bi0xfSJdLFszLDRdXQ==
     \[\begin{tikzcd}[ampersand replacement=\&,sep=small]
-        {\C{f}:} \& \ldots \&\& {X^n \bigoplus Y^{n-1}} \&\& {X^{n+1} \bigoplus Y^{n}} \&\& \ldots
+        {C(f):} \& \cdots \&\& {X^n \bigoplus Y^{n-1}} \&\& {X^{n+1} \bigoplus Y^{n}} \&\& \cdots
         \arrow[from=1-2, to=1-4]
-        \arrow["{d_C^n}", from=1-4, to=1-6]
+        \arrow["{d_C^{n-1}}", from=1-4, to=1-6]
         \arrow[from=1-6, to=1-8]
     \end{tikzcd}\]
 
-    where $d_C^n = \begin{pmatrix}-d_X^{n} & 0 \\ f^n & d_Y^{n-1}\end{pmatrix}$.
+    where $d_C^{n-1} = \begin{pmatrix}-d_X^{n} & 0 \\ f^n & d_Y^{n-1}\end{pmatrix}$.
 \end{defn}
+
+Before looking at the higher equivalents of pullbacks and pushouts, it is quite useful to examine the link that they have with the cone of a map.
 
 \begin{rmk}
     Let $B^1 \xra{d_B^1} B^2$ and $A^2 \xra{f^2} B^2$ be two morphisms in $\cat{A}$ and consider the pullback of $d_B^1$ along $f^2$:
@@ -173,21 +181,21 @@ There are two final notions that need to be covered before proceeding with the d
         \arrow[from=1-8, to=1-10]
     \end{tikzcd}\]
 
-    where $d_C^1 = \begin{pmatrix} - d_A^1 \\ f^1 \end{pmatrix}$, and $d_C^2 = \begin{pmatrix} 0 & 0 \\ f^2 & d_B^1 \end{pmatrix}$. We claim that $d_C^1$ is a kernel of $d_C^2$. Indeed, consider a morphism $\begin{pmatrix} g \\ h \end{pmatrix}: C \rightarrow A^2 \bigoplus B^1$ such that the composition $\begin{pmatrix} g \\ h \end{pmatrix} \cdot d_C^2 = 0$. The composition being $0$ implies that $ g \cdot f^2 + h \cdot d_B^1 = 0$. Consider the unique map $\hat{h} : C \rightarrow A^1$ given by $\hat{h} \cdot f^1 = h$ and $\hat{h} \cdot d_A^1 = -g$ (the map is given by the pullback property; the fact that $-g \cdot f^2 = h \cdot d_B^1$ comes from the previous remark about the composition being $0$). We see that $\hat{h} d_C^1 = \begin{pmatrix} - \hat{h} \cdot d_A^1 \\ \hat{h} \cdot f^1 \end{pmatrix} = \begin{pmatrix} g \\ h \end{pmatrix}$. Thus we have defined a unique map $\hat{h} : C \rightarrow A^1$ such that $\hat{h} \cdot d_C^1 = \begin{pmatrix} g \\ h \end{pmatrix}$. That is, $d_C^1$ is a kernel of $d_C^2$.
+    where $d_C^1 = \begin{pmatrix} - d_A^1 \\ f^1 \end{pmatrix}$, and $d_C^2 = \begin{pmatrix} 0 & 0 \\ f^2 & d_B^1 \end{pmatrix}$. We claim that $d_C^1$ is a kernel of $d_C^2$. Indeed, consider a morphism $\begin{pmatrix} g \\ h \end{pmatrix}: C \rightarrow A^2 \bigoplus B^1$ such that the composition $\begin{pmatrix} g \\ h \end{pmatrix} \cdot d_C^2 = 0$. The composition being $0$ implies that $ g \cdot f^2 + h \cdot d_B^1 = 0$, or $h \cdot d_B^1 = - g \cdot f^2$. Consider the unique map $\hat{h} : C \rightarrow A^1$ given by $\hat{h} \cdot f^1 = h$ and $\hat{h} \cdot d_A^1 = -g$ given by the pullback property. We see that $\hat{h} d_C^1 = \begin{pmatrix} - \hat{h} \cdot d_A^1 \\ \hat{h} \cdot f^1 \end{pmatrix} = \begin{pmatrix} g \\ h \end{pmatrix}$. Thus we have defined a unique map $\hat{h} : C \rightarrow A^1$ such that $\hat{h} \cdot d_C^1 = \begin{pmatrix} g \\ h \end{pmatrix}$. That is, $d_C^1$ is a kernel of $d_C^2$.
 
     A dual result is true for pushouts, where $d_C^2$ is a cokernel of $d_C^1$.
 \end{rmk}
 
-Basing ourselves on this result, we can generalize the notion of pullback and pushout to higher degrees:
+Basing ourselves on this observation, we can generalize the notion of pullback and pushout to higher degrees:
 
 \begin{defn}
     Let $X : X^0 \xra{d_X^0} X^1 \xra{d_X^1} \ldots \xra{d_X^{n-1}} X^n$ be a complex in $\Ch{\cat{A}}$ and $f^0 : X^0 \rightarrow Y^0$ a morphism in $\cat{A}$. An \emph{$n$-pushout of $X$ along $f^0$} is a morphism of complexes 
 
-    % https://q.uiver.app/#q=WzAsMTAsWzAsMCwiWDoiXSxbMCwyLCJZOiJdLFsyLDAsIlheMCJdLFsyLDIsIlleMCJdLFs0LDAsIlheMSJdLFs0LDIsIlleMSJdLFs2LDAsIlxcbGRvdHMiXSxbNiwyLCJcXGxkb3RzIl0sWzgsMCwiWF5uIl0sWzgsMiwiWV5uIl0sWzAsMSwiZiJdLFsyLDQsImRfWF4wIl0sWzMsNSwiZF9ZXnswfSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsyLDMsImZeMCJdLFs0LDUsImZeMSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs0LDYsImRfWF4xIl0sWzUsNywiZF9ZXnsxfSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs2LDgsImRfWF57bi0xfSJdLFs3LDksImRfWV57bi0xfSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs4LDksImZebiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
+    % https://q.uiver.app/#q=WzAsMTAsWzAsMCwiWDoiXSxbMCwyLCJZOiJdLFsyLDAsIlheMCJdLFsyLDIsIlleMCJdLFs0LDAsIlheMSJdLFs0LDIsIlleMSJdLFs2LDAsIlxcY2RvdHMiXSxbNiwyLCJcXGNkb3RzIl0sWzgsMCwiWF5uIl0sWzgsMiwiWV5uIl0sWzAsMSwiZiJdLFsyLDQsImRfWF4wIl0sWzMsNSwiZF9ZXnswfSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsyLDMsImZeMCJdLFs0LDUsImZeMSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs0LDYsImRfWF4xIl0sWzUsNywiZF9ZXnsxfSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs2LDgsImRfWF57bi0xfSJdLFs3LDksImRfWV57bi0xfSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs4LDksImZebiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
     \[\begin{tikzcd}[ampersand replacement=\&,sep=small]
-        {X:} \&\& {X^0} \&\& {X^1} \&\& \ldots \&\& {X^n} \\
+        {X:} \&\& {X^0} \&\& {X^1} \&\& \cdots \&\& {X^n} \\
         \\
-        {Y:} \&\& {Y^0} \&\& {Y^1} \&\& \ldots \&\& {Y^n}
+        {Y:} \&\& {Y^0} \&\& {Y^1} \&\& \cdots \&\& {Y^n}
         \arrow["f", from=1-1, to=3-1]
         \arrow["{d_X^0}", from=1-3, to=1-5]
         \arrow["{f^0}", from=1-3, to=3-3]
@@ -200,10 +208,10 @@ Basing ourselves on this result, we can generalize the notion of pullback and pu
         \arrow["{d_Y^{n-1}}", dashed, from=3-7, to=3-9]
     \end{tikzcd}\]
 
-    such that in the cone of $f$:
+    such that in the cone of $f$
     % https://q.uiver.app/#q=WzAsNixbMSwwLCJYXjAiXSxbMiwwLCJYXjEgXFxiaWdvcGx1cyBZXjAiXSxbMywwLCJcXGxkb3RzIl0sWzQsMCwiWF57bn0gXFxiaWdvcGx1cyBZXntuLTF9Il0sWzUsMCwiWV5uIl0sWzAsMCwiXFxDe2Z9OiJdLFswLDEsImRfQ157LTF9Il0sWzEsMiwiZF9DXjAiXSxbMiwzLCJkX0Nee24tMX0iXSxbMyw0LCJkX0Nee259Il1d
     \[\begin{tikzcd}[ampersand replacement=\&,sep=scriptsize]
-        {\C{f}:} \& {X^0} \& {X^1 \bigoplus Y^0} \& \ldots \& {X^{n} \bigoplus Y^{n-1}} \& {Y^n}
+        {\C{f}:} \& {X^0} \& {X^1 \bigoplus Y^0} \& \cdots \& {X^{n} \bigoplus Y^{n-1}} \& {Y^n}
         \arrow["{d_C^{-1}}", from=1-2, to=1-3]
         \arrow["{d_C^0}", from=1-3, to=1-4]
         \arrow["{d_C^{n-1}}", from=1-4, to=1-5]
@@ -221,13 +229,13 @@ The last notion required for defining $n$-exact categories is that of weak isomo
     Let $X$ and $Y$ be two $n$-exact sequences in $\cat{A}$. We say $f: X \rightarrow Y$ is a \emph{weak isomorphism} of complexes if there is $k \in \left\{0, 1, \ldots, n\right\}$ such that $f^k$ and $f^{k+1}$ are isomorphisms.
 \end{defn}
 
-When $n = 1$, we note that weak isomorphisms are isomorphisms of short exact sequences, though the result is not immediate. For the sake of conciseness, we will not give a proof of this result. In the general case, however, weak isomorphisms are not necessarily isomorphisms, but a weaker result still holds:
+When $n = 1$, we note that weak isomorphisms are isomorphisms of short exact sequences. This can be shown using the five lemma, which holds for any exact category (see \cite[Lemma~8.9]{Buhler2010Jan}) In the general case, however, weak isomorphisms are not necessarily isomorphisms, but a weaker result still holds:
 
 \begin{prop}
     Let $X$ and $Y$ be two $n$-exact sequences in $\cat{A}$ and let $f : X \rightarrow Y$ be a morphism of complexes. If $f^k$ and $f^{k+1}$ are isomorphisms for some $k \in \left\{0, 1, \ldots, n\right\}$, then $f$ induces an isomorphism in $\Hcat{\cat{A}}$.
 \end{prop}
 
-The proof of this result can be found in \cite[Chapter~2, Proposition~2.7]{Jasso2016Aug}.
+The proof of this result can be found in \cite[Proposition~2.7]{Jasso2016Aug}.
 
 All of this preliminary work being done, we can finally proceed to define $n$-exact categories.
 
@@ -237,8 +245,11 @@ With the proper tools put in place, it is quite straightforward to expand the de
 
 \begin{defn}
     Let $\cat{E}$ be a class of $n$-exact sequences in $\cat{A}$. An \emph{$\cat{E}$-admissible $n$-exact sequence} is an $n$-exact sequence that is in $\cat{E}$. 
-    An \emph{$\cat{E}$-admissible monic} is a morphism $d_X^{0}: X^0 \rightarrow X^1$ such that there is an $\cat{E}$-admissible $n$-exact sequence $X^0 \xra{d_X^{0}} X^1 \xra{d_X^{1}} \ldots \xra{d_X^n} X^{n+1}$. 
-    Dually, an \emph{$\cat{E}$-admissible epic} is a morphism $d_X^n: X^n \rightarrow X^{n+1}$ such that there is an $\cat{E}$-admissible $n$-exact sequence $X^0\xra{d_X^{0}} \ldots \xra{d_X^{n-1}} X^n \xra{d_X^{n}} X^{n+1}$.
+    An \emph{$\cat{E}$-admissible monic} is a morphism $d_X^{0}: X^0 \rightarrow X^1$ such that there is an $\cat{E}$-admissible $n$-exact sequence 
+    \[X^0 \xra{d_X^{0}} X^1 \xra{d_X^{1}} \cdots \xra{d_X^n} X^{n+1}.\]
+    
+    Dually, an \emph{$\cat{E}$-admissible epic} is a morphism $d_X^n: X^n \rightarrow X^{n+1}$ such that there is an $\cat{E}$-admissible $n$-exact sequence 
+    \[X^0\xra{d_X^{0}} \cdots \xra{d_X^{n-1}} X^n \xra{d_X^{n}} X^{n+1}.\]
     
     Whenever the context is clear, we will simply say admissible $n$-exact sequence (respectively admissible monic, admissible epic).
     We shall write $X^{0} \xratshit{d_{X}^{0}} X^{1}$ for admissible monics and $X^{n} \xrathshit{d_X^n} X^{n+1}$ for admissible epics.
@@ -248,17 +259,17 @@ The following definition simply adapts the axioms of exact categories to the def
 
 \begin{defn}
     Let $\cat{E}$ be a class of $n$-exact sequences on $\cat{A}$. $\cat{E}$ is said to be an \emph{$n$-exact structure} on $\cat{A}$ if it is closed under weak isomorphisms and it satisfies the following axioms:
-
+    \begin{sloppypar}
     \begin{itemize}[align=right]
-        \item[{[E0]}] The sequence $0 \rightarrowtail 0 \rightarrow \ldots \twoheadrightarrow 0$ is an admissible $n$-exact sequence;
-        \item[{[E1]}] The composition of two admissible monics yields an admissible monic;
-        \item[{[E1$^{\op}$]}] The composition of two admissible epics yields an admissible epic;
-        \item[{[E2]}] If $X: X^0 \xratshit{d_X^0} \ldots \xrathshit{d_X^n} X^{n+1}$ is an admissible $n$-exact sequence and $X^0 \xra{f^0} Y^0$ is a morphism in $\cat{A}$, there exists an $n$-pushout of $(d_X^0, \ldots, d_X^{n-1})$ along $f^0$
+        \item[{[E0]}] The sequence $0 \rightarrowtail 0 \rightarrow \cdots \twoheadrightarrow 0$ is an $\cat{E}$-admissible $n$-exact sequence;
+        \item[{[E1]}] The composition of two $\cat{E}$-admissible monics yields an ${\cat{E}\text{-admissible monic}}$;
+        \item[{[E1$^{\op}$]}] The composition of two $\cat{E}$-admissible epics yields an ${\cat{E}\text{-admissible epic}}$;
+        \item[{[E2]}] If $X: X^0 \xratshit{d_X^0} \ldots \xrathshit{d_X^n} X^{n+1}$ is an $\cat{E}$-admissible $n$-exact sequence and $X^0 \xra{f^0} Y^0$ is a morphism in $\cat{A}$, there exists an $n$-pushout of $(d_X^0, \ldots, d_X^{n-1})$ along $f^0$
         % https://q.uiver.app/#q=WzAsMTEsWzAsMCwiWDoiXSxbMCwyLCJZOiJdLFsyLDAsIlheMCJdLFsyLDIsIlleMCJdLFs0LDAsIlheMSJdLFs0LDIsIlleMSJdLFs2LDAsIlxcbGRvdHMiXSxbNiwyLCJcXGxkb3RzIl0sWzgsMCwiWF5uIl0sWzgsMiwiWV5uIl0sWzEwLDAsIlhee24rMX0iXSxbMCwxLCJmIl0sWzIsNCwiZF9YXjAiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtb25vIn19fV0sWzMsNSwiZF9ZXnswfSIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1vbm8ifSwiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzIsMywiZl4wIl0sWzQsNSwiZl4xIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzQsNiwiZF9YXjEiXSxbNSw3LCJkX1leezF9IiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzYsOCwiZF9YXntuLTF9Il0sWzcsOSwiZF9ZXntuLTF9IiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzgsOSwiZl5uIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzgsMTAsImRfWF57bn0iLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifSwiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV1d
         \[\begin{tikzcd}[ampersand replacement=\&,sep=small]
-            {X:} \&\& {X^0} \&\& {X^1} \&\& \ldots \&\& {X^n} \&\& {X^{n+1}} \\
+            {X:} \&\& {X^0} \&\& {X^1} \&\& \cdots \&\& {X^n} \&\& {X^{n+1}} \\
             \\
-            {Y:} \&\& {Y^0} \&\& {Y^1} \&\& \ldots \&\& {Y^n}
+            {Y:} \&\& {Y^0} \&\& {Y^1} \&\& \cdots \&\& {Y^n}
             \arrow["f", from=1-1, to=3-1]
             \arrow["{d_X^0}", tail, from=1-3, to=1-5]
             \arrow["{f^0}", from=1-3, to=3-3]
@@ -271,13 +282,13 @@ The following definition simply adapts the axioms of exact categories to the def
             \arrow["{d_Y^{1}}", dashed, from=3-5, to=3-7]
             \arrow["{d_Y^{n-1}}", dashed, from=3-7, to=3-9]
         \end{tikzcd}\]
-        such that $d_Y^0$ is an admissible monic;
-        \item[{[E2$^{\op}$]}] If $Y: Y^0 \xratshit{d_Y^0} \ldots \xrathshit{d_Y^n} Y^{n+1}$ is an admissible $n$-exact sequence and $X^{n+1} \xra{f^{n+1}} Y^{n+1}$ is a morphism in $\cat{A}$, there is an $n$-pullback of $(d_Y^1, \ldots, d_Y^n)$ along $f^{n+1}$
+        such that $d_Y^0$ is an $\cat{E}$-admissible monic;
+        \item[{[E2$^{\op}$]}] If $Y: Y^0 \xratshit{d_Y^0} \ldots \xrathshit{d_Y^n} Y^{n+1}$ is an $\cat{E}$-admissible $n$-exact sequence and $X^{n+1} \xra{f^{n+1}} Y^{n+1}$ is a morphism in $\cat{A}$, there is an $n$-pullback of $(d_Y^1, \ldots, d_Y^n)$ along $f^{n+1}$
         % https://q.uiver.app/#q=WzAsMTEsWzAsMCwiWDoiXSxbMCwyLCJZOiJdLFs0LDAsIlheMSJdLFs2LDAsIlxcbGRvdHMiXSxbOCwwLCJYXntufSJdLFs0LDIsIlleMSJdLFs2LDIsIlxcbGRvdHMiXSxbOCwyLCJZXntufSJdLFsxMCwyLCJZXntuKzF9Il0sWzEwLDAsIlhee24rMX0iXSxbMiwyLCJZXjAiXSxbMCwxLCJmIl0sWzIsMywiZF9YXjEiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMyw0LCJkX1hee24tMX0iLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbNSw2LCJkX1leMSJdLFs2LDcsImRfWV57bi0xfSJdLFs3LDgsImRfWV5uIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV0sWzQsOSwiZF9YXntufSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbOSw4LCJmXntuKzF9Il0sWzEwLDUsImRfWV4wIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibW9ubyJ9LCJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifX19XSxbMiw1LCJmXjEiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbNCw3LCJmXm4iLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
         \[\begin{tikzcd}[ampersand replacement=\&,sep=small]
-            {X:} \&\&\&\& {X^1} \&\& \ldots \&\& {X^{n}} \&\& {X^{n+1}} \\
+            {X:} \&\&\&\& {X^1} \&\& \cdots \&\& {X^{n}} \&\& {X^{n+1}} \\
             \\
-            {Y:} \&\& {Y^0} \&\& {Y^1} \&\& \ldots \&\& {Y^{n}} \&\& {Y^{n+1}}
+            {Y:} \&\& {Y^0} \&\& {Y^1} \&\& \cdots \&\& {Y^{n}} \&\& {Y^{n+1}}
             \arrow["f", from=1-1, to=3-1]
             \arrow["{d_X^1}", dashed, from=1-5, to=1-7]
             \arrow["{f^1}", dashed, from=1-5, to=3-5]
@@ -290,6 +301,7 @@ The following definition simply adapts the axioms of exact categories to the def
             \arrow["{d_Y^{n-1}}", from=3-7, to=3-9]
             \arrow["{d_Y^n}", two heads, from=3-9, to=3-11]
         \end{tikzcd}\]
-        such that $d_X^n$ is an admissible epic.
+        such that $d_X^n$ is an $\cat{E}$-admissible epic.
     \end{itemize}
+    \end{sloppypar}
 \end{defn}
