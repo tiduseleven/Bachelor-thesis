@@ -12,8 +12,8 @@ Before defining $n$-exact categories, there are many prerequisites that need to 
     % https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXGNhdHtBfShDJyxLKSJdLFsyLDAsIlxcY2F0e0F9KEMnLEEpIl0sWzQsMCwiXFxjYXR7QX0oQycsQikiXSxbMCwxLCItIFxcY2RvdCBrIl0sWzEsMiwiLSBcXGNkb3QgZiJdXQ==
     \[\begin{tikzcd}[ampersand replacement=\&,sep=scriptsize]
         {\cat{A}(C',K)} \&\& {\cat{A}(C',A)} \&\& {\cat{A}(C',B)}
-        \arrow["{- \cdot k}", from=1-1, to=1-3]
-        \arrow["{- \cdot f}", from=1-3, to=1-5]
+        \arrow["{k \circ -}", from=1-1, to=1-3]
+        \arrow["{f \circ -}", from=1-3, to=1-5]
     \end{tikzcd}\]
 
     is exact for all $C'\in \cat{A}$.
@@ -22,8 +22,8 @@ Before defining $n$-exact categories, there are many prerequisites that need to 
     
     \[\begin{tikzcd}[ampersand replacement=\&,sep=scriptsize]
         {\cat{A}(C,C')} \&\& {\cat{A}(B,C')} \&\& {\cat{A}(A,C')}
-        \arrow["{k \cdot -}", from=1-1, to=1-3]
-        \arrow["{f \cdot -}", from=1-3, to=1-5]
+        \arrow["{- \circ k}", from=1-1, to=1-3]
+        \arrow["{- \circ f}", from=1-3, to=1-5]
     \end{tikzcd}\]
 
     is exact for all $C' \in \cat{A}$.
@@ -32,10 +32,10 @@ Before defining $n$-exact categories, there are many prerequisites that need to 
 \begin{rmks} We do not ask for the sequence to be short exact, but only for it to be exact in the middle term. Furthermore, the following observations are quite useful in practice:
     \begin{enumerate}[label = (\alph*)]
         \item Notice the direction of the sequences is different since for weak cokernels, we apply the contravariant functor $\cat{A}(-, C')$ to our original sequence, whereas we apply the covariant functor $\cat{A}(C', -)$ in the case of weak kernels.
-        \item For $K \xra{g} A$ a weak kernel of $A \xra{f} B$, the sequence being exact lets us know that
+        \item For $g: K \rightarrow A$ a weak kernel of $f: A \rightarrow B$, the sequence being exact lets us know that
         \begin{enumerate}
-            \item The composition $g \cdot f$ is 0
-            \item For any morphism $C \xra{h} A$ such that $h \cdot f = 0$, there exists a morphism $C \xra{\hat{h}} K$ such that $\hat{h} \cdot g = h$.
+            \item The composition $f \cdot g$ is $0$;
+            \item For any morphism $h: C \rightarrow A$ such that \break \mbox{$f \cdot h = 0$}, there exists a morphism $\hat{h}: C \xra{} K$ such that $g \circ \hat{h} = h$.
         \end{enumerate}
 
         That last point can be summarized by the following diagram:
@@ -52,9 +52,9 @@ Before defining $n$-exact categories, there are many prerequisites that need to 
             \arrow["0"', shift right=2, curve={height=-15pt}, from=3-1, to=1-5]
         \end{tikzcd}\]
 
-        These two points follow from exactness in the middle term. Indeed, since $\Img{(- \cdot k)} = \Ker{(- \cdot f)}$, any map $h: C \rightarrow A$ such that $h\cdot f = 0$, is in the image of the post-composition with $k$, i.e. can be factored (not necessarily uniquely!) as $\hat{h} \cdot k$. In particular, if we consider $C' = K$, we conclude that 
-        \[k = 1_K \cdot k \in \Img{(- \cdot k)} = \Ker{(- \cdot f)},\]
-        i.e. $k \cdot f = 0$.
+        These two points follow from exactness in the middle term. Indeed, since $\Img{(k \circ -)} = \Ker{(f \circ -)}$, any map $h: C \rightarrow A$ such that $f \circ h = 0$, is in the image of the post-composition with $k$, i.e. can be factored (not necessarily uniquely!) as $k \circ \hat{h}$. In particular, if we consider $C' = K$, we conclude that 
+        \[k = k \circ 1_K \in \Img{(k \circ -)} = \Ker{(f \circ -)},\]
+        i.e. $f \circ k = 0$.
         The result for weak cokernels is dual.
     \end{enumerate}
 
@@ -75,13 +75,13 @@ This notion is quite fundamental in the elaboration of $n$-kernels and $n$-coker
     \end{tikzcd}\]
 
     such that the sequence induced by applying the functor $\cat{A}(C', -)$
-    % https://q.uiver.app/#q=WzAsNSxbMiwwLCJcXGNhdHtBfShDJywgWF57LW59KSJdLFs0LDAsIlxcY2F0e0F9KEMnLCBYXnstbisxfSkiXSxbOCwwLCJcXGNhdHtBfShDJywgWF57MH0pIl0sWzYsMCwiXFxsZG90cyJdLFswLDAsIjAiXSxbMCwxLCItIFxcY2RvdCBkXnstbn0iXSxbMSwzLCItIFxcY2RvdCBkXnstbisxfSJdLFszLDIsIi0gXFxjZG90IGReey0xfSJdLFs0LDBdXQ==
+    % https://q.uiver.app/#q=WzAsNSxbMiwwLCJcXGNhdHtBfShDJywgWF57LW59KSJdLFs0LDAsIlxcY2F0e0F9KEMnLCBYXnstbisxfSkiXSxbOCwwLCJcXGNhdHtBfShDJywgWF57MH0pIl0sWzYsMCwiXFxsZG90cyJdLFswLDAsIjAiXSxbMCwxLCJkXnstbn0gXFxjaXJjIC0iXSxbMSwzLCJkXnstbisxfSBcXGNpcmMgLSJdLFszLDIsImReey0xfSBcXGNpcmMgLSJdLFs0LDBdXQ==
     \[\begin{tikzcd}[ampersand replacement=\&,sep=small]
-        0 \&\& {\cat{A}(C', X^{-n})} \&\& {\cat{A}(C', X^{-n+1})} \&\& \cdots \&\& {\cat{A}(C', X^{1})}
+        0 \&\& {\cat{A}(C', X^{-n})} \&\& {\cat{A}(C', X^{-n+1})} \&\& \ldots \&\& {\cat{A}(C', X^{0})}
         \arrow[from=1-1, to=1-3]
-        \arrow["{- \cdot d^{-n}}", from=1-3, to=1-5]
-        \arrow["{- \cdot d^{-n+1}}", from=1-5, to=1-7]
-        \arrow["{- \cdot d^{0}}", from=1-7, to=1-9]
+        \arrow["{d^{-n} \circ -}", from=1-3, to=1-5]
+        \arrow["{d^{-n+1} \circ -}", from=1-5, to=1-7]
+        \arrow["{d^{-1} \circ -}", from=1-7, to=1-9]
     \end{tikzcd}\]
     is exact.
 
@@ -181,7 +181,7 @@ Before looking at the higher equivalents of pullbacks and pushouts, it is quite 
         \arrow[from=1-8, to=1-10]
     \end{tikzcd}\]
 
-    where $d_C^1 = \begin{pmatrix} - d_A^1 \\ f^1 \end{pmatrix}$, and $d_C^2 = \begin{pmatrix} f^2 & d_B^1 \end{pmatrix}$. We claim that $d_C^1$ is a kernel of $d_C^2$. Indeed, consider a morphism $\begin{pmatrix} g \\ h \end{pmatrix}: C \rightarrow A^2 \bigoplus B^1$ such that the composition $\begin{pmatrix} g \\ h \end{pmatrix} \cdot d_C^2 = 0$. The composition being $0$ implies that $ g \cdot f^2 + h \cdot d_B^1 = 0$, or $h \cdot d_B^1 = - g \cdot f^2$. Consider the unique map $\hat{h} : C \rightarrow A^1$ given by $\hat{h} \cdot f^1 = h$ and $\hat{h} \cdot d_A^1 = -g$ given by the pullback property. We see that $\hat{h} d_C^1 = \begin{pmatrix} - \hat{h} \cdot d_A^1 \\ \hat{h} \cdot f^1 \end{pmatrix} = \begin{pmatrix} g \\ h \end{pmatrix}$. Thus we have defined a unique map $\hat{h} : C \rightarrow A^1$ such that $\hat{h} \cdot d_C^1 = \begin{pmatrix} g \\ h \end{pmatrix}$. That is, $d_C^1$ is a kernel of $d_C^2$.
+    where $d_C^1 = \begin{pmatrix} - d_A^1 \\ f^1 \end{pmatrix}$, and $d_C^2 = \begin{pmatrix} f^2 & d_B^1 \end{pmatrix}$. We claim that $d_C^1$ is a kernel of $d_C^2$. Indeed, consider a morphism $\begin{pmatrix} g \\ h \end{pmatrix}: C \rightarrow A^2 \bigoplus B^1$ such that the composition $ d_C^2 \circ \begin{pmatrix} g \\ h \end{pmatrix}= 0$. The composition being $0$ implies that $ f^2 \circ g + d_B^1 \circ h = 0$, or $d_B^1 \circ h = - f^2 \circ g$. Consider the unique map $\hat{h} : C \rightarrow A^1$ given by $f^1 \circ \hat{h} = h$ and $d_A^1 \circ \hat{h} = -g$ (this map comes from the pullback property). We see that $d_C^1 \circ \hat{h} = \begin{pmatrix} - d_A^1 \circ \hat{h} \\ f^1 \circ \hat{h} \end{pmatrix} = \begin{pmatrix} g \\ h \end{pmatrix}$. Thus we have defined a unique map $\hat{h} : C \rightarrow A^1$ such that $d_C^1 \circ \hat{h} = \begin{pmatrix} g \\ h \end{pmatrix}$. That is, $d_C^1$ is a kernel of $d_C^2$.
 
     A dual result is true for pushouts, where $d_C^2$ is a cokernel of $d_C^1$.
 \end{rmk}
@@ -189,7 +189,7 @@ Before looking at the higher equivalents of pullbacks and pushouts, it is quite 
 Basing ourselves on this observation, we can generalize the notion of pullback and pushout to higher degrees:
 
 \begin{defn}
-    Let $X : X^0 \xra{d_X^0} X^1 \xra{d_X^1} \ldots \xra{d_X^{n-1}} X^n$ be a complex in $\Ch{\cat{A}}$ and $f^0 : X^0 \rightarrow Y^0$ a morphism in $\cat{A}$. An \emph{$n$-pushout of $X$ along $f^0$} is a morphism of complexes 
+    Let $X : X^0 \xra{d_X^0} X^1 \xra{d_X^1} \ldots \xra{d_X^{n-1}} X^n$ be a complex in $\Chlen{n}{\cat{A}}$ and $f^0 : X^0 \rightarrow Y^0$ a morphism in $\cat{A}$. An \emph{$n$-pushout of $X$ along $f^0$} is a morphism of complexes 
 
     % https://q.uiver.app/#q=WzAsMTAsWzAsMCwiWDoiXSxbMCwyLCJZOiJdLFsyLDAsIlheMCJdLFsyLDIsIlleMCJdLFs0LDAsIlheMSJdLFs0LDIsIlleMSJdLFs2LDAsIlxcY2RvdHMiXSxbNiwyLCJcXGNkb3RzIl0sWzgsMCwiWF5uIl0sWzgsMiwiWV5uIl0sWzAsMSwiZiJdLFsyLDQsImRfWF4wIl0sWzMsNSwiZF9ZXnswfSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsyLDMsImZeMCJdLFs0LDUsImZeMSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs0LDYsImRfWF4xIl0sWzUsNywiZF9ZXnsxfSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs2LDgsImRfWF57bi0xfSJdLFs3LDksImRfWV57bi0xfSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs4LDksImZebiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
     \[\begin{tikzcd}[ampersand replacement=\&,sep=small]
@@ -241,7 +241,7 @@ All of this preliminary work being done, we can finally proceed to define $n$-ex
 
 \section{$n$-exact categories}
 
-With the proper tools put in place, it is quite straightforward to expand the definition of exact categories to longer exact sequences. Similar to what was done in chapter 1, we proceed with admissible $n$-exact sequences, monics, and epics:
+With the proper tools put in place, it is quite straightforward to expand the definition of exact categories to longer exact sequences. Similar to what was done in chapter 1, we proceed with admissible $n$-exact sequences, admissible monics, and  admissible epics:
 
 \begin{defn}
     Let $\cat{E}$ be a class of $n$-exact sequences in $\cat{A}$. An \emph{$\cat{E}$-admissible $n$-exact sequence} is an $n$-exact sequence that is in $\cat{E}$. 
@@ -305,3 +305,29 @@ The following definition simply adapts the axioms of exact categories to the def
     \end{itemize}
     \end{sloppypar}
 \end{defn}
+
+\begin{rmks}
+    \begin{itemize}
+        \item The axiom $[E0]$ given here seems to be less restrictive than the $[E0]$ and $[E0^{op}]$ of exact categories. However, if $n \geq 2$, note that identity morphisms are also admissible monics since 
+
+        % https://q.uiver.app/#q=WzAsMTAsWzAsMCwiWCJdLFsxLDAsIlgiXSxbMiwwLCIwIl0sWzMsMCwiXFxjZG90cyJdLFs0LDAsIjAiXSxbMCwxLCIwIl0sWzEsMSwiMCJdLFsyLDEsIjAiXSxbMywxLCJcXGNkb3RzIl0sWzQsMSwiMCJdLFsxLDJdLFsyLDNdLFszLDRdLFswLDVdLFs1LDZdLFs2LDddLFs3LDhdLFs4LDldLFsxLDZdLFsyLDddLFs0LDldLFswLDEsIjFfWCJdXQ==
+        \[\begin{tikzcd}[ampersand replacement=\&]
+            X \& X \& 0 \& \cdots \& 0 \\
+            0 \& 0 \& 0 \& \cdots \& 0
+            \arrow["{1_X}", from=1-1, to=1-2]
+            \arrow[from=1-1, to=2-1]
+            \arrow[from=1-2, to=1-3]
+            \arrow[from=1-2, to=2-2]
+            \arrow[from=1-3, to=1-4]
+            \arrow[from=1-3, to=2-3]
+            \arrow[from=1-4, to=1-5]
+            \arrow[from=1-5, to=2-5]
+            \arrow[from=2-1, to=2-2]
+            \arrow[from=2-2, to=2-3]
+            \arrow[from=2-3, to=2-4]
+            \arrow[from=2-4, to=2-5]
+        \end{tikzcd}\]
+        is a weak isomorphism. Identity morphisms are also admissible epics for the same reason.\\
+        \item One can show that $n$-kernels and $n$-cokernels are unique up to weak isomorphism. As such, all $n$-kernels (respectively \break $n$-cokernels) of an admissible epic (respectively admissible \break monic) fit into an admissible $n$-exact sequence.
+    \end{itemize}
+\end{rmks}
