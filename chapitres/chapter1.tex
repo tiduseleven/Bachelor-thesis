@@ -1,4 +1,4 @@
-\chapter{An Introduction to Exact Categories} \label{chapter:exact}
+\chapter{An introduction to exact eategories} \label{chapter:exact}
 As a way to generalize the notion of abelian categories, one can look at a general additive category on which we define a certain notion of short exact sequences that has very similar properties to the abelian category counterpart. This chapter aims to motivate the definition of these so-called exact categories, to later define them formally and generalize some classical results from abelian categories.
 
 In this chapter, the word kernel (respectively cokernel) will usually refer to the kernel morphism (respectively cokernel morphism), not the object. The content of this chapter is inspired by both the lecture notes of MA3204 Homological Algebra \cite{homalg} and the article about exact categories by Theo Bühler \cite{Buhler2010Jan}.
@@ -236,3 +236,62 @@ In that context, we say that $B$ is an \emph{extension of $C$ by $A$}
     so that we can conclude that $j \circ i$ is a kernel of $f$. Since $f$ is epic and $j \circ i$ is its kernel, we conclude that $A \xrat{j\circ i} Y \xrath{f} E$ is a short exact sequence in $\cat{C}$. As such, inflations are closed under composition. Proving [E1$^{op}$] is dual.
 
 \end{preuve}
+
+\begin{rmk}
+    A slightly modified converse statement is also true, and is known as the \emph{Quillen-Gabriel embedding theorem}. It states that, if $(\cat{A}, \cat{E})$ is an exact category where $\cat{A}$ is small, then there is an embedding $\cat{A} \xhookrightarrow{} \cat{B}$ such that $\cat{B}$ is an abelian category and $\cat{E}$ is the class of all short exact sequences in $\cat{B}$.
+\end{rmk}
+
+\section{Examples}
+The previous statement is quite useful for finding exact categories that are not abelian categories. Here are a few fundamental general examples.
+
+\begin{expls}
+\begin{itemize}
+    \item Let $R$ be a non-noetherian unital ring. Consider the category of finitely generated $R$-modules $\text{mod}R$ (seen as a subcategory of $\text{Mod}R$). It is well known that this category is closed under extensions. However, it is not abelian. Indeed, consider a non-finitely generated ideal $I \subseteq R$ (which exists since $R$ is non-noetherian). Then the kernel of the quotient map is $R \xrath{} R/I$ is the ideal $I$. In that case, both $R$ and $R/I$ are finitely generated $R$-modules, but $I$ is by definition not finitely generated. Thus $\text{mod}R$ does not contain the kernel of all its maps, and cannot be abelian.
+    \item 
+\end{itemize}
+\end{expls}
+
+\section{Reducing the axioms}
+As was shown by Bernhard Keller in \cite[Appendix~A]{Keller1990}, some of the axioms required in the classic definition of exact categories are redundant.
+
+\begin{prop}
+    Let $\cat{A}$ be an additive category and $\cat{E}$ be a class of kernel-cokernel pairs in $\cat{A}$ that is closed under isomorphisms. Assume that $\cat{E}$ satisfies \emph{[E1$\op$]}, \emph{[E2]} as well as
+
+    \begin{itemize}[align = right]
+        \item[\emph{[E0']}] $1_0$ is a deflation;
+        \item[\emph{[E2$\op$']}] For any $f : C \rightarrow Z$ and deflation $d : Y \xrath{} Z$, there is a commutative square
+        % https://q.uiver.app/#q=WzAsNCxbMCwwLCJCIl0sWzEsMCwiQyJdLFsxLDEsIloiXSxbMCwxLCJZIl0sWzAsMSwiZCciLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbMSwyLCJmIl0sWzMsMiwiZCIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dLFswLDMsImYnIiwyXV0=
+        \[\begin{tikzcd}[ampersand replacement=\&]
+            B \& C \\
+            Y \& Z
+            \arrow["{d'}", two heads, from=1-1, to=1-2]
+            \arrow["{f'}"', from=1-1, to=2-1]
+            \arrow["f", from=1-2, to=2-2]
+            \arrow["d"', two heads, from=2-1, to=2-2]
+        \end{tikzcd}\]
+    \end{itemize}
+    Then $\cat{E}$ is an exact structure on $\cat{E}$.
+\end{prop}
+
+\begin{proof}
+    The proof is mostly due to Bernhard Keller.
+    
+    We will first prove that [E2] and [E2$\op$'] imply [E2$\op$] by explicitly building a pullback. Consider the following commutative diagram:
+
+    % https://q.uiver.app/#q=WzAsNixbMSwwLCJCIl0sWzIsMCwiQyJdLFsyLDEsIloiXSxbMSwxLCJZIl0sWzAsMSwiWCJdLFswLDAsIkEiXSxbMCwxLCJkJyIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dLFsxLDIsImZfMyIsMl0sWzMsMiwiZCIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dLFswLDMsImZfMiIsMl0sWzQsMywiaSIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1vbm8ifX19XSxbNSwwLCJpJyIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1vbm8ifX19XSxbNSw0LCJmXzEiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
+\[\begin{tikzcd}[ampersand replacement=\&]
+	A \& B \& C \\
+	X \& Y \& Z
+	\arrow["{i'}", tail, from=1-1, to=1-2]
+	\arrow["{f_1}"', dashed, from=1-1, to=2-1]
+	\arrow["{d'}", two heads, from=1-2, to=1-3]
+	\arrow["{f_2}"', from=1-2, to=2-2]
+	\arrow["{f_3}"', from=1-3, to=2-3]
+	\arrow["i", tail, from=2-1, to=2-2]
+	\arrow["d", two heads, from=2-2, to=2-3]
+\end{tikzcd}\]
+
+    $f_1$ exists as the map between kernels. As such we can build the pushout of $i'$ along $f_1$, which will be our pullback candidate
+
+    That [E0'] implies both [E0] and [E0$\op$] is pretty straightforward.
+\end{proof}
