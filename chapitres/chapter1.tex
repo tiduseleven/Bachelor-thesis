@@ -1,4 +1,4 @@
-\chapter{An introduction to exact eategories} \label{chapter:exact}
+\chapter{An introduction to exact categories} \label{chapter:exact}
 As a way to generalize the notion of abelian categories, one can look at a general additive category on which we define a certain notion of short exact sequences that has very similar properties to the abelian category counterpart. This chapter aims to motivate the definition of these so-called exact categories, to later define them formally and generalize some classical results from abelian categories.
 
 In this chapter, the word kernel (respectively cokernel) will usually refer to the kernel morphism (respectively cokernel morphism), not the object. The content of this chapter is inspired by both the lecture notes of MA3204 Homological Algebra \cite{homalg} and the article about exact categories by Theo Bühler \cite{Buhler2010Jan}.
@@ -86,7 +86,7 @@ Based on the observations from the last section, one can define a more general n
 In the context of abelian categories, we notice that kernel-cokernel pairs indeed give rise to short exact sequences in the usual sense. In a general additive category, however, we cannot say the same since we have no guarantee that kernels and cokernels even exist for arbitrary morphisms, and thus we are unsure that $\Img{i}$ exists. But we will use our intuition from abelian categories to expand the notion of short exact sequences to additive categories. First, let us fix some terminology.
 
 \begin{defn}
-    Let $\cat{A}$ be an additive category and $\cat{E}$ be a class of kernel-cokernel pairs in $\cat{A}$. We call a morphism $i: A \xra{} B$ an \emph{admissible monic} (or \emph{inflation}) if there exists a morphism $p: B \xra{} C$ such that $(i,p) \in \cat{E}$. Dually, we call a morphism $q: B \xra{} C$ an \emph{admissible epic} (or \emph{deflation}) if there exists a morphism $j: A \xra{} B$ such that $(j,q) \in \cat{E}$. We use $A \xrat{i} B$ for admissible monics, and $B \xrath{p} C$ for admissible epics. We say $\cat{E}$ is \emph{closed under isomorphisms} if whenever we have $A \xra{i} B \xra{p} C \in \cat{E}$ fitting in a commutative diagram
+    Let $\cat{A}$ be an additive category and $\cat{E}$ be a class of kernel-cokernel pairs in $\cat{A}$. We call a morphism $i: A \xra{} B$ an \emph{inflation} (or \emph{admissible monic}) if there exists a morphism $p: B \xra{} C$ such that $(i,p) \in \cat{E}$. Dually, we call a morphism $q: B \xra{} C$ a \emph{deflation} (or \emph{admissible epic}) if there exists a morphism $j: A \xra{} B$ such that $(j,q) \in \cat{E}$. We use $A \xrat{i} B$ for inflations, and $B \xrath{p} C$ for deflations. We say $\cat{E}$ is \emph{closed under isomorphisms} if whenever we have $A \xra{i} B \xra{p} C \in \cat{E}$ fitting in a commutative diagram
 
     % https://q.uiver.app/#q=WzAsNixbMCwwLCJBIl0sWzIsMCwiQiJdLFs0LDAsIkMiXSxbMCwyLCJBJyJdLFsyLDIsIkInIl0sWzQsMiwiQyciXSxbMCwxLCJpIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibW9ubyJ9fX1dLFsxLDIsInAiLDIseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbMCwzLCJhIl0sWzEsNCwiYiJdLFszLDQsImoiXSxbNCw1LCJxIl0sWzIsNSwiYyJdXQ==
     \[\begin{tikzcd}[ampersand replacement=\&,sep=scriptsize]
@@ -106,7 +106,7 @@ In the context of abelian categories, we notice that kernel-cokernel pairs indee
     
 \end{defn}
 
-It is usually convenient to require being closed under isomorphisms, as objects with universal properties are generally unique up to isomorphism. In particular, recall that all kernel objects of a specific morphism are isomorphic. In the case of a class of kernel-cokernel pairs $\cat{E}$, being closed under isomorphisms implies that all kernels of an admissible epic are admissible monics. Indeed, consider $B \xrath{p} C$ an admissible epic and $A \xrat{i} B$ an admissible monic such that $(i,p) \in \cat{E}$. Let $A' \xra{j} B$ be another kernel of $p$ and $A \xra{a} A'$ be the isomorphism between both kernels. The sequence $A' \xra{j} B \xra{p} C$ fits in the commutative diagram
+It is usually convenient to require being closed under isomorphisms, as objects with universal properties are generally unique up to isomorphism. In particular, recall that all kernel objects of a specific morphism are isomorphic. In the case of a class of kernel-cokernel pairs $\cat{E}$, being closed under isomorphisms implies that all kernels of a deflation are inflations. Indeed, consider $B \xrath{p} C$ a deflation and $A \xrat{i} B$ an inflation such that $(i,p) \in \cat{E}$. Let $A' \xra{j} B$ be another kernel of $p$ and $A \xra{a} A'$ be the isomorphism between both kernels. The sequence $A' \xra{j} B \xra{p} C$ fits in the commutative diagram
 
 % https://q.uiver.app/#q=WzAsNixbMCwwLCJBIl0sWzIsMCwiQiJdLFs0LDAsIkMiXSxbMCwyLCJBJyJdLFsyLDIsIkIiXSxbNCwyLCJDIl0sWzAsMSwiaSIsMix7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1vbm8ifX19XSxbMSwyLCJwIiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV0sWzAsMywiYSJdLFsxLDQsIjFfQiJdLFszLDQsImoiXSxbNCw1LCJwIl0sWzIsNSwiMV9DIl1d
 \[\begin{tikzcd}[ampersand replacement=\&]
@@ -123,7 +123,7 @@ It is usually convenient to require being closed under isomorphisms, as objects 
 \end{tikzcd}\]
 
 \begin{sloppypar}
-    Since all vertical arrows are isomorphisms, we conclude that ${(j,p) \in \cat{E}}$. The proof that all cokernels of an admissible monic are admissible epics is dual.
+    Since all vertical arrows are isomorphisms, we conclude that ${(j,p) \in \cat{E}}$. The proof that all cokernels of an inflation are deflations is dual.
 \end{sloppypar}
 
 We can now proceed to define exact categories, basing our definition on the properties we established for abelian categories.
@@ -131,12 +131,12 @@ We can now proceed to define exact categories, basing our definition on the prop
 \begin{defn}
     Let $\cat{A}$ be an additive category. An \emph{exact structure} on $\cat{A}$ is a class $\cat{E}$ of kernel-cokernel pairs in $\cat{A}$ that is closed under isomorphisms and satisfies the following axioms:
     \begin{itemize}[align=right]
-        \item[{[E0]}] For all objects $A \in \cat{A}$, the identity morphism $1_A$ is an admissible monic;
-        \item[{[E0$^{\op}$]}] For all objects $A \in \cat{A}$, the identity morphism $1_A$ is an admissible epic;
-        \item[{[E1]}] The composition of two admissible monics yields an admissible monic;
-        \item[{[E1$^{\op}$]}] The composition of two admissible epics yields an admissible epic;
-        \item[{[E2]}] The pushout of an admissible monic along any morphism yields an admissible monic;
-        \item[{[E2$^{\op}$]}] The pullback of an admissible epic along any morphism yields an admissible epic.
+        \item[{[E0]}] For all objects $A \in \cat{A}$, the identity morphism $1_A$ is an inflation;
+        \item[{[E0$^{\op}$]}] For all objects $A \in \cat{A}$, the identity morphism $1_A$ is a deflation;
+        \item[{[E1]}] The composition of two inflations yields an inflation;
+        \item[{[E1$^{\op}$]}] The composition of two deflations yields a deflation;
+        \item[{[E2]}] The pushout of an inflation along any morphism yields an inflation;
+        \item[{[E2$^{\op}$]}] The pullback of a deflation along any morphism yields a deflation.
     \end{itemize}
     The last two axioms can be summarized by the following commutative diagrams:
 
@@ -195,7 +195,7 @@ In that context, we say that $B$ is an \emph{extension of $C$ by $A$}
 
     $\cat{E}$ is closed under isomorphisms since short exact sequences in $\cat{A}$ are closed under isomorphisms. 
 
-    Since $\cat{C}$ is an additive subcategory, it contains the zero object. As such, for any object $B \in \cat{C}$, the sequences $\ses{0}{B}{B}{}{1_B}$ and $\ses{B}{B}{0}{1_B}{}$ are short exact and contained in $\cat{C}$, i.e. identity morphisms are both admissible epics and admissible monics.
+    Since $\cat{C}$ is an additive subcategory, it contains the zero object. As such, for any object $B \in \cat{C}$, the sequences $\ses{0}{B}{B}{}{1_B}$ and $\ses{B}{B}{0}{1_B}{}$ are short exact and contained in $\cat{C}$, i.e. identity morphisms are both deflations and inflations.
 
     Now let us consider the axiom [E2]. Let $X \xrat{i} Y \xrath{d} Z$ be a short exact sequence in $\cat{C}$ and $f: A \xra{} X$. We can consider the pushout diagram in the ambient category $\cat{A}$:
 
@@ -252,7 +252,7 @@ The previous statement is quite useful for finding exact categories that are not
 \end{expls}
 
 \section{Reducing the axioms}
-As was shown by Bernhard Keller in \cite[Appendix~A]{Keller1990}, some of the axioms required in the classic definition of exact categories are redundant.
+As was shown by Bernhard Keller in \cite[Appendix~A]{Keller1990}, some of the axioms required in the classical definition of exact categories are redundant.
 
 \begin{prop}
     Let $\cat{A}$ be an additive category and $\cat{E}$ be a class of kernel-cokernel pairs in $\cat{A}$ that is closed under isomorphisms. Assume that $\cat{E}$ satisfies \emph{[E1$\op$]}, \emph{[E2]} as well as
