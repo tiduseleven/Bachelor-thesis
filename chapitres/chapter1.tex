@@ -53,23 +53,23 @@ There are many properties we can conclude about kernels and cokernels using the 
     Let $\cat{A}$ be an abelian category and let $\cat{E}$ be the class of short exact sequences. $\cat{E}$ is closed under isomorphisms. Furthermore, the following hold:
     \begin{itemize}[align=right]
         \item[\textnormal{[E0]}] For any object $A \in \cat{A}$, the identity morphism $1_A$ is a kernel;
-        \item[\textnormal{[E0$^{\op}$]}] For any object $A \in \cat{A}$, the identity morphism $1_A$ is a cokernel;
+        \item[\textnormal{[E0${\op}$]}] For any object $A \in \cat{A}$, the identity morphism $1_A$ is a cokernel;
         \item[\emph{[E1]}] The class of kernels is closed under composition;
-        \item[\emph{[E1$^{\op}$]}] The class of cokernels is closed under composition;  
+        \item[\emph{[E1${\op}$]}] The class of cokernels is closed under composition;  
         \item[\emph{[E2]}] The pushout of a kernel along any morphism is a kernel;
-        \item[\emph{[E2$^{\op}$]}] The pullback of a cokernel along any morphism is a cokernel.
+        \item[\emph{[E2${\op}$]}] The pullback of a cokernel along any morphism is a cokernel.
     \end{itemize}
 \end{prop}
 
 \begin{preuve}
     It is clear that the class of short exact sequences is closed under isomorphisms. Indeed, $\ses{A}{B}{C}{f}{g}$ is a short exact sequence if and only if $f$ is a kernel of $g$ and $g$ is a cokernel of $f$. The result follows from the fact that kernels and cokernels are preserved by isomorphisms.
 
-    [E0] and [E0$^{\op}$] follow directly from the fact that the identity morphism is both the kernel and cokernel of the zero map.
+    [E0] and [E0${\op}$] follow directly from the fact that the identity morphism is both the kernel and cokernel of the zero map.
 
-    We can deduce [E1] and [E1$^{\op}$] by recalling that composing monics (respectively epics) gives us monics and that monics are kernels of their cokernel (respectively epics are cokernels of their kernel).
+    We can deduce [E1] and [E1${\op}$] by recalling that composing monics (respectively epics) gives us monics and that monics are kernels of their cokernel (respectively epics are cokernels of their kernel).
 
     As for [E2], recall that kernels are always monic. Thus, by \ref{prop:popb_abelian}, the pushout of a kernel is monic as well. But then, by \ref{prop:popb_abelian} again, it is a kernel of its cokernel, thus it is a kernel.
-    The proof for [E2$^{\op}$] is similar.
+    The proof for [E2${\op}$] is similar.
 \end{preuve}
 
 \begin{rmk}
@@ -132,11 +132,11 @@ We can now proceed to define exact categories, basing our definition on the prop
     Let $\cat{A}$ be an additive category. An \emph{exact structure} on $\cat{A}$ is a class $\cat{E}$ of kernel-cokernel pairs in $\cat{A}$ that is closed under isomorphisms and satisfies the following axioms:
     \begin{itemize}[align=right]
         \item[{[E0]}] For all objects $A \in \cat{A}$, the identity morphism $1_A$ is an inflation;
-        \item[{[E0$^{\op}$]}] For all objects $A \in \cat{A}$, the identity morphism $1_A$ is a deflation;
+        \item[{[E0${\op}$]}] For all objects $A \in \cat{A}$, the identity morphism $1_A$ is a deflation;
         \item[{[E1]}] The composition of two inflations yields an inflation;
-        \item[{[E1$^{\op}$]}] The composition of two deflations yields a deflation;
+        \item[{[E1${\op}$]}] The composition of two deflations yields a deflation;
         \item[{[E2]}] The pushout of an inflation along any morphism yields an inflation;
-        \item[{[E2$^{\op}$]}] The pullback of a deflation along any morphism yields a deflation.
+        \item[{[E2${\op}$]}] The pullback of a deflation along any morphism yields a deflation.
     \end{itemize}
     The last two axioms can be summarized by the following commutative diagrams:
 
@@ -173,22 +173,14 @@ Let $\cat{A}$ be an abelian category and $\cat{C}\subseteq \cat{A}$ be a full ad
 	\arrow[from=1-4, to=1-5]
 \end{tikzcd}\]
 
-such that $A$ and $C$ are both in $\cat{C}$, then $B$ is also in $\cat{C}$
+such that $A$ and $C$ are both in $\cat{C}$, then $B$ is also in $\cat{C}$.
 
-In that context, we say that $B$ is an \emph{extension of $C$ by $A$}
+In that context, we say that $B$ is an \emph{extension of $C$ by $A$}.
 \end{defn}
 
 \begin{prop}
     Let $\cat{A}$ be an abelian category and $\cat{C} \subseteq \cat{A}$ be a full additive subcategory of $\cat{A}$ that is closed under extensions. Let $\cat{E}$ be the collection of short exact sequences in $\cat{A}$ such that all three objects are in $\cat{C}$. Then $\left(\cat{C}, \cat{E}\right)$ is an exact category.
 \end{prop}
-
-%In order to prove some of the axioms, we will need a category theoretical version of one of the Noether isomorphism theorem.
-
-%\begin{lemme}(Noether isomorphism $C/B \cong (C/A)/(B/A)$) Let $(\cat{A}, \cat{E})$ be an exact pair. Consider the following diagram:
-
-
-    
-%\end{lemme}
 
 \begin{preuve}
     We prove each of the axioms one by one.
@@ -245,9 +237,10 @@ In that context, we say that $B$ is an \emph{extension of $C$ by $A$}
 The previous statement is quite useful for finding exact categories that are not abelian categories. Here are a few fundamental general examples.
 
 \begin{expls}
+
 \begin{itemize}
-    \item Let $R$ be a non-noetherian unital ring. Consider the category of finitely generated $R$-modules $\text{mod}R$ (seen as a subcategory of $\text{Mod}R$). It is well known that this category is closed under extensions. However, it is not abelian. Indeed, consider a non-finitely generated ideal $I \subseteq R$ (which exists since $R$ is non-noetherian). Then the kernel of the quotient map is $R \xrath{} R/I$ is the ideal $I$. In that case, both $R$ and $R/I$ are finitely generated $R$-modules, but $I$ is by definition not finitely generated. Thus $\text{mod}R$ does not contain the kernel of all its maps, and cannot be abelian.
-    \item 
+    \item Let $R$ be a non-noetherian unital ring. Consider the category of finitely generated $R$-modules $\text{mod}R$ (seen as a subcategory of $\text{Mod}R$). It is well known that this category is closed under extensions. However, it is not abelian. Indeed, consider a non-finitely generated ideal $I \subseteq R$ (which exists since $R$ is non-noetherian). Then the kernel of the quotient map is $R \xrath{} R/I$ is the ideal $I$. In that case, both $R$ and $R/I$ are finitely generated $R$-modules, but $I$ is by definition not finitely generated. Thus $\text{mod}R$ does not contain the kernel of all its maps, and cannot be abelian;
+    \item Let $R$ be any ring. Consider the full subcategory of $\text{mod}R$ consisting of all projectives $\cat{P}(R)$. Let $P, P' \in \cat{P}(R)$ be two projective $R$-modules. It is well known from homological algebra that $\text{Ext}^1(P', P) = 0$. But then, considering $\text{Ext}^1$ as the Yoneda extension functor, this implies that any short exact sequence $0 \xra{} P \xra{} E \xra{} P' \xra{} 0$ splits, i.e. $E = P \oplus P'$. Since the direct sum of two projectives is projective, this shows that $\cat{P}(R)$ is closed under extensions. However, the cokernel of the map $\mathbb{Z} \xra{\cdot 2} \mathbb{Z}$ is $\mathbb{Z}/2\mathbb{Z}$, which is not projective, so it is not abelian.
 \end{itemize}
 \end{expls}
 
@@ -262,7 +255,7 @@ As was shown by Bernhard Keller in \cite[Appendix~A]{Keller1990}, some of the ax
         \item[\emph{[E2$\op$']}] For any $f : C \rightarrow Z$ and deflation $d : Y \xrath{} Z$, there is a commutative square
         % https://q.uiver.app/#q=WzAsNCxbMCwwLCJCIl0sWzEsMCwiQyJdLFsxLDEsIloiXSxbMCwxLCJZIl0sWzAsMSwiZCciLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbMSwyLCJmIl0sWzMsMiwiZCIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dLFswLDMsImYnIiwyXV0=
         \[\begin{tikzcd}[ampersand replacement=\&]
-            B \& C \\
+            Y' \& Z' \\
             Y \& Z
             \arrow["{d'}", two heads, from=1-1, to=1-2]
             \arrow["{f'}"', from=1-1, to=2-1]
@@ -273,14 +266,12 @@ As was shown by Bernhard Keller in \cite[Appendix~A]{Keller1990}, some of the ax
     Then $\cat{E}$ is an exact structure on $\cat{E}$.
 \end{prop}
 
-\begin{proof}
-    The proof is mostly due to Bernhard Keller.
-    
-    We will first prove that [E2] and [E2$\op$'] imply [E2$\op$] by explicitly building a pullback. Consider the following commutative diagram:
+\begin{preuve}
+    We will first prove that [E2] and [E2$\op$'] imply [E2$\op$] by explicitly building a pullback. Consider the commutative diagram from [E2$\op$']:
 
     % https://q.uiver.app/#q=WzAsNixbMSwwLCJCIl0sWzIsMCwiQyJdLFsyLDEsIloiXSxbMSwxLCJZIl0sWzAsMSwiWCJdLFswLDAsIkEiXSxbMCwxLCJkJyIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dLFsxLDIsImZfMyIsMl0sWzMsMiwiZCIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dLFswLDMsImZfMiIsMl0sWzQsMywiaSIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1vbm8ifX19XSxbNSwwLCJpJyIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1vbm8ifX19XSxbNSw0LCJmXzEiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
 \[\begin{tikzcd}[ampersand replacement=\&]
-	A \& B \& C \\
+	K \& Y' \& Z' \\
 	X \& Y \& Z
 	\arrow["{i'}", tail, from=1-1, to=1-2]
 	\arrow["{f_1}"', dashed, from=1-1, to=2-1]
@@ -291,7 +282,55 @@ As was shown by Bernhard Keller in \cite[Appendix~A]{Keller1990}, some of the ax
 	\arrow["d", two heads, from=2-2, to=2-3]
 \end{tikzcd}\]
 
-    $f_1$ exists as the map between kernels. As such we can build the pushout of $i'$ along $f_1$, which will be our pullback candidate
+    $f_1$ exists as the map between kernels. As such we can build the pushout of $i'$ along $f_1$, which we will name $P$. This will be the pullback of $d$ along $f$. To prove that, construct the maps $a: P \xra{} Z'$ and $b: P \xra Y$ by applying the pushout property to the following commutative diagrams:
+
+    % https://q.uiver.app/#q=WzAsMTEsWzAsMCwiSyJdLFsxLDAsIlknIl0sWzAsMSwiWCJdLFsxLDEsIlAiXSxbMiwyLCJaJyJdLFszLDEsIlxcdGV4dHthbmR9Il0sWzQsMCwiSyJdLFs1LDAsIlknIl0sWzQsMSwiWCJdLFs1LDEsIlAiXSxbNiwyLCJZIl0sWzAsMSwiaSciLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtb25vIn19fV0sWzAsMiwiZl8xIiwyXSxbMiwzLCJcXGhhdHtpJ30iLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtb25vIn19fV0sWzEsMywiXFxoYXR7Zl8xfSJdLFszLDAsIiIsMSx7InN0eWxlIjp7Im5hbWUiOiJjb3JuZXIifX1dLFsxLDQsImQiLDEseyJjdXJ2ZSI6LTJ9XSxbMiw0LCIwIiwxLHsiY3VydmUiOjJ9XSxbMyw0LCJcXGV4aXN0cyFhIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzYsNywiaSciLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtb25vIn19fV0sWzYsOCwiZl8xIiwyXSxbOCw5LCJcXGhhdHtpJ30iLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtb25vIn19fV0sWzcsOSwiXFxoYXR7Zl8xfSJdLFs3LDEwLCJmXzIiLDEseyJjdXJ2ZSI6LTJ9XSxbOSwxMCwiXFxleGlzdHMhIGIiLDFdLFs4LDEwLCJpIiwxLHsiY3VydmUiOjJ9XSxbOSw2LCIiLDIseyJzdHlsZSI6eyJuYW1lIjoiY29ybmVyIn19XV0=
+\[\begin{tikzcd}[ampersand replacement=\&]
+	K \& {Y'} \&\&\& K \& {Y'} \\
+	X \& P \&\& {\text{and}} \& X \& P \\
+	\&\& {Z'} \&\&\&\& Y
+	\arrow["{i'}", tail, from=1-1, to=1-2]
+	\arrow["{f_1}"', from=1-1, to=2-1]
+	\arrow["{\hat{f_1}}", from=1-2, to=2-2]
+	\arrow["d"{description}, curve={height=-12pt}, from=1-2, to=3-3]
+	\arrow["{i'}", tail, from=1-5, to=1-6]
+	\arrow["{f_1}"', from=1-5, to=2-5]
+	\arrow["{\hat{f_1}}", from=1-6, to=2-6]
+	\arrow["{f_2}"{description}, curve={height=-12pt}, from=1-6, to=3-7]
+	\arrow["{\hat{i'}}"', tail, from=2-1, to=2-2]
+	\arrow["0"{description}, curve={height=12pt}, from=2-1, to=3-3]
+	\arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=1-1]
+	\arrow["{\exists!a}"{description}, dashed, from=2-2, to=3-3]
+	\arrow["{\hat{i'}}"', tail, from=2-5, to=2-6]
+	\arrow["i"{description}, curve={height=12pt}, from=2-5, to=3-7]
+	\arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-6, to=1-5]
+	\arrow["{\exists! b}"{description}, from=2-6, to=3-7]
+\end{tikzcd}\]
+
+    For $P$ to be a pullback, it is necessary that $d \circ b = f_3 \circ a$ (since a pullback gives a commutative square). But this is true as both maps are a solution to the pushout problem
+
+    % https://q.uiver.app/#q=WzAsNyxbMCwwLCJLIl0sWzEsMCwiWSciXSxbMCwxLCJYIl0sWzEsMSwiUCJdLFsyLDIsIloiXSxbMCwyLCJZIl0sWzIsMCwiWiciXSxbMCwxLCJpJyJdLFswLDIsImZfMSIsMl0sWzIsMywiXFxoYXR7aSd9IiwyXSxbMSwzLCJcXGhhdHtmXzF9Il0sWzMsNCwiZFxcIGIgPSBmXzMgXFwgYSIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsyLDUsImkiLDFdLFs1LDQsImQiLDFdLFsxLDYsImQnIiwxXSxbNiw0LCJmXzMiLDFdXQ==
+    \[\begin{tikzcd}[ampersand replacement=\&]
+        K \& {Y'} \& {Z'} \\
+        X \& P \\
+        Y \&\& Z
+        \arrow["{i'}", from=1-1, to=1-2]
+        \arrow["{f_1}"', from=1-1, to=2-1]
+        \arrow["{d'}"{description}, from=1-2, to=1-3]
+        \arrow["{\hat{f_1}}", from=1-2, to=2-2]
+        \arrow["{f_3}"{description}, from=1-3, to=3-3]
+        \arrow["{\hat{i'}}"', from=2-1, to=2-2]
+        \arrow["i"{description}, from=2-1, to=3-1]
+        \arrow["{d\ b = f_3 \ a}"{description}, dashed, from=2-2, to=3-3]
+        \arrow["d"{description}, from=3-1, to=3-3]
+    \end{tikzcd}\]
+
+    Clearly $(d \circ i) \circ f_1 = 0 = f_3 \circ (d' \circ i')$, so that the big square commutes. Thus there exists a unique map $p: P \xra{} Z$ such that $p \circ \hat{f_1} = f_3 \circ d'$ and $p \circ \hat{i'} = d \circ i = 0$. But note that $f_3 \circ (a \circ \hat{f_1}) = f_3 \circ d'$ and $f_3 \circ (a \circ \hat{i'}) = 0$ by definition of $a$, so $f_3 \circ a = p$. Similarly, $d \circ (b \circ \hat{f_1}) = d \circ f_2 = f_3 \circ d'$ by commutativity and $d \circ (b \circ \hat{i'}) = d \circ i = 0$, so $d \circ b = p = f_3 \circ a$.
+
+
+
+
+
 
     That [E0'] implies both [E0] and [E0$\op$] is pretty straightforward.
-\end{proof}
+\end{preuve}
