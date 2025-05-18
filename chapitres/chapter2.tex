@@ -327,7 +327,50 @@ The following definition simply adapts the axioms of exact categories to the def
             \arrow[from=2-3, to=2-4]
             \arrow[from=2-4, to=2-5]
         \end{tikzcd}\]
-        is a weak isomorphism. Identity morphisms are also admissible epics for the same reason.\\
+        is a weak isomorphism. Identity morphisms are admissible epics for the same reason.\\
         \item One can show that $n$-kernels and $n$-cokernels are unique up to weak isomorphism. As such, all $n$-kernels (respectively \break $n$-cokernels) of an admissible epic (respectively admissible \break monic) fit into an admissible $n$-exact sequence.
     \end{itemize}
 \end{rmks}
+
+\section{$n$-cluster tilting subcategories}
+Similar to extension-closed subcategories of abelian categories, there is a higher degree notion that gives us natural examples of $n$-exact categories. But this requires a few more definitions, namely what being functorially finite means.
+
+\begin{defn}
+Let $\cat{A}$ be an additive category and $\cat{D}$ be a full subcategory of $\cat{A}$. $\cat{D}$ is called \emph{covariantly finite} if for any object $A \in \cat{A}$ there exists an object $L_A \in \cat{D}$ and a morphism $f_A : A \xra{} L_A$ such that for any morphism $g: A \xra{} D$ where $D \in \cat{D}$, there exists a morphism $h: L_A \xra{} D$ such that $g = h \circ f_A$.
+
+Dually, $\cat{D}$ is called \emph{contravariantly finite} if for any object $A \in \cat{A}$ there exists and object $R_A \in \cat{D}$ and a morphism $f_A: R_A \xra{} A$ such that for any morphism $g: D \xra{} A$ where $D \in \cat{D}$, there exists a morphism $h: D \xra{} R_A$ such that $g = f_A \circ h$.
+
+Both properties can be summarized in the following diagrams:
+
+    % https://q.uiver.app/#q=WzAsMTAsWzAsMl0sWzEsMl0sWzAsMCwiQSJdLFsxLDAsIkxfQSJdLFsxLDEsIkQiXSxbMywyXSxbNCwyXSxbMywwLCJSX0EiXSxbNCwwLCJBIl0sWzMsMSwiRCJdLFswLDEsIlxcdGV4dHtjb3ZhcmlhbnRseSBmaW5pdGV9IiwxXSxbMiwzLCJmX0EiXSxbMyw0LCJcXGV4aXN0cyBnIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzIsNCwiaCIsMl0sWzUsNiwiXFx0ZXh0e2NvbnRyYXZhcmlhbnRseSBmaW5pdGV9IiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzcsOCwiZl9BIl0sWzksOCwiaCIsMl0sWzksNywiXFxleGlzdHMgZyIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
+    \[\begin{tikzcd}[ampersand replacement=\&]
+        A \& {L_A} \&\& {R_A} \& A \\
+        \& D \&\& D \\
+        {} \& {} \&\& {} \& {}
+        \arrow["{f_A}", from=1-1, to=1-2]
+        \arrow["h"', from=1-1, to=2-2]
+        \arrow["{\exists g}", dashed, from=1-2, to=2-2]
+        \arrow["{f_A}", from=1-4, to=1-5]
+        \arrow["{\exists g}", dashed, from=2-4, to=1-4]
+        \arrow["h"', from=2-4, to=1-5]
+        \arrow["{\text{covariantly finite}}"{description}, from=3-1, to=3-2]
+        \arrow["{\text{contravariantly finite}}"{description}, draw=none, from=3-4, to=3-5]
+    \end{tikzcd}\]
+
+    $\cat{D}$ is then said to be \emph{functorially finite} if it is both covariantly and contravariantly finite.
+\end{defn}
+
+\begin{rmk}
+In the context of module categories, this is very often true for any subcategory. In fact, if $A$ is an Artin algebra, one can show that every subcategory of $\text{mod}\ A$ is functorially finite if and only if $A$ is of finite representation type (see \cite[Proposition~1.2]{AUSLANDER1991111}).
+\end{rmk}
+
+
+
+\begin{defn}
+Let $\cat{A}$ be an abelian category and $\cat{D}$ be a full subcategory of $\cat{A}$. $\cat{D}$ is an \emph{$n$-cluster tilting category} if
+\begin{itemize}
+    \item it is functorially finite;
+    \item $\cat{D} = \left\{C \in \cat{A} \ \middle|\  \text{Ext}_{\cat{A}}^i(C, D) = 0 \ \forall D \in \cat{D}\right\}$;
+    \item $\cat{D} = \left\{C \in \cat{A} \ \middle|\  \text{Ext}_{\cat{A}}^i(D, C) = 0 \ \forall D \in \cat{D}\right\}$.
+\end{itemize}
+\end{defn}
