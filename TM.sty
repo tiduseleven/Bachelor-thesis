@@ -20,7 +20,7 @@
 \usepackage{geometry} % règle les marges de la page 
 
 % Structure du document
-\usepackage[Lenny]{fncychap}% Titres de chapitres avec un filet
+%\usepackage[Lenny]{fncychap}% Titres de chapitres avec un filet
 \usepackage{fancyhdr}	% Entêtes et pieds de page
 \usepackage{layout}	% Redéfinition des caractéristiques de la page
 \usepackage{setspace}	% Interligne du document
@@ -44,6 +44,7 @@
 % Divers
 \usepackage{ifthen}		% Tests
 \usepackage{mathtools} % more symbols
+\usepackage{units}    % nice fractions
 \usepackage{calc}		% Calculs avec latex
 \usepackage{comment}	% Commentaires sur plusieurs lignes
 \usepackage{shapepar}	% Justification du texte selon une forme
@@ -52,6 +53,7 @@
                      % intéressantes (voire indispensables).
 
 \usepackage{amssymb}	% Différents symboles
+\let\amslrcorner\lrcorner
 \usepackage{makeidx}		% pour permettre de construire un index
 \usepackage{mathabx}
 \makeindex
@@ -72,9 +74,12 @@
 %\newcommand{\oset}[2]{%
 %  {\mathop{#2}\limits^{\vbox{\kern-.7ex\hbox{$\scriptstyle #1$}}}}}
 
-
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\green}[1]{\textcolor{green}{#1}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\orange}[1]{\textcolor{orange}{#1}}
 \newcommand{\ses}[5]{#1\xrightarrow{#4}#2\xrightarrow{#5}#3}
-\newcommand{\op}{^{\textit{op}}}
+\newcommand{\op}{^{\textnormal{op}}}
 \newcommand{\xra}[1]{\xrightarrow{#1}}
 \newcommand{\xrat}[1]{\ \oset{$#1$}{\rightarrowtail}\ }
 \newcommand{\xratshit}[1]{\overset{#1}{\rightarrowtail}}
@@ -472,3 +477,4 @@
 \makeatother
 % --------------------------------------------------------
 }
+\let\lrcorner\amslrcorner

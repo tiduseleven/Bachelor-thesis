@@ -1,14 +1,13 @@
 \chapter{Expanding to $n$-exact categories}\label{chapter:nexact}
-After generalizing from abelian categories to exact categories, we can go one step further by looking at longer exact sequences. First, we will redefine the notions needed for exact categories, but in a more general context. Then we will proceed to define $n$-exact categories, and give some concrete example of such categories.
+After generalizing from abelian categories to exact categories, we can go one step further by looking at longer exact sequences. First, we will redefine the notions needed for exact categories, but in a more general context. Then we will proceed to define $n$-exact categories, and talk about a few properties. Finally, we will give some concrete examples of such categories.
 
-When not stated otherwise, $\cat{A}$ denotes an additive category. The contents of this chapter are based on \cite{Jasso2016Aug}.
+The contents of this chapter are based on \cite{Jasso2016Aug}.
 
 \section{Working in higher degrees}
 Before defining $n$-exact categories, there are many prerequisites that need to be addressed. Firstly, we will need a way to properly describe what the equivalent of a kernel-cokernel pair would be in this new context. As a result, it makes sense to define $n$-kernels and $n$-cokernels, which require the notion of weak kernel (respectively weak cokernel).
 
 \begin{defn}
-    Let $A \xra{f} B$ be a morphism in $\cat{A}$. A \emph{weak kernel} of $f$ is an object $K \in \cat{A}$ with a morphism $K \xra{k} A$ such that the sequence of abelian groups
-
+    Let $f: A \xra{} B$ be a morphism in $\cat{A}$. A \emph{weak kernel} of $f$ is an object $K \in \cat{A}$ with a morphism $k: K \xra{} A$ such that the sequence of abelian groups
     % https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXGNhdHtBfShDJyxLKSJdLFsyLDAsIlxcY2F0e0F9KEMnLEEpIl0sWzQsMCwiXFxjYXR7QX0oQycsQikiXSxbMCwxLCItIFxcY2RvdCBrIl0sWzEsMiwiLSBcXGNkb3QgZiJdXQ==
     \[\begin{tikzcd}[ampersand replacement=\&,sep=scriptsize]
         {\cat{A}(C',K)} \&\& {\cat{A}(C',A)} \&\& {\cat{A}(C',B)}
@@ -18,11 +17,10 @@ Before defining $n$-exact categories, there are many prerequisites that need to 
 
     is exact for all $C'\in \cat{A}$.
 
-    Dually, a \emph{weak cokernel} of $f$ is an object $C \in \cat{A}$ with a morphism $B \xra{g} C$ such that the sequence of abelian groups 
-    
+    Dually, a \emph{weak cokernel} of $f$ is an object $C \in \cat{A}$ with a morphism $c: B \xra{} C$ such that the sequence of abelian groups 
     \[\begin{tikzcd}[ampersand replacement=\&,sep=scriptsize]
         {\cat{A}(C,C')} \&\& {\cat{A}(B,C')} \&\& {\cat{A}(A,C')}
-        \arrow["{- \circ k}", from=1-1, to=1-3]
+        \arrow["{- \circ c}", from=1-1, to=1-3]
         \arrow["{- \circ f}", from=1-3, to=1-5]
     \end{tikzcd}\]
 
@@ -31,11 +29,12 @@ Before defining $n$-exact categories, there are many prerequisites that need to 
 
 \begin{rmks} We do not ask for the sequence to be short exact, but only for it to be exact in the middle term. Furthermore, the following observations are quite useful in practice:
     \begin{enumerate}[label = (\alph*)]
-        \item Notice the direction of the sequences is different since for weak cokernels, we apply the contravariant functor $\cat{A}(-, C')$ to our original sequence, whereas we apply the covariant functor $\cat{A}(C', -)$ in the case of weak kernels.
-        \item For $g: K \rightarrow A$ a weak kernel of $f: A \rightarrow B$, the sequence being exact lets us know that
+        \begin{sloppypar}
+        \item Notice the direction of the sequences is different since for weak cokernels, we apply the contravariant functor $\cat{A}(-, C')$ to our original sequence, whereas we apply the covariant functor $\cat{A}(C', -)$ in the case of weak kernels; \end{sloppypar}
+        \item For $k: K \rightarrow A$ a weak kernel of $f: A \rightarrow B$, the sequence being exact lets us know that
         \begin{enumerate}
-            \item The composition $f \cdot g$ is $0$;
-            \item For any morphism $h: C \rightarrow A$ such that \break \mbox{$f \cdot h = 0$}, there exists a morphism $\hat{h}: C \xra{} K$ such that $g \circ \hat{h} = h$.
+            \item The composition $f\circ k$ is $0$;
+            \begin{sloppypar}\item For any morphism $h: C \rightarrow A$ such that ${f \circ h = 0}$, there exists a morphism $\hat{h}: C \xra{} K$ such that $k\circ \hat{h} = h$.\end{sloppypar}
         \end{enumerate}
 
         That last point can be summarized by the following diagram:
@@ -45,14 +44,14 @@ Before defining $n$-exact categories, there are many prerequisites that need to 
             K \&\& A \&\& B \\
             \\
             C
-            \arrow["g", from=1-1, to=1-3]
+            \arrow["k", from=1-1, to=1-3]
             \arrow["f", from=1-3, to=1-5]
             \arrow["{\exists \hat{h}}", dashed, from=3-1, to=1-1]
             \arrow["h", from=3-1, to=1-3]
             \arrow["0"', shift right=2, curve={height=-15pt}, from=3-1, to=1-5]
         \end{tikzcd}\]
 
-        These two points follow from exactness in the middle term. Indeed, since $\Img{(k \circ -)} = \Ker{(f \circ -)}$, any map $h: C \rightarrow A$ such that $f \circ h = 0$, is in the image of the post-composition with $k$, i.e. can be factored (not necessarily uniquely!) as $k \circ \hat{h}$. In particular, if we consider $C' = K$, we conclude that 
+        These two points follow from exactness in the middle term. Indeed, since $\Img{(k \circ -)} = \Ker{(f \circ -)}$, any map $h: C \rightarrow A$ such that $f \circ h = 0$, is in the image of the post-composition with $k$, i.e. can be factored (not necessarily uniquely!) as $k \circ \hat{h}$. In particular, if we consider $C = K$, we conclude that 
         \[k = k \circ 1_K \in \Img{(k \circ -)} = \Ker{(f \circ -)},\]
         i.e. $f \circ k = 0$.
         The result for weak cokernels is dual.
@@ -61,34 +60,19 @@ Before defining $n$-exact categories, there are many prerequisites that need to 
     In summary, weak cokernels and weak kernels have a very similar property to that of cokernels and kernels, except that uniqueness in our factoring of morphisms is not guaranteed. In other words, the only difference is that a weak kernel is not necessarily monic, and a weak cokernel is not necessarily epic.
 \end{rmks}
 
-This notion is quite fundamental in the elaboration of $n$-kernels and $n$-cokernels:
+This notion is quite fundamental in the elaboration of $n$-kernels and $n$-cokernels.
 
 \begin{defn}
-    Let $X^0 \xra{d^0} X^1$ be a morphism in $\cat{A}$. An \emph{$n$-kernel} of $d^0$ is a sequence 
-
-    % https://q.uiver.app/#q=WzAsNCxbMCwwLCJLXjAiXSxbMiwwLCJLXjEiXSxbNiwwLCJLXm4iXSxbNCwwLCJcXGxkb3RzIl0sWzAsMV0sWzEsM10sWzMsMl1d
-    \[\begin{tikzcd}[ampersand replacement=\&,sep=scriptsize]
-        {X^{-n}} \&\& {X^{-n+1}} \&\& \cdots \&\& {X^0}
-        \arrow["d^{-n}",from=1-1, to=1-3]
-        \arrow["d^{-n+1}", from=1-3, to=1-5]
-        \arrow["d^{0}", from=1-5, to=1-7]
-    \end{tikzcd}\]
-
+    Let $d^0: X^0 \xra{} X^1$ be a morphism in $\cat{A}$. An \emph{$n$-kernel} of $d^0$ is a sequence 
+    \[ X^{-n} \xra{d^{-n}} \cdots \xra{d^{-1}} X^0 \left( \xra{d^0} X^1 \right)\]
+    
     such that the sequence induced by applying the functor $\cat{A}(C', -)$
-    % https://q.uiver.app/#q=WzAsNSxbMiwwLCJcXGNhdHtBfShDJywgWF57LW59KSJdLFs0LDAsIlxcY2F0e0F9KEMnLCBYXnstbisxfSkiXSxbOCwwLCJcXGNhdHtBfShDJywgWF57MH0pIl0sWzYsMCwiXFxsZG90cyJdLFswLDAsIjAiXSxbMCwxLCJkXnstbn0gXFxjaXJjIC0iXSxbMSwzLCJkXnstbisxfSBcXGNpcmMgLSJdLFszLDIsImReey0xfSBcXGNpcmMgLSJdLFs0LDBdXQ==
-    \[\begin{tikzcd}[ampersand replacement=\&,sep=small]
-        0 \&\& {\cat{A}(C', X^{-n})} \&\& {\cat{A}(C', X^{-n+1})} \&\& \ldots \&\& {\cat{A}(C', X^{0})}
-        \arrow[from=1-1, to=1-3]
-        \arrow["{d^{-n} \circ -}", from=1-3, to=1-5]
-        \arrow["{d^{-n+1} \circ -}", from=1-5, to=1-7]
-        \arrow["{d^{-1} \circ -}", from=1-7, to=1-9]
-    \end{tikzcd}\]
+    \[0 \xra{} \cat{A}(C', X^{-n}) \xra{d^{-n} \circ -} \cat{A}(C', X^{-n+1}) \xra{d^{-n+1} \circ -} \cdots \xra{d^{0} \circ -} \cat{A}(C', X^1)\]
     is exact.
 
     Equivalently, an $n$-kernel of $d^0$ is such a sequence $(d^{-n}, d^{-n+1}, \ldots, d^{-1})$, where $d^{-k}$ is a weak cokernel of $d^{-k+1}$ for all $1 \leq k \leq n-1$, and $d^{-n}$ is a kernel of $d^{-n+1}$.
 
     Dually, an \emph{$n$-cokernel} of $d^0$ is a sequence
-
     % https://q.uiver.app/#q=WzAsNCxbMCwwLCJYXjEiXSxbMiwwLCJYXjIiXSxbNCwwLCJcXGxkb3RzIl0sWzYsMCwiWF57bisxfSJdLFswLDEsImReMSJdLFsxLDIsImReMiJdLFsyLDMsImRebiJdXQ==
     \[\begin{tikzcd}[ampersand replacement=\&,sep=small]
         {X^1} \&\& {X^2} \&\& \cdots \&\& {X^{n+1}}
@@ -116,81 +100,78 @@ Now that we have a suitable notion of higher kernels and cokernels, we can consi
     Once again, when $n=1$, we get back to our usual notion of short exact sequence.
 \end{rmk}
 
-There are two final notions that need to be covered before proceeding with the definition of $n$-exact categories: that of $n$-pullback, $n$-pushout, and weak isomorphisms. Before covering these concepts, let us first remember what the cone of a morphism of complexes is:
+There are two final notions that need to be covered before proceeding with the definition of $n$-exact categories: that of $n$-pullback, $n$-pushout, and weak isomorphisms. Before covering these concepts, let us first recall what the cone of a morphism of complexes is:
 
 \begin{defn}
     \begin{sloppypar}
     Let $X$ and $Y$ be two complexes in $\Ch{\cat{A}}$ and ${f: X \rightarrow Y}$ be a morphism of complexes, or diagrammatically:
     \end{sloppypar}
-
     % https://q.uiver.app/#q=WzAsMTIsWzAsMCwiWCJdLFswLDIsIlkiXSxbMiwwLCJcXGxkb3RzIl0sWzQsMCwiWF57bi0xfSJdLFs2LDAsIlhebiJdLFsyLDIsIlxcbGRvdHMiXSxbNCwyLCJZXntuLTF9Il0sWzYsMiwiWV5uIl0sWzgsMCwiWF57bisxfSJdLFs4LDIsIllee24rMX0iXSxbMTAsMCwiXFxsZG90cyJdLFsxMCwyLCJcXGxkb3RzIl0sWzAsMSwiZiJdLFsyLDNdLFszLDQsImRfWF57bi0xfSJdLFs1LDZdLFs2LDcsImRfWV57bi0xfSJdLFs0LDgsImRfWF5uIl0sWzcsOSwiZF9ZXntufSJdLFs4LDEwXSxbOSwxMV0sWzgsOSwiZl57bisxfSJdLFs0LDcsImZebiJdLFszLDYsImZee24tMX0iXV0=
     \[\begin{tikzcd}[ampersand replacement=\&,sep=small]
-        X: \&\& \cdots \&\& {X^{n-1}} \&\& {X^n} \&\& {X^{n+1}} \&\& \cdots \\
+        X: \&\& \cdots \&\& {X^{k-1}} \&\& {X^k} \&\& {X^{k+1}} \&\& \cdots \\
         \\
-        Y: \&\& \cdots \&\& {Y^{n-1}} \&\& {Y^n} \&\& {Y^{n+1}} \&\& \cdots
+        Y: \&\& \cdots \&\& {Y^{k-1}} \&\& {Y^k} \&\& {Y^{k+1}} \&\& \cdots
         \arrow["f", from=1-1, to=3-1]
         \arrow[from=1-3, to=1-5]
-        \arrow["{d_X^{n-1}}", from=1-5, to=1-7]
-        \arrow["{f^{n-1}}", from=1-5, to=3-5]
-        \arrow["{d_X^n}", from=1-7, to=1-9]
-        \arrow["{f^n}", from=1-7, to=3-7]
+        \arrow["{d_X^{k-1}}", from=1-5, to=1-7]
+        \arrow["{f^{k-1}}", from=1-5, to=3-5]
+        \arrow["{d_X^k}", from=1-7, to=1-9]
+        \arrow["{f^k}", from=1-7, to=3-7]
         \arrow[from=1-9, to=1-11]
-        \arrow["{f^{n+1}}", from=1-9, to=3-9]
+        \arrow["{f^{k+1}}", from=1-9, to=3-9]
         \arrow[from=3-3, to=3-5]
-        \arrow["{d_Y^{n-1}}", from=3-5, to=3-7]
-        \arrow["{d_Y^{n}}", from=3-7, to=3-9]
+        \arrow["{d_Y^{k-1}}", from=3-5, to=3-7]
+        \arrow["{d_Y^{k}}", from=3-7, to=3-9]
         \arrow[from=3-9, to=3-11]
     \end{tikzcd}\]
 
-    The \emph{cone} of $f$, denoted $\C{f}$, is the following complex
-
+    The \emph{cone of $f$}, denoted $\C{f}$, is the complex
     % https://q.uiver.app/#q=WzAsNSxbMCwwLCJDKGYpOiJdLFsxLDAsIlxcY2RvdHMiXSxbMywwLCJYXm4gXFxiaWdvcGx1cyBZXntuLTF9Il0sWzUsMCwiWF57bisxfSBcXGJpZ29wbHVzIFlee259Il0sWzcsMCwiXFxjZG90cyJdLFsxLDJdLFsyLDMsImRfQ157bi0xfSJdLFszLDRdXQ==
     \[\begin{tikzcd}[ampersand replacement=\&,sep=small]
-        {C(f):} \& \cdots \&\& {X^n \bigoplus Y^{n-1}} \&\& {X^{n+1} \bigoplus Y^{n}} \&\& \cdots
-        \arrow[from=1-2, to=1-4]
-        \arrow["{d_C^{n-1}}", from=1-4, to=1-6]
-        \arrow[from=1-6, to=1-8]
+        {C(f):} \& \cdots \&\& {X^k \bigoplus Y^{k-1}} \&\& {X^{k+1} \bigoplus Y^{k}} \&\& \cdots
+        \arrow["{d_C^{k-2}}",from=1-2, to=1-4]
+        \arrow["{d_C^{k-1}}", from=1-4, to=1-6]
+        \arrow["{d_C^{k}}",from=1-6, to=1-8]
     \end{tikzcd}\]
 
-    where $d_C^{n-1} = \begin{pmatrix}-d_X^{n} & 0 \\ f^n & d_Y^{n-1}\end{pmatrix}$.
+    where $d_C^{k} = \begin{bmatrix}-d_X^{k+1} & 0 \\ f^{k+1} & d_Y^{k}\end{bmatrix}$.
 \end{defn}
 
 Before looking at the higher equivalents of pullbacks and pushouts, it is quite useful to examine the link that they have with the cone of a map.
 
 \begin{rmk}
     Let $B^1 \xra{d_B^1} B^2$ and $A^2 \xra{f^2} B^2$ be two morphisms in $\cat{A}$ and consider the pullback of $d_B^1$ along $f^2$:
-
-    \[\begin{tikzcd}[ampersand replacement=\&, sep=small]
+    % https://q.uiver.app/#q=WzAsNCxbMCwwLCJBXjEiXSxbMiwwLCJBXjIiXSxbMCwyLCJCXjEiXSxbMiwyLCJCXjIiXSxbMCwxLCJ7ZF9BXnsxfX0iLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MTAsInRhcmdldCI6MTB9fV0sWzAsMiwiZl4xIiwyLHsic2hvcnRlbiI6eyJzb3VyY2UiOjEwLCJ0YXJnZXQiOjEwfX1dLFsxLDMsImZeMiIsMCx7InNob3J0ZW4iOnsic291cmNlIjoxMCwidGFyZ2V0IjoxMH19XSxbMiwzLCJkX0JeMSIsMix7InNob3J0ZW4iOnsic291cmNlIjoxMCwidGFyZ2V0IjoxMH19XSxbMCwzLCIiLDEseyJzdHlsZSI6eyJuYW1lIjoiY29ybmVyIn19XV0=
+    \[\begin{tikzcd}[ampersand replacement=\&,cramped, sep=small]
         {A^1} \&\& {A^2} \\
-        \& {\text{PB}} \\
-        B^1 \&\& B^2
-        \arrow["{d_A^{1}}", shorten <=5pt, shorten >=5pt, from=1-1, to=1-3]
-        \arrow["\lowercase{f^1}"', shorten <=3pt, shorten >=3pt, from=1-1, to=3-1]
-        \arrow["\lowercase{f^2}", shorten <=3pt, shorten >=3pt, from=1-3, to=3-3]
-        \arrow["d_B^1"', shorten <=5pt, shorten >=5pt, from=3-1, to=3-3]
+        \\
+        {B^1} \&\& {B^2}
+        \arrow["{{d_A^{1}}}", shorten <=5pt, shorten >=5pt, from=1-1, to=1-3]
+        \arrow["{f^1}"', shorten <=3pt, shorten >=3pt, from=1-1, to=3-1]
+        \arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=3-3]
+        \arrow["{f^2}", shorten <=3pt, shorten >=3pt, from=1-3, to=3-3]
+        \arrow["{d_B^1}"', shorten <=5pt, shorten >=5pt, from=3-1, to=3-3]
     \end{tikzcd}\]
 
     Clearly $f = (f^1, f^2)$ is a morphism of complexes since the square commutes. Thus we can consider its cone:
-
     % https://q.uiver.app/#q=WzAsNixbMCwwLCJDKGYpOiJdLFsxLDAsIjAiXSxbMywwLCJBXjEiXSxbNSwwLCJBXjIgXFxiaWdvcGx1cyBCXjEiXSxbNywwLCJCXjIiXSxbOSwwLCIwIl0sWzEsMl0sWzIsMywiZF9DXjEiXSxbMyw0LCJkX0NeMiJdLFs0LDVdXQ==
     \[\begin{tikzcd}[ampersand replacement=\&,sep=small]
         {\C{f}:} \& 0 \&\& {A^1} \&\& {A^2 \bigoplus B^1} \&\& {B^2} \&\& 0
         \arrow[from=1-2, to=1-4]
-        \arrow["{d_C^1}", from=1-4, to=1-6]
-        \arrow["{d_C^2}", from=1-6, to=1-8]
+        \arrow["{d_C^0}", from=1-4, to=1-6]
+        \arrow["{d_C^1}", from=1-6, to=1-8]
         \arrow[from=1-8, to=1-10]
     \end{tikzcd}\]
 
-    where $d_C^1 = \begin{pmatrix} - d_A^1 \\ f^1 \end{pmatrix}$, and $d_C^2 = \begin{pmatrix} f^2 & d_B^1 \end{pmatrix}$. We claim that $d_C^1$ is a kernel of $d_C^2$. Indeed, consider a morphism $\begin{pmatrix} g \\ h \end{pmatrix}: C \rightarrow A^2 \bigoplus B^1$ such that the composition $ d_C^2 \circ \begin{pmatrix} g \\ h \end{pmatrix}= 0$. The composition being $0$ implies that $ f^2 \circ g + d_B^1 \circ h = 0$, or $d_B^1 \circ h = - f^2 \circ g$. Consider the unique map $\hat{h} : C \rightarrow A^1$ given by $f^1 \circ \hat{h} = h$ and $d_A^1 \circ \hat{h} = -g$ (this map comes from the pullback property). We see that $d_C^1 \circ \hat{h} = \begin{pmatrix} - d_A^1 \circ \hat{h} \\ f^1 \circ \hat{h} \end{pmatrix} = \begin{pmatrix} g \\ h \end{pmatrix}$. Thus we have defined a unique map $\hat{h} : C \rightarrow A^1$ such that $d_C^1 \circ \hat{h} = \begin{pmatrix} g \\ h \end{pmatrix}$. That is, $d_C^1$ is a kernel of $d_C^2$.
+    where $d_C^0 = \begin{bmatrix} - d_A^1 \\ f^1 \end{bmatrix}$, and $d_C^1 = \begin{bmatrix} f^2 & d_B^1 \end{bmatrix}$. We claim that $d_C^0$ is a kernel of $d_C^1$. Indeed, consider a morphism $\begin{bmatrix} g \\ h \end{bmatrix}: C \rightarrow A^2 \bigoplus B^1$ such that the composition $ d_C^1 \circ \begin{bmatrix} g \\ h \end{bmatrix}= 0$. The composition being $0$ implies that $ f^2 \circ g + d_B^1 \circ h = 0$, or $d_B^1 \circ h = - f^2 \circ g$. Consider the unique map $\hat{h} : C \rightarrow A^1$ given by $f^1 \circ \hat{h} = h$ and $d_A^1 \circ \hat{h} = -g$ (this map comes from the pullback property). We see that $d_C^0 \circ \hat{h} = \begin{bmatrix} - d_A^1 \circ \hat{h} \\ f^1 \circ \hat{h} \end{bmatrix} = \begin{bmatrix} g \\ h \end{bmatrix}$. Thus we have defined a unique map $\hat{h} : C \rightarrow A^1$ such that $d_C^0 \circ \hat{h} = \begin{bmatrix} g \\ h \end{bmatrix}$. That is, $d_C^0$ is a kernel of $d_C^1$.
 
-    A dual result is true for pushouts, where $d_C^2$ is a cokernel of $d_C^1$.
+    A dual result is true for pushouts, where $d_C^1$ is a cokernel of $d_C^0$.
 \end{rmk}
 
 Basing ourselves on this observation, we can generalize the notion of pullback and pushout to higher degrees:
 
 \begin{defn}
     Let $X : X^0 \xra{d_X^0} X^1 \xra{d_X^1} \ldots \xra{d_X^{n-1}} X^n$ be a complex in $\Chlen{n}{\cat{A}}$ and $f^0 : X^0 \rightarrow Y^0$ a morphism in $\cat{A}$. An \emph{$n$-pushout of $X$ along $f^0$} is a morphism of complexes 
-
     % https://q.uiver.app/#q=WzAsMTAsWzAsMCwiWDoiXSxbMCwyLCJZOiJdLFsyLDAsIlheMCJdLFsyLDIsIlleMCJdLFs0LDAsIlheMSJdLFs0LDIsIlleMSJdLFs2LDAsIlxcY2RvdHMiXSxbNiwyLCJcXGNkb3RzIl0sWzgsMCwiWF5uIl0sWzgsMiwiWV5uIl0sWzAsMSwiZiJdLFsyLDQsImRfWF4wIl0sWzMsNSwiZF9ZXnswfSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsyLDMsImZeMCJdLFs0LDUsImZeMSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs0LDYsImRfWF4xIl0sWzUsNywiZF9ZXnsxfSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs2LDgsImRfWF57bi0xfSJdLFs3LDksImRfWV57bi0xfSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs4LDksImZebiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
     \[\begin{tikzcd}[ampersand replacement=\&,sep=small]
         {X:} \&\& {X^0} \&\& {X^1} \&\& \cdots \&\& {X^n} \\
@@ -226,26 +207,26 @@ Basing ourselves on this observation, we can generalize the notion of pullback a
 The last notion required for defining $n$-exact categories is that of weak isomorphisms:
 
 \begin{defn}
-    Let $X$ and $Y$ be two $n$-exact sequences in $\cat{A}$. We say $f: X \rightarrow Y$ is a \emph{weak isomorphism} of complexes if there is $k \in \left\{0, 1, \ldots, n\right\}$ such that $f^k$ and $f^{k+1}$ are isomorphisms.
+    Let $X$ and $Y$ be two $n$-exact sequences in $\cat{A}$. We say that $f: X \rightarrow Y$ is a \emph{weak isomorphism} of complexes if there is $k \in \left\{0, 1, \ldots, n\right\}$ such that $f^k$ and $f^{k+1}$ are isomorphisms.
 \end{defn}
 
-When $n = 1$, we note that weak isomorphisms are isomorphisms of short exact sequences. This can be shown using the five lemma, which holds for any exact category (see \cite[Lemma~8.9]{Buhler2010Jan}) In the general case, however, weak isomorphisms are not necessarily isomorphisms, but a weaker result still holds:
+When $n = 1$, we note that weak isomorphisms are isomorphisms of short exact sequences. This can be shown by using the five lemma, which holds for any exact category (see \cite[Lemma~8.9]{Buhler2010Jan}). In the general case, however, weak isomorphisms are not necessarily isomorphisms, but a weaker result still holds.
 
 \begin{prop}
     Let $X$ and $Y$ be two $n$-exact sequences in $\cat{A}$ and let $f : X \rightarrow Y$ be a morphism of complexes. If $f^k$ and $f^{k+1}$ are isomorphisms for some $k \in \left\{0, 1, \ldots, n\right\}$, then $f$ induces an isomorphism in $\Hcat{\cat{A}}$.
 \end{prop}
 
-The proof of this result can be found in \cite[Proposition~2.7]{Jasso2016Aug}.
+A proof of this result can be found in \cite[Proposition~2.7]{Jasso2016Aug}.
 
 All of this preliminary work being done, we can finally proceed to define $n$-exact categories.
 
 \section{$n$-exact categories}
 
-With the proper tools put in place, it is quite straightforward to expand the definition of exact categories to longer exact sequences. Similar to what was done in chapter 1, we proceed with admissible $n$-exact sequences, admissible monics, and  admissible epics:
+With the proper tools put in place, it is quite straightforward to expand the definition of exact categories to longer exact sequences. Similar to what was done in chapter 1, we proceed with admissible $n$-exact sequences, admissible monics, and  admissible epics.
 
 \begin{defn}
-    Let $\cat{E}$ be a class of $n$-exact sequences in $\cat{A}$. An \emph{$\cat{E}$-admissible $n$-exact sequence} is an $n$-exact sequence that is in $\cat{E}$. 
-    An \emph{$\cat{E}$-admissible monic} is a morphism $d_X^{0}: X^0 \rightarrow X^1$ such that there is an $\cat{E}$-admissible $n$-exact sequence 
+    Let $\cat{E}$ be a class of $n$-exact sequences in $\cat{A}$. An\break \emph{$\cat{E}$-admissible $n$-exact sequence} is an $n$-exact sequence that is in $\cat{E}$. 
+    An \emph{$\cat{E}$-admissible monic} is a morphism $d_X^{0}: X^0 \rightarrow X^1$ such that there is an $\cat{E}$-admissible $n$-exact sequence
     \[X^0 \xra{d_X^{0}} X^1 \xra{d_X^{1}} \cdots \xra{d_X^n} X^{n+1}.\]
     
     Dually, an \emph{$\cat{E}$-admissible epic} is a morphism $d_X^n: X^n \rightarrow X^{n+1}$ such that there is an $\cat{E}$-admissible $n$-exact sequence 
@@ -263,7 +244,7 @@ The following definition simply adapts the axioms of exact categories to the def
     \begin{itemize}[align=right]
         \item[{[E0]}] The sequence $0 \rightarrowtail 0 \rightarrow \cdots \twoheadrightarrow 0$ is an $\cat{E}$-admissible $n$-exact sequence;
         \item[{[E1]}] The composition of two $\cat{E}$-admissible monics yields an ${\cat{E}\text{-admissible monic}}$;
-        \item[{[E1$^{\op}$]}] The composition of two $\cat{E}$-admissible epics yields an ${\cat{E}\text{-admissible epic}}$;
+        \item[{[E1${\op}$]}] The composition of two $\cat{E}$-admissible epics yields an ${\cat{E}\text{-admissible epic}}$;
         \item[{[E2]}] If $X: X^0 \xratshit{d_X^0} \ldots \xrathshit{d_X^n} X^{n+1}$ is an $\cat{E}$-admissible $n$-exact sequence and $X^0 \xra{f^0} Y^0$ is a morphism in $\cat{A}$, there exists an $n$-pushout of $(d_X^0, \ldots, d_X^{n-1})$ along $f^0$
         % https://q.uiver.app/#q=WzAsMTEsWzAsMCwiWDoiXSxbMCwyLCJZOiJdLFsyLDAsIlheMCJdLFsyLDIsIlleMCJdLFs0LDAsIlheMSJdLFs0LDIsIlleMSJdLFs2LDAsIlxcbGRvdHMiXSxbNiwyLCJcXGxkb3RzIl0sWzgsMCwiWF5uIl0sWzgsMiwiWV5uIl0sWzEwLDAsIlhee24rMX0iXSxbMCwxLCJmIl0sWzIsNCwiZF9YXjAiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtb25vIn19fV0sWzMsNSwiZF9ZXnswfSIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1vbm8ifSwiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzIsMywiZl4wIl0sWzQsNSwiZl4xIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzQsNiwiZF9YXjEiXSxbNSw3LCJkX1leezF9IiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzYsOCwiZF9YXntuLTF9Il0sWzcsOSwiZF9ZXntuLTF9IiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzgsOSwiZl5uIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzgsMTAsImRfWF57bn0iLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifSwiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV1d
         \[\begin{tikzcd}[ampersand replacement=\&,sep=small]
@@ -283,7 +264,7 @@ The following definition simply adapts the axioms of exact categories to the def
             \arrow["{d_Y^{n-1}}", dashed, from=3-7, to=3-9]
         \end{tikzcd}\]
         such that $d_Y^0$ is an $\cat{E}$-admissible monic;
-        \item[{[E2$^{\op}$]}] If $Y: Y^0 \xratshit{d_Y^0} \ldots \xrathshit{d_Y^n} Y^{n+1}$ is an $\cat{E}$-admissible $n$-exact sequence and $X^{n+1} \xra{f^{n+1}} Y^{n+1}$ is a morphism in $\cat{A}$, there is an $n$-pullback of $(d_Y^1, \ldots, d_Y^n)$ along $f^{n+1}$
+        \item[{[E2${\op}$]}] If $Y: Y^0 \xratshit{d_Y^0} \ldots \xrathshit{d_Y^n} Y^{n+1}$ is an $\cat{E}$-admissible $n$-exact sequence and $X^{n+1} \xra{f^{n+1}} Y^{n+1}$ is a morphism in $\cat{A}$, there is an $n$-pullback of $(d_Y^1, \ldots, d_Y^n)$ along $f^{n+1}$
         % https://q.uiver.app/#q=WzAsMTEsWzAsMCwiWDoiXSxbMCwyLCJZOiJdLFs0LDAsIlheMSJdLFs2LDAsIlxcbGRvdHMiXSxbOCwwLCJYXntufSJdLFs0LDIsIlleMSJdLFs2LDIsIlxcbGRvdHMiXSxbOCwyLCJZXntufSJdLFsxMCwyLCJZXntuKzF9Il0sWzEwLDAsIlhee24rMX0iXSxbMiwyLCJZXjAiXSxbMCwxLCJmIl0sWzIsMywiZF9YXjEiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMyw0LCJkX1hee24tMX0iLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbNSw2LCJkX1leMSJdLFs2LDcsImRfWV57bi0xfSJdLFs3LDgsImRfWV5uIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV0sWzQsOSwiZF9YXntufSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbOSw4LCJmXntuKzF9Il0sWzEwLDUsImRfWV4wIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibW9ubyJ9LCJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifX19XSxbMiw1LCJmXjEiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbNCw3LCJmXm4iLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
         \[\begin{tikzcd}[ampersand replacement=\&,sep=small]
             {X:} \&\&\&\& {X^1} \&\& \cdots \&\& {X^{n}} \&\& {X^{n+1}} \\
@@ -304,12 +285,13 @@ The following definition simply adapts the axioms of exact categories to the def
         such that $d_X^n$ is an $\cat{E}$-admissible epic.
     \end{itemize}
     \end{sloppypar}
+
+    If $\cat{E}$ is an $n$-exact structure on $\cat{A}$, we say that $(\cat{A}, \cat{E})$ is an $n$-exact category.
 \end{defn}
 
 \begin{rmks}
     \begin{itemize}
         \item The axiom $[E0]$ given here seems to be less restrictive than the $[E0]$ and $[E0^{op}]$ of exact categories. However, if $n \geq 2$, note that identity morphisms are also admissible monics since 
-
         % https://q.uiver.app/#q=WzAsMTAsWzAsMCwiWCJdLFsxLDAsIlgiXSxbMiwwLCIwIl0sWzMsMCwiXFxjZG90cyJdLFs0LDAsIjAiXSxbMCwxLCIwIl0sWzEsMSwiMCJdLFsyLDEsIjAiXSxbMywxLCJcXGNkb3RzIl0sWzQsMSwiMCJdLFsxLDJdLFsyLDNdLFszLDRdLFswLDVdLFs1LDZdLFs2LDddLFs3LDhdLFs4LDldLFsxLDZdLFsyLDddLFs0LDldLFswLDEsIjFfWCJdXQ==
         \[\begin{tikzcd}[ampersand replacement=\&]
             X \& X \& 0 \& \cdots \& 0 \\
@@ -332,6 +314,76 @@ The following definition simply adapts the axioms of exact categories to the def
     \end{itemize}
 \end{rmks}
 
+Most classical results from exact categories can be generalized to $n$-exact categories without much trouble. For example, there is a way to generalize Quillen's obscure axiom.
+
+\begin{prop}[Obscure axiom\label{prop:obscure}]
+    Let $(\cat{A}, \cat{E})$ be an $n$-exact category. Suppose there is a commutative diagram
+    % https://q.uiver.app/#q=WzAsMTAsWzEsMCwiWF4wIl0sWzIsMCwiXFxjZG90cyJdLFszLDAsIlhebiJdLFs0LDAsIlhee24rMX0iXSxbMSwxLCJZXjAiXSxbMiwxLCJcXGNkb3RzIl0sWzMsMSwiWV5uIl0sWzQsMSwiWV57bisxfSJdLFswLDAsIlg6Il0sWzAsMSwiWToiXSxbMCwxLCJkX1heMCIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1vbm8ifX19XSxbMSwyLCJkX1hee24tMX0iXSxbMiwzLCJkX1hebiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dLFs0LDUsImRfWV4wIl0sWzUsNiwiZF9ZXntuLTF9Il0sWzYsNywiZF9ZXm4iXSxbMCw0LCJmXjAiXSxbMyw3LCIiLDEseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsyLDYsImZebiJdLFs4LDksImYiXV0=
+    \[\begin{tikzcd}[ampersand replacement=\&]
+        {X:} \& {X^0} \& \cdots \& {X^n} \& {X^{n+1}} \\
+        {Y:} \& {Y^0} \& \cdots \& {Y^n} \& {Y^{n+1}}
+        \arrow["f", from=1-1, to=2-1]
+        \arrow["{d_X^0}", tail, from=1-2, to=1-3]
+        \arrow["{f^0}", from=1-2, to=2-2]
+        \arrow["{d_X^{n-1}}", from=1-3, to=1-4]
+        \arrow["{d_X^n}", two heads, from=1-4, to=1-5]
+        \arrow["{f^n}", from=1-4, to=2-4]
+        \arrow[equals, from=1-5, to=2-5]
+        \arrow["{d_Y^0}", from=2-2, to=2-3]
+        \arrow["{d_Y^{n-1}}", from=2-3, to=2-4]
+        \arrow["{d_Y^n}", from=2-4, to=2-5]
+    \end{tikzcd}\]
+
+    where the top row is an $\cat{E}$-admissible $n$-exact sequence and $(d_Y^0, \ldots, d_Y^{n-1})$ is an $n$-kernel of $d_Y^n$. Then $Y$ is an $\cat{E}$-admissible $n$-exact sequence.
+
+\end{prop}
+A proof of the dual statement can be found in \cite[Proposition~4.11]{Jasso2016Aug}
+
+\begin{rmk}
+What is really required for the statement to hold is a morphism $f^n: X^n \xra{} Y^n$ such that $d_X^n = d_Y^n f^n$. Indeed, such a map can be extended to a morphism between $n$-kernels in much the same way that it induces a morphism between kernels in the exact case. Since $d_Y^n (f^n d_X^{n-1}) = (d_Y^n f^n) d_X^{n-1} = d_X^n d_X^{n-1} = 0$, there exists a (not necessarily unique) morphism $f^{n-1}: X^{n-1} \xra{} Y^{n-1}$ such that $d_Y^{n-1} f^{n-1} = f^n d_X^{n-1}$, since $d_Y^{n-1}$ is a weak kernel of $d_Y^n$. Playing the same game again with $f^{n-1}$, we can create a morprhism of complexes $f: X \xra{} Y$, giving us the required setup.
+\end{rmk}
+
+A convenient property of $n$-exact categories is that admissible $n$-exact sequences interact nicely with direct sums. This gives an easy way to construct new $n$-exact sequences.
+
+\begin{prop}\label{prop:dir_sum_n_exact}
+    \begin{sloppypar}Let $(\cat{A}, \cat{E})$ be an $n$-exact category and ${X,Y \in \Chlen{n+1}{\cat{A}}}$. Then $X$ and $Y$ are admissible $n$-exact sequences if and only if $X \oplus Y$ is an admissible $n$-exact sequence. \end{sloppypar}
+\end{prop}
+
+\begin{preuve}
+The proof is inspired by those of \cite[Proposition~4.6]{Jasso2016Aug} and \cite[Proposition~4.12]{Jasso2016Aug}.
+
+Assume both $X$ and $Y$ are admissible $n$-exact sequences. Consider the sequence 
+        % https://q.uiver.app/#q=WzAsNixbMSwwLCJYXjEgXFxvcGx1cyBZXjAiXSxbMiwwLCJYXjIiXSxbMywwLCJcXGNkb3RzIl0sWzQsMCwiWF5uIl0sWzUsMCwiWF57bisxfS4iXSxbMCwwLCJYXjAgXFxvcGx1cyBZXjAiXSxbMCwxLCJcXGJlZ2lue2JtYXRyaXh9ZF9YXjEgJiAwXFxlbmR7Ym1hdHJpeH0iXSxbMSwyLCJkX1heMiJdLFsyLDMsImRfWF57bi0xfSJdLFszLDQsImRfWF5uIl0sWzUsMCwiZF9YXjAgXFxvcGx1cyAxX3tZXjB9Il1d
+    \[\begin{tikzcd}[ampersand replacement=\&, cramped]
+        {X^0 \oplus Y^0} \& {X^1 \oplus Y^0} \& {X^2} \& \cdots \& {X^n} \& {X^{n+1}.}
+        \arrow["{d_X^0 \oplus 1_{Y^0}}", from=1-1, to=1-2]
+        \arrow["{\left[ d_X^1 \ 0 \right]}", from=1-2, to=1-3]
+        \arrow["{d_X^2}", from=1-3, to=1-4]
+        \arrow["{d_X^{n-1}}", from=1-4, to=1-5]
+        \arrow["{d_X^n}", from=1-5, to=1-6]
+    \end{tikzcd}\]
+
+    Since it is different of $X$ only by a contractible complex, it is weakly isomorphic to it, and therefore an admissible $n$-exact sequences. Thus $d_X^0 \oplus 1_{Y^0}$ is an admissible monic. Similarly, $1_{X^1} \oplus d_Y^0$ is an admissible monic. Thus, because of [E1],
+    \[d_X^0 \oplus d_Y^0 = (1_{X^1} \oplus d_Y^0) \circ (d_X^0 \oplus 1_{Y^0})\]
+    is an admissible monic, and $(d_X^1 \oplus d_Y^1, \ldots, d_X^n \oplus d_Y^n)$ is one of its $n$-cokernels. As such, $X \oplus Y$ is a admissible $n$-exact sequence.
+
+Conversely, assume $X \oplus Y$ is an admissible $n$-exact sequence. Then, we can exhibit $\left[d_X^n \ 0\right] = \left[1_{X^{n+1}} \ 0\right] \circ (d_X^n \oplus d_Y^n)$ (which is an admissible epic by [E1$\op$]) as
+% https://q.uiver.app/#q=WzAsNSxbMSwwLCJYXntuKzF9IFxcb3BsdXMgWV57bisxfSJdLFsyLDAsIlhee24rMX0iXSxbMiwxLCJYXntuKzF9Il0sWzAsMSwiWF57bn0iXSxbMCwwLCJYXm4gXFxvcGx1cyBZXm4iXSxbMCwxLCJcXGxlZnRbIDFfe1hee24rMX19IFxcIDAgXFxyaWdodF0iXSxbMSwyLCIiLDAseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDAsImRfWF5uIFxcb3BsdXMgZF9ZXm4iXSxbNCwzLCJcXGxlZnRbMV9YXntufSBcXCAwIFxccmlnaHRdIiwyXSxbMywyLCJkX1hebiIsMl1d
+\[\begin{tikzcd}[ampersand replacement=\&,cramped,column sep=large]
+	{X^n \oplus Y^n} \& {X^{n+1} \oplus Y^{n+1}} \& {X^{n+1}} \\
+	{X^{n}} \&\& {X^{n+1}}
+	\arrow["{d_X^n \oplus d_Y^n}", from=1-1, to=1-2]
+	\arrow["{\left[1_X^{n} \ 0 \right]}"', from=1-1, to=2-1]
+	\arrow["{\left[ 1_{X^{n+1}} \ 0 \right]}", from=1-2, to=1-3]
+	\arrow[equals, from=1-3, to=2-3]
+	\arrow["{d_X^n}"', from=2-1, to=2-3]
+\end{tikzcd}\]
+
+Thus $d_X^n$ is an admissible epic by \ref{prop:obscure}, and admits as $n$-kernel\break $(d_X^0, \ldots, d_X^{n-1})$, i.e. $X$ is an admissible $n$-exact sequence. The same can be said about $Y$.
+\end{preuve}
+
+
+
 \section{$n$-cluster tilting subcategories}
 Similar to extension-closed subcategories of abelian categories, there is a higher degree notion that gives us natural examples of $n$-exact categories. But this requires a few more definitions, namely what being functorially finite means.
 
@@ -348,11 +400,11 @@ Both properties can be summarized in the following diagrams:
         \& D \&\& D \\
         {} \& {} \&\& {} \& {}
         \arrow["{f_A}", from=1-1, to=1-2]
-        \arrow["h"', from=1-1, to=2-2]
-        \arrow["{\exists g}", dashed, from=1-2, to=2-2]
+        \arrow["g"', from=1-1, to=2-2]
+        \arrow["{\exists h}", dashed, from=1-2, to=2-2]
         \arrow["{f_A}", from=1-4, to=1-5]
-        \arrow["{\exists g}", dashed, from=2-4, to=1-4]
-        \arrow["h"', from=2-4, to=1-5]
+        \arrow["{\exists h}", dashed, from=2-4, to=1-4]
+        \arrow["g"', from=2-4, to=1-5]
         \arrow["{\text{covariantly finite}}"{description}, from=3-1, to=3-2]
         \arrow["{\text{contravariantly finite}}"{description}, draw=none, from=3-4, to=3-5]
     \end{tikzcd}\]
@@ -361,16 +413,94 @@ Both properties can be summarized in the following diagrams:
 \end{defn}
 
 \begin{rmk}
-In the context of module categories, this is very often true for any subcategory. In fact, if $A$ is an Artin algebra, one can show that every subcategory of $\text{mod}\ A$ is functorially finite if and only if $A$ is of finite representation type (see \cite[Proposition~1.2]{AUSLANDER1991111}).
+In the context of module categories, this is very often true for any subcategory. In fact, if $A$ is an Artin algebra, one can show that every subcategory of $\text{mod}A$ is functorially finite if and only if $A$ is of finite representation type (see \cite[Proposition~1.2]{AUSLANDER1991111}).
 \end{rmk}
 
-
+By adding some criteria on how the Ext functor acts with the subcategory, we come to the definition of $n$-cluster tilting subcategories.
 
 \begin{defn}
-Let $\cat{A}$ be an abelian category and $\cat{D}$ be a full subcategory of $\cat{A}$. $\cat{D}$ is an \emph{$n$-cluster tilting category} if
+Let $\cat{A}$ be an abelian category and $\cat{D}$ be a full subcategory of $\cat{A}$. $\cat{D}$ is an \emph{$n$-cluster tilting subcategory} of $\cat{A}$ if
 \begin{itemize}
     \item it is functorially finite;
-    \item $\cat{D} = \left\{C \in \cat{A} \ \middle|\  \text{Ext}_{\cat{A}}^i(C, D) = 0 \ \forall D \in \cat{D}\right\}$;
-    \item $\cat{D} = \left\{C \in \cat{A} \ \middle|\  \text{Ext}_{\cat{A}}^i(D, C) = 0 \ \forall D \in \cat{D}\right\}$.
+    \item $\cat{D} = \left\{C \in \cat{A} \ \middle|\  \text{Ext}_{\cat{A}}^i(C, D) = 0 \ \forall D \in \cat{D}\ \forall i \in \left\{1, \ldots, n-1\right\} \right\}$;
+    \item $\cat{D} = \left\{C \in \cat{A} \ \middle|\  \text{Ext}_{\cat{A}}^i(D, C) = 0 \ \forall D \in \cat{D}\ \forall i \in \left\{1, \ldots, n-1\right\}\right\}$.
 \end{itemize}
 \end{defn}
+
+Finding $n$-cluster tilting categories is a good way to create examples of $n$-exact categories, as was proven in \cite[Theorem~3.16]{Jasso2016Aug}:
+
+\begin{thm}
+    Let $\cat{A}$ be an abelian category and $\cat{D}$ be an $n$-cluster tilting subcategory of $\cat{A}$. Then $\cat{D}$ is an $n$-exact category with the $n$-exact structure given by the class of all $n$-exact sequences in $\cat{D}$.
+\end{thm}
+
+\begin{rmks}
+
+\begin{itemize}
+    \item G. Jasso actually proved a stronger result, stating that $\cat{D}$ is even an $n$-abelian category. However, we will not go further into this, and only refer to \cite[Section~3.1]{Jasso2016Aug};
+    \item Under a few extra assumptions, the converse statement also holds (see COULDN'T FIND THE SOURCE);
+    \item A similar theory can be built on top of exact categories instead of abelian categories, which leads to obtaining $n$-exact categories that are not necessarily $n$-abelian (see \cite[Section~4.2]{Jasso2016Aug}). Again, a converse statement of sorts also exists, see \cite[Theorem~5.3]{kvamme2025higherextensionclosuredexact}.
+\end{itemize}
+\end{rmks}
+
+\section{Building concrete examples from AR-quivers of path algebras}
+When working in sufficiently nice module categories, it is quite easy to prove a subcategory is $n$-cluster tilting by working on the AR-quiver and interpreting the $\text{Ext}_\Lambda^i$-functor as $i$-extensions.
+
+\begin{expl}
+For the sake of simplicity, there are technical details left unaddressed.
+
+    Consider $\Lambda = \nicefrac{k(1 \xra{\alpha} 2 \xra{\beta} 3)}{\langle \beta \alpha \rangle}$. Its AR-quiver is simply
+
+    % https://q.uiver.app/#q=WzAsNSxbMiwxLCIyIl0sWzMsMCwiMVxcXFwyIl0sWzQsMSwiMSJdLFsxLDAsIjJcXFxcMyJdLFswLDEsIjMiXSxbMCwxXSxbMSwyXSxbMiwwLCIiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMywwXSxbNCwzXSxbMCw0LCIiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
+    \[\begin{tikzcd}[ampersand replacement=\&]
+        \& \green{\begin{array}{c} 2\\3 \end{array}} \&\& \green{\begin{array}{c} 1\\2 \end{array}} \\
+        \red{3} \&\& 2 \&\& \blue{1}
+        \arrow["{p_2}",from=1-2, to=2-3]
+        \arrow["{p_1}", from=1-4, to=2-5]
+        \arrow["{i_3}", from=2-1, to=1-2]
+        \arrow["{i_2}", from=2-3, to=1-4]
+        \arrow[dashed, from=2-3, to=2-1]
+        \arrow[dashed, from=2-5, to=2-3]
+    \end{tikzcd}\]
+\end{expl}
+
+The green modules are indecomposible projective-injective (from left to right $P_2 = I_2$ and $P_1 = I_3$), the red one is an indecomposible projective ($P_3$) and the blue one is an indecomposible injective ($I_1$).
+
+Consider the full subcategory $\cat{M}$ of $\text{mod}\ \Lambda$ given by the additive closure of the colored indecomposibles, i.e. $M \in \cat{M}$ if and only if $M = P_3^{r_1} \oplus P_2^{r_2} \oplus P_1^{r_3} \oplus I_1^{r_4}$.
+
+First, it is functorially finite since $\Lambda$ is an Artin algebra of finite representation type. Let us show it is $2$-cluster tilting. To do so, one must show that both $\text{Ext}_\Lambda^{1}(M, \cat{M}) = 0$ and $\text{Ext}_\Lambda^1(\cat{M}, M) = 0$ for any $M \in \cat{M}$, and that both are non-zero if $M \not \in \cat{M}$. But this can be deduced graphically for the indecomposibles: the only possible $3$-element sequences in $\cat{M}$ with non-zero maps are $P_3 \xra{i_3} P_2 \xra{i_2p_2} P_1$ and ${P_2 \xra{i_2p_2} P_1 \xra{p_2} I_1}$. However, these are certainly not exact, if only for the fact that $l(P_3) + l(P_1) = 3 \neq 2 = l(P_2)$ and\break $l(P_2) + l(P_1) = 3 \neq 2 = l(P_1)$. 
+
+As for sequences ending or starting in an element $M \not\in \cat{M}$, the only indecomposible there is $S_2$. And the only sequence starting in $S_2$ (respectively ending in $S_2$) is $S_2 \xra{i_2} P_1 \xra{p_1} I_1$ (respectively $P_3 \xra{i_3} P_2 \xra{p_2} S_2$). But both of these sequences are almost split, and consequently not split. So they are non-zero as elements of $\text{Ext}_\Lambda^1(I_1, S_2)$ (respectively $\text{Ext}_\Lambda^1(S_2, P_3)$). The same argument holds for any non-indecomposible element as well, by simply reducing to sequences over indecomposibles.
+
+Having successfully proven that, this gives us the first example of a $2$-exact category, with the simplest $2$-exact sequence given by 
+\[P_3 \xra{i_3} P_2 \xra{i_2 p_2} P_1 \xra{p_1} I_1.\]
+
+To see this is $2$-exact, one must check that $(i_3, i_2p_2)$ is a $2$-kernel of $p_1$, and that $(i_2p_2, p_1)$ is a $2$-cokernel of $i_3$. We will check the first statement, the second one being dual. Consider a map $f : C \xra{} P_1$ such that $p_1 f = 0$ and $C \in \text{mod}\ \Lambda$ is an indecomposable module (SHOULD THIS BE ONLY FOR $\cat{M}$??). Then its image is either $S_2$, or $0$. If its image is $0$, one can simply take $\hat{f}: C \xra{} P_2$ to be the zero-map. If its image is $S_2$, then $C$ is either $S_2$ or $P_2$. In the first case, that means that is (equivalent to) $id_{S_2}$, which is an issue. If $C = P_2$, then $f = i_2 p_2$ and one can simply take $\hat{f} = id_{P_2}$.
+
+Next, consider a map $f: C \xra{} P_2$ from an indecomposible module $C \in \text{mod}\ \Lambda$ such that $i_2p_2f = 0$. Since $i_2$ is mono, $p_2f = 0$. But then since $i_3$ is a kernel of $p_2$, there exists a unique map $\hat{f}: C \xra{} P_3$ such that $i_3 \hat{f} = f$. This shows that $(i_3, i_2p_2)$ is a $2$-kernel of $p_1$.
+
+More generally, if one takes $\Lambda = \nicefrac{k(1 \xra{\alpha_1} \cdots \xra{\alpha_{n}} n+1)}{\langle\{\alpha_{i+1}\alpha_i\ | \ i \in \{1, \ldots, n\}\}\rangle}$, we get a natural $n$-tilting subcategory, and therefore an example of an $n$-exact category. However, we may also get some lower exact structures as well.
+
+Consider $\Lambda= \nicefrac{k(1 \xra{\alpha_1} \cdots \xra{\alpha_{4}} 5)}{\langle\{\alpha_{i+1}\alpha_i\ | \ i \in \{1, \ldots, 4\}\}\rangle}$. The AR-quiver of this algebra is given by
+% https://q.uiver.app/#q=WzAsOSxbMiwxLCI0Il0sWzMsMCwiM1xcXFw0Il0sWzQsMSwiMyJdLFs1LDAsIjJcXFxcMyJdLFs2LDEsIjIiXSxbNywwLCIxXFxcXDIiXSxbOCwxLCIxIl0sWzAsMSwiNSJdLFsxLDAsIjRcXFxcNSJdLFswLDEsImlfNCJdLFsxLDIsInBfMyJdLFsyLDMsImlfMyJdLFszLDQsInBfMiJdLFs0LDUsImlfMiJdLFs1LDYsInBfMSJdLFs3LDgsImlfNSJdLFs4LDAsInBfNCJdLFs2LDQsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs0LDIsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsyLDAsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFswLDcsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
+\[\begin{tikzcd}[ampersand replacement=\&, cramped, sep = scriptsize]
+	\& \green{\begin{array}{c} 4\\5 \end{array}} \&\& \green{\begin{array}{c} 3\\4 \end{array}} \&\& \green{\begin{array}{c} 2\\3 \end{array}} \&\& \green{\begin{array}{c} 1\\2 \end{array}} \\
+	\red{5} \&\& 4 \&\& \orange{3} \&\& 2 \&\& \blue{1}
+	\arrow["{p_4}", from=1-2, to=2-3]
+	\arrow["{p_3}", from=1-4, to=2-5]
+	\arrow["{p_2}", from=1-6, to=2-7]
+	\arrow["{p_1}", from=1-8, to=2-9]
+	\arrow["{i_5}", from=2-1, to=1-2]
+	\arrow["{i_4}", from=2-3, to=1-4]
+	\arrow[dashed, from=2-3, to=2-1]
+	\arrow["{i_3}", from=2-5, to=1-6]
+	\arrow[dashed, from=2-5, to=2-3]
+	\arrow["{i_2}", from=2-7, to=1-8]
+	\arrow[dashed, from=2-7, to=2-5]
+	\arrow[dashed, from=2-9, to=2-7]
+\end{tikzcd}\]
+
+The color code is the same as before, $S_3$ is colored orange since we will also consider it in our submodule category.
+
+\begin{sloppypar}
+Let $\cat{M} \subseteq \text{mod}\ \Lambda$ be the full subcategory consisting of the additive closure of the colored indecomposible modules. Similarly to what was done before, we can prove that this is a $2$-cluster tilting subcategory. This time, there are two natural $2$-exact sequences: ${X: P_5 \xra{i_5} P_4 \xra{i_4 p_4} P_3 \xra{p_3} S_3}$ and $Y: S_3 \xra{i_3} P_2 \xra{i_2 p_2} P_1 \xra{p_1} S_1$. By \ref{prop:dir_sum_n_exact}, we also get for example that $X \oplus Y$ is $2$-exact.
+\end{sloppypar}
