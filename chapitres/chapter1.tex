@@ -382,7 +382,7 @@ As was shown by B. Keller in \cite[Appendix~A]{Keller1990}, some of the axioms r
     \[(1_C - \hat{j'} \circ r) \circ \hat{j'} = \hat{j'} - \hat{j'} \circ (r \circ \hat{j'}) = \hat{j'} - \hat{j'} = 0,\]
     we get a unique map $g: Z' \xra{} C$ such that $g \circ \hat{d'} = 1_C - \hat{j'} \circ r$. 
     
-    Note that $-e \circ g = f_3$. Indeed, both $f_3 \circ \hat{e'}$ and $-e \circ g \circ \hat{e'}$ are solutions of the pushout problem
+    Note that $-e \circ g = f_3$, since both $f_3 \circ \hat{e'}$ and $-e \circ g \circ \hat{e'}$ are solutions of the pushout problem
     % https://q.uiver.app/#q=WzAsNSxbMCwwLCJYIl0sWzEsMCwiUCJdLFswLDEsIlkiXSxbMSwxLCJDIl0sWzIsMiwiWiJdLFswLDEsIlxcaGF0e2knfSJdLFswLDIsImkiLDJdLFsyLDMsIlxcaGF0e2onfSIsMl0sWzEsMywiaiJdLFsyLDQsIjAiLDEseyJjdXJ2ZSI6Mn1dLFsxLDQsImZfM1xcaGF0e2QnfSIsMSx7ImN1cnZlIjotMn1dLFszLDQsIi1lZ1xcaGF0e2UnfSA9IGZfMyBcXGhhdHtlJ30iLDEseyJsYWJlbF9wb3NpdGlvbiI6MzAsInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFszLDAsIiIsMSx7InN0eWxlIjp7Im5hbWUiOiJjb3JuZXIifX1dXQ==
     \[\begin{tikzcd}[ampersand replacement=\&,cramped]
         X \& P \\
@@ -420,7 +420,7 @@ As was shown by B. Keller in \cite[Appendix~A]{Keller1990}, some of the axioms r
     Note that $f_3 \circ z = d \circ y$ if and only if $e \circ (\hat{j'} \circ y + g \circ z) = 0$ (using that $ d = e \circ \hat{j'}$ and $f_3 = - e \circ g$). Thus, using that $j$ is a kernel of $e$, we get a unique map $h: D \xra{} P$ such that $j \circ h = \hat{j'} \circ y + g \circ z$. Then, note that $r \circ g \circ \hat{e'} = r \circ (1_C - \hat{j'} \circ r) = r - r = 0$, and therefore $r \circ g = 0$. Thus,
     \[\hat{f_2} \circ h = r \circ j \circ h = r \circ \hat{j'} \circ y + r \circ g \circ z = y.\]
 
-    Then, since $\hat{e'} \circ g \circ \hat{e'} = \hat{e'} \circ (1_C - \hat{j'} \circ r) = \hat{e'}$ as $(\hat{j'}, \hat{e'})$ is a conflation, we get that $\hat{e'} \circ g = 1_{Z'}$. Finally,
+    In addition, since $\hat{e'} \circ g \circ \hat{e'} = \hat{e'} \circ (1_C - \hat{j'} \circ r) = \hat{e'}$ as $(\hat{j'}, \hat{e'})$ is a conflation, we get that $\hat{e'} \circ g = 1_{Z'}$. Finally,
     \[ \hat{d'} \circ h = \hat{e'} \circ j \circ h = \hat{e'} \circ \hat{j'} \circ y + \hat{e'} \circ g \circ z = z.\]
 
     Thus, we get that $\hat{d'} \circ h = z$ and $\hat{f_2} \circ h = y$, i.e. $h$ solves the pullback problem. This allows us to conclude that the square
