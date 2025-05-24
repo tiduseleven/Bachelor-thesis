@@ -57,7 +57,7 @@ Before defining $n$-exact categories, there are many prerequisites that need to 
         The result for weak cokernels is dual.
     \end{enumerate}
 
-    In summary, weak cokernels and weak kernels have a very similar property to that of cokernels and kernels, except that uniqueness in our factoring of morphisms is not guaranteed. In other words, the only difference is that a weak kernel is not necessarily monic, and a weak cokernel is not necessarily epic.
+    In summary, weak cokernels and weak kernels have a very similar property to that of cokernels and kernels, except that uniqueness in our factoring of morphisms is not guaranteed. In other words, the only difference is that a weak kernel is not necessarily a monomorphism, and a weak cokernel is not necessarily an epimorphism.
 \end{rmks}
 
 This notion is quite fundamental in the elaboration of $n$-kernels and $n$-cokernels.
@@ -222,18 +222,18 @@ All of this preliminary work being done, we can finally proceed to define $n$-ex
 
 \subsection{$n$-exact categories}
 
-With the proper tools put in place, it is quite straightforward to expand the definition of exact categories to longer exact sequences. Similar to what was done in chapter 1, we proceed with admissible $n$-exact sequences, admissible monics, and  admissible epics.
+With the proper tools put in place, it is quite straightforward to expand the definition of exact categories to longer exact sequences. Similar to what was done in chapter 1, we proceed with admissible $n$-exact sequences, admissible monomorphisms, and admissible epimorphisms.
 
 \begin{defn}
     Let $\cat{E}$ be a class of $n$-exact sequences in $\cat{A}$. An\break \emph{$\cat{E}$-admissible $n$-exact sequence} is an $n$-exact sequence that is in $\cat{E}$. 
-    An \emph{$\cat{E}$-admissible monic} is a morphism $d_X^{0}: X^0 \rightarrow X^1$ such that there is an $\cat{E}$-admissible $n$-exact sequence
+    An \emph{$\cat{E}$-admissible monomorphism} is a morphism $d_X^{0}: X^0 \rightarrow X^1$ such that there is an $\cat{E}$-admissible $n$-exact sequence
     \[X^0 \xra{d_X^{0}} X^1 \xra{d_X^{1}} \cdots \xra{d_X^n} X^{n+1}.\]
     
-    Dually, an \emph{$\cat{E}$-admissible epic} is a morphism $d_X^n: X^n \rightarrow X^{n+1}$ such that there is an $\cat{E}$-admissible $n$-exact sequence 
+    Dually, an \emph{$\cat{E}$-admissible epimorphism} is a morphism $d_X^n: X^n \rightarrow X^{n+1}$ such that there is an $\cat{E}$-admissible $n$-exact sequence 
     \[X^0\xra{d_X^{0}} \cdots \xra{d_X^{n-1}} X^n \xra{d_X^{n}} X^{n+1}.\]
     
-    Whenever the context is clear, we will simply say admissible $n$-exact sequence (respectively admissible monic, admissible epic).
-    We shall write $X^{0} \xratshit{d_{X}^{0}} X^{1}$ for admissible monics and $X^{n} \xrathshit{d_X^n} X^{n+1}$ for admissible epics.
+    Whenever the context is clear, we will simply say admissible $n$-exact sequence (respectively admissible monomorphism, admissible epimorphism).
+    We shall write $X^{0} \xratshit{d_{X}^{0}} X^{1}$ for admissible monomorphisms and $X^{n} \xrathshit{d_X^n} X^{n+1}$ for admissible epimorphisms.
 \end{defn}
 
 The following definition simply adapts the axioms of exact categories to the definitions given in the previous section:
@@ -243,8 +243,8 @@ The following definition simply adapts the axioms of exact categories to the def
     \begin{sloppypar}
     \begin{itemize}[align=right]
         \item[{[E0]}] The sequence $0 \rightarrowtail 0 \rightarrow \cdots \twoheadrightarrow 0$ is an $\cat{E}$-admissible $n$-exact sequence;
-        \item[{[E1]}] The composition of two $\cat{E}$-admissible monics yields an ${\cat{E}\text{-admissible monic}}$;
-        \item[{[E1${\op}$]}] The composition of two $\cat{E}$-admissible epics yields an ${\cat{E}\text{-admissible epic}}$;
+        \item[{[E1]}] The composition of two $\cat{E}$-admissible monomorphisms yields an ${\cat{E}\text{-admissible monomorphism}}$;
+        \item[{[E1${\op}$]}] The composition of two $\cat{E}$-admissible epimorphisms yields an ${\cat{E}\text{-admissible epimorphism}}$;
         \item[{[E2]}] If $X: X^0 \xratshit{d_X^0} \ldots \xrathshit{d_X^n} X^{n+1}$ is an $\cat{E}$-admissible $n$-exact sequence and $X^0 \xra{f^0} Y^0$ is a morphism in $\cat{A}$, there exists an $n$-pushout of $(d_X^0, \ldots, d_X^{n-1})$ along $f^0$
         % https://q.uiver.app/#q=WzAsMTEsWzAsMCwiWDoiXSxbMCwyLCJZOiJdLFsyLDAsIlheMCJdLFsyLDIsIlleMCJdLFs0LDAsIlheMSJdLFs0LDIsIlleMSJdLFs2LDAsIlxcbGRvdHMiXSxbNiwyLCJcXGxkb3RzIl0sWzgsMCwiWF5uIl0sWzgsMiwiWV5uIl0sWzEwLDAsIlhee24rMX0iXSxbMCwxLCJmIl0sWzIsNCwiZF9YXjAiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtb25vIn19fV0sWzMsNSwiZF9ZXnswfSIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1vbm8ifSwiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzIsMywiZl4wIl0sWzQsNSwiZl4xIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzQsNiwiZF9YXjEiXSxbNSw3LCJkX1leezF9IiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzYsOCwiZF9YXntuLTF9Il0sWzcsOSwiZF9ZXntuLTF9IiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzgsOSwiZl5uIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzgsMTAsImRfWF57bn0iLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifSwiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV1d
         \[\begin{tikzcd}[ampersand replacement=\&,sep=small]
@@ -263,7 +263,7 @@ The following definition simply adapts the axioms of exact categories to the def
             \arrow["{d_Y^{1}}", dashed, from=3-5, to=3-7]
             \arrow["{d_Y^{n-1}}", dashed, from=3-7, to=3-9]
         \end{tikzcd}\]
-        such that $d_Y^0$ is an $\cat{E}$-admissible monic;
+        such that $d_Y^0$ is an $\cat{E}$-admissible monomorphism;
         \item[{[E2${\op}$]}] If $Y: Y^0 \xratshit{d_Y^0} \ldots \xrathshit{d_Y^n} Y^{n+1}$ is an $\cat{E}$-admissible $n$-exact sequence and $X^{n+1} \xra{f^{n+1}} Y^{n+1}$ is a morphism in $\cat{A}$, there is an $n$-pullback of $(d_Y^1, \ldots, d_Y^n)$ along $f^{n+1}$
         % https://q.uiver.app/#q=WzAsMTEsWzAsMCwiWDoiXSxbMCwyLCJZOiJdLFs0LDAsIlheMSJdLFs2LDAsIlxcbGRvdHMiXSxbOCwwLCJYXntufSJdLFs0LDIsIlleMSJdLFs2LDIsIlxcbGRvdHMiXSxbOCwyLCJZXntufSJdLFsxMCwyLCJZXntuKzF9Il0sWzEwLDAsIlhee24rMX0iXSxbMiwyLCJZXjAiXSxbMCwxLCJmIl0sWzIsMywiZF9YXjEiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMyw0LCJkX1hee24tMX0iLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbNSw2LCJkX1leMSJdLFs2LDcsImRfWV57bi0xfSJdLFs3LDgsImRfWV5uIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV0sWzQsOSwiZF9YXntufSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbOSw4LCJmXntuKzF9Il0sWzEwLDUsImRfWV4wIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibW9ubyJ9LCJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifX19XSxbMiw1LCJmXjEiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbNCw3LCJmXm4iLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
         \[\begin{tikzcd}[ampersand replacement=\&,sep=small]
@@ -282,7 +282,7 @@ The following definition simply adapts the axioms of exact categories to the def
             \arrow["{d_Y^{n-1}}", from=3-7, to=3-9]
             \arrow["{d_Y^n}", two heads, from=3-9, to=3-11]
         \end{tikzcd}\]
-        such that $d_X^n$ is an $\cat{E}$-admissible epic.
+        such that $d_X^n$ is an $\cat{E}$-admissible epimorphism.
     \end{itemize}
     \end{sloppypar}
 
@@ -291,7 +291,7 @@ The following definition simply adapts the axioms of exact categories to the def
 
 \begin{rmks}
     \begin{itemize}
-        \item The axiom $[E0]$ given here seems to be less restrictive than the $[E0]$ and $[E0^{op}]$ of exact categories. However, if $n \geq 2$, note that identity morphisms are also admissible monics since 
+        \item The axiom $[E0]$ given here seems to be less restrictive than the $[E0]$ and $[E0^{op}]$ of exact categories. However, if $n \geq 2$, note that identity morphisms are also admissible monomorphisms since 
         % https://q.uiver.app/#q=WzAsMTAsWzAsMCwiWCJdLFsxLDAsIlgiXSxbMiwwLCIwIl0sWzMsMCwiXFxjZG90cyJdLFs0LDAsIjAiXSxbMCwxLCIwIl0sWzEsMSwiMCJdLFsyLDEsIjAiXSxbMywxLCJcXGNkb3RzIl0sWzQsMSwiMCJdLFsxLDJdLFsyLDNdLFszLDRdLFswLDVdLFs1LDZdLFs2LDddLFs3LDhdLFs4LDldLFsxLDZdLFsyLDddLFs0LDldLFswLDEsIjFfWCJdXQ==
         \[\begin{tikzcd}[ampersand replacement=\&]
             X \& X \& 0 \& \cdots \& 0 \\
@@ -309,8 +309,8 @@ The following definition simply adapts the axioms of exact categories to the def
             \arrow[from=2-3, to=2-4]
             \arrow[from=2-4, to=2-5]
         \end{tikzcd}\]
-        is a weak isomorphism. Identity morphisms are admissible epics for the same reason.\\
-        \item One can show that $n$-kernels and $n$-cokernels are unique up to weak isomorphism. As such, all $n$-kernels (respectively \break $n$-cokernels) of an admissible epic (respectively admissible \break monic) fit into an admissible $n$-exact sequence.
+        is a weak isomorphism. Identity morphisms are admissible epimorphisms for the same reason.\\
+        \item One can show that $n$-kernels and $n$-cokernels are unique up to weak isomorphism. As such, all $n$-kernels (respectively \break $n$-cokernels) of an admissible epimorphism (respectively admissible \break monomorphism) fit into an admissible $n$-exact sequence.
     \end{itemize}
 \end{rmks}
 
@@ -363,11 +363,11 @@ Assume both $X$ and $Y$ are admissible $n$-exact sequences. Consider the sequenc
         \arrow["{d_X^n}", from=1-5, to=1-6]
     \end{tikzcd}\]
 
-    Since it is different of $X$ only by a contractible complex, it is weakly isomorphic to it, and therefore an admissible $n$-exact sequences. Thus $d_X^0 \oplus 1_{Y^0}$ is an admissible monic. Similarly, $1_{X^1} \oplus d_Y^0$ is an admissible monic. Thus, because of [E1],
+    Since it is different of $X$ only by a contractible complex, it is weakly isomorphic to it, and therefore an admissible $n$-exact sequences. Thus $d_X^0 \oplus 1_{Y^0}$ is an admissible monomorphism. Similarly, $1_{X^1} \oplus d_Y^0$ is an admissible monomorphism. Thus, because of [E1],
     \[d_X^0 \oplus d_Y^0 = (1_{X^1} \oplus d_Y^0) \circ (d_X^0 \oplus 1_{Y^0})\]
-    is an admissible monic, and $(d_X^1 \oplus d_Y^1, \ldots, d_X^n \oplus d_Y^n)$ is one of its $n$-cokernels. As such, $X \oplus Y$ is a admissible $n$-exact sequence.
+    is an admissible monomorphism, and $(d_X^1 \oplus d_Y^1, \ldots, d_X^n \oplus d_Y^n)$ is one of its $n$-cokernels. As such, $X \oplus Y$ is a admissible $n$-exact sequence.
 
-Conversely, assume $X \oplus Y$ is an admissible $n$-exact sequence. Then, we can exhibit $\left[d_X^n \ 0\right] = \left[1_{X^{n+1}} \ 0\right] \circ (d_X^n \oplus d_Y^n)$ (which is an admissible epic by [E1$\op$]) as
+Conversely, assume $X \oplus Y$ is an admissible $n$-exact sequence. Then, we can exhibit $\left[d_X^n \ 0\right] = \left[1_{X^{n+1}} \ 0\right] \circ (d_X^n \oplus d_Y^n)$ (which is an admissible epimorphism by [E1$\op$]) as
 % https://q.uiver.app/#q=WzAsNSxbMSwwLCJYXntuKzF9IFxcb3BsdXMgWV57bisxfSJdLFsyLDAsIlhee24rMX0iXSxbMiwxLCJYXntuKzF9Il0sWzAsMSwiWF57bn0iXSxbMCwwLCJYXm4gXFxvcGx1cyBZXm4iXSxbMCwxLCJcXGxlZnRbIDFfe1hee24rMX19IFxcIDAgXFxyaWdodF0iXSxbMSwyLCIiLDAseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDAsImRfWF5uIFxcb3BsdXMgZF9ZXm4iXSxbNCwzLCJcXGxlZnRbMV9YXntufSBcXCAwIFxccmlnaHRdIiwyXSxbMywyLCJkX1hebiIsMl1d
 \[\begin{tikzcd}[ampersand replacement=\&,cramped,column sep=large]
 	{X^n \oplus Y^n} \& {X^{n+1} \oplus Y^{n+1}} \& {X^{n+1}} \\
@@ -379,7 +379,7 @@ Conversely, assume $X \oplus Y$ is an admissible $n$-exact sequence. Then, we ca
 	\arrow["{d_X^n}"', from=2-1, to=2-3]
 \end{tikzcd}\]
 
-Thus $d_X^n$ is an admissible epic by \cref{prop:obscure}, and admits as $n$-kernel\break $(d_X^0, \ldots, d_X^{n-1})$, i.e. $X$ is an admissible $n$-exact sequence. The same can be said about $Y$.
+Thus $d_X^n$ is an admissible epimorphism by \cref{prop:obscure}, and admits as $n$-kernel\break $(d_X^0, \ldots, d_X^{n-1})$, i.e. $X$ is an admissible $n$-exact sequence. The same can be said about $Y$.
 \end{preuve}
 
 

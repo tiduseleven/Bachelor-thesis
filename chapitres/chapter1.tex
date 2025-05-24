@@ -4,27 +4,27 @@ As a way to generalize the notion of abelian categories, one can look at a gener
 The content of this chapter is inspired by the lecture notes of MA3204 Homological Algebra \cite{homalg}, the article about exact categories by T. Bühler \cite{Buhler2010Jan} and B. Keller's notes on exact categories \cite[Appendix~A]{Keller1990}.
 
 \subsection{Motivation} \label{section:chapone_motivation}
-When studying abelian categories, there are many convenient properties related to monics and epics, which are used to prove results about short exact sequences. Let us recall a few:
+When studying abelian categories, there are many convenient properties related to monomorphisms and epimorphisms, which are used to prove results about short exact sequences. Let us recall a few:
 
 \begin{prop} \label{prop:popb_abelian}
     In an abelian category, 
     \begin{itemize}
-        \item every monic is a kernel of its cokernel;
-        \item every epic is a cokernel of its kernel.
+        \item every monomorphism is a kernel of its cokernel;
+        \item every epimorphism is a cokernel of its kernel.
     \end{itemize}
 
     Furthermore, the following properties hold:
     \begin{itemize}
-        \item the pushout of a monic is a monic;
-        \item the pullback of a monic is a monic;
-        \item the pushout of an epic is an epic;
-        \item the pullback of an epic is an epic.
+        \item the pushout of a monomorphism is a monomorphism;
+        \item the pullback of a monomorphism is a monomorphism;
+        \item the pushout of an epimorphism is an epimorphism;
+        \item the pullback of an epimorphism is an epimorphism.
     \end{itemize}
 \end{prop}
 
 We refer the reader to \cite[Sections~12-13]{homalg} for the proofs of these facts.
 
-Fundamentally, this tells us that every monic and every epic fits into a short exact sequence, and that taking the pullback or pushout of a morphism that is part of a short exact sequence gives rise to another short exact sequence. Indeed, if $f: A \rightarrowtail B$ is monic, then it fits into the short exact sequence $\ses{A}{B}{\Cok{f}}{f}{\cok{f}}$. Furthermore, since morphisms that are part of a short exact sequence are either monic or epic, they will once again be monic or epic after a pullback or pushout, thus will once again fit in a short exact sequence.
+Fundamentally, this tells us that every monomorphism and every epimorphism fits into a short exact sequence, and that taking the pullback or pushout of a morphism that is part of a short exact sequence gives rise to another short exact sequence. Indeed, if $f: A \rightarrowtail B$ is a monomorphism, then it fits into the short exact sequence $\ses{A}{B}{\Cok{f}}{f}{\cok{f}}$. Furthermore, since morphisms that are part of a short exact sequence are either monomorphisms or epimorphisms, they will once again be a monomorphism or an epimorphism after a pullback or pushout, thus will once again fit in a short exact sequence.
 
 Let us quickly recall what it means for a class of composable morphisms to be closed under isomorphisms.
 
@@ -65,9 +65,9 @@ There are many properties we can conclude about kernels and cokernels using the 
 
     [E0] and [E0${\op}$] follow directly from the fact that the identity morphism is both the kernel and cokernel of the zero map.
 
-    We can deduce [E1] and [E1${\op}$] by recalling that composing monics (respectively epics) gives us monics and that monics are kernels of their cokernel (respectively epics are cokernels of their kernel).
+    We can deduce [E1] and [E1${\op}$] by recalling that composing monomorphisms (respectively epimorphisms) gives us monomorphisms and that monomorphisms are kernels of their cokernel (respectively epimorphisms are cokernels of their kernel).
 
-    As for [E2], recall that kernels are always monic. Thus, by \cref{prop:popb_abelian}, the pushout of a kernel is monic as well. But then, by \cref{prop:popb_abelian} again, it is a kernel of its cokernel, thus it is a kernel.
+    As for [E2], recall that kernels are always monomorphisms. Thus, by \cref{prop:popb_abelian}, the pushout of a kernel is a monomorphism as well. But then, by \cref{prop:popb_abelian} again, it is a kernel of its cokernel, thus it is a kernel.
     The proof for [E2${\op}$] is similar.
 \end{preuve}
 
@@ -85,7 +85,7 @@ Based on the observations from the last section, one can define a more general n
 In the context of abelian categories, we notice that kernel-cokernel pairs indeed give rise to short exact sequences in the usual sense. In a general additive category, however, we cannot say the same since we have no guarantee that kernels and cokernels even exist for arbitrary morphisms, and thus we are unsure that $\Img{i}$ exists. But we will use our intuition from abelian categories to expand the notion of short exact sequences to additive categories. First, let us fix some terminology.
 
 \begin{defn}
-    Let $\cat{A}$ be an additive category and $\cat{E}$ be a class of kernel-cokernel pairs in $\cat{A}$. We call a morphism $i: A \xra{} B$ an \emph{inflation} (or \emph{admissible monic}) if there exists a morphism $p: B \xra{} C$ such that $(i,p) \in \cat{E}$. Dually, we call a morphism $q: B \xra{} C$ a \emph{deflation} (or \emph{admissible epic}) if there exists a morphism $j: A \xra{} B$ such that $(j,q) \in \cat{E}$. We use $A \xrat{i} B$ for inflations, and $B \xrath{p} C$ for deflations. We say $\cat{E}$ is \emph{closed under isomorphisms} if whenever we have $A \xra{i} B \xra{p} C \in \cat{E}$ fitting in a commutative diagram
+    Let $\cat{A}$ be an additive category and $\cat{E}$ be a class of kernel-cokernel pairs in $\cat{A}$. We call a morphism $i: A \xra{} B$ an \emph{inflation} (or \emph{admissible monomorphism}) if there exists a morphism $p: B \xra{} C$ such that $(i,p) \in \cat{E}$. Dually, we call a morphism $q: B \xra{} C$ a \emph{deflation} (or \emph{admissible epimorphism}) if there exists a morphism $j: A \xra{} B$ such that $(j,q) \in \cat{E}$. We use $A \xrat{i} B$ for inflations, and $B \xrath{p} C$ for deflations. We say $\cat{E}$ is \emph{closed under isomorphisms} if whenever we have $A \xra{i} B \xra{p} C \in \cat{E}$ fitting in a commutative diagram
     % https://q.uiver.app/#q=WzAsNixbMCwwLCJBIl0sWzEsMCwiQiJdLFsyLDAsIkMiXSxbMCwxLCJBJyJdLFsxLDEsIkInIl0sWzIsMSwiQyciXSxbMCwxLCJpIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibW9ubyJ9fX1dLFsxLDIsInAiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbMCwzLCJhIiwyXSxbMyw0LCJqIiwyXSxbNCw1LCJxIiwyXSxbMSw0LCJiIiwyXSxbMiw1LCJjIl1d
 \[\begin{tikzcd}[ampersand replacement=\&,cramped]
 	A \& B \& C \\
@@ -196,7 +196,7 @@ In that context, we say that $B$ is an \emph{extension of $C$ by $A$}.
         \arrow["e", from=2-2, to=2-3]
     \end{tikzcd}\]
 
-    where $C = \Cok{j}$. From basic results in abelian categories, we know that $j$ is monic, and that we can choose $C = Z$ (see \cite[Proposition~13.7]{homalg} for the latter). Thus the sequence $A \xrat{j} B \xrath{e} Z$ is short exact, with both $A$ and $Z$ in $\cat{C}$, which implies that $B \in \cat{C}$ since it is extension-closed. We therefore get a short exact sequence in $\cat{C}$, and $j$ is an inflation. The proof for [E2$\op$] is dual.
+    where $C = \Cok{j}$. From basic results in abelian categories, we know that $j$ is a monomorphism, and that we can choose $C = Z$ (see \cite[Proposition~13.7]{homalg} for the latter). Thus the sequence $A \xrat{j} B \xrath{e} Z$ is short exact, with both $A$ and $Z$ in $\cat{C}$, which implies that $B \in \cat{C}$ since it is extension-closed. We therefore get a short exact sequence in $\cat{C}$, and $j$ is an inflation. The proof for [E2$\op$] is dual.
 
     To prove [E1], let us consider short exact sequences $A \xrat{i} B \xrath{d} C$ and $B \xrat{j} Y \xrath{e} Z$ in $\cat{C}$. Then we can construct the following pushout in the ambient category:
     % https://q.uiver.app/#q=WzAsNSxbMCwwLCJBIl0sWzEsMCwiQiJdLFsyLDAsIlkiXSxbMSwxLCJDIl0sWzIsMSwiRSJdLFswLDEsImkiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtb25vIn19fV0sWzEsMiwiaiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1vbm8ifX19XSxbMSwzLCJkIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV0sWzMsNCwiayIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1vbm8ifX19XSxbMiw0LCJmIl0sWzQsMSwiIiwxLHsic3R5bGUiOnsibmFtZSI6ImNvcm5lciJ9fV1d
@@ -210,11 +210,11 @@ In that context, we say that $B$ is an \emph{extension of $C$ by $A$}.
         \arrow["k", tail, from=2-2, to=2-3]
         \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-3, to=1-2]
     \end{tikzcd}\]
-    By \cref{prop:popb_abelian}, we know that $f$ is epic. It then remains to prove that $j \circ i$ is a kernel of $f$. Since $j$ is monic, one can show that the square is also a pullback (see \cite[Corollary~13.6]{homalg} for a proof). 
+    By \cref{prop:popb_abelian}, we know that $f$ is an epimorphism. It then remains to prove that $j \circ i$ is a kernel of $f$. Since $j$ is a monomorphism, one can show that the square is also a pullback (see \cite[Corollary~13.6]{homalg} for a proof). 
     Consider $g: X \xra{} Y$ such that $f \circ g = 0$. Using the pullback property on $g: X \xra{} Y$ and $0: X \xra{} C$, we get a unique map $\hat{g}: X \xra{} B$ such that $j \circ \hat{g} = g$ and $d \circ \hat{g} = 0$.
     Now using that $i$ is a kernel of $d$, we get a unique map $\hat{\hat{g}}: X \xra{} A$ such that $i \circ \hat{\hat{g}} = \hat{g}$. In particular, $(j \circ i) \circ \hat{\hat{g}} = g$, and $\hat{\hat{g}}$ is the unique map satisfying this property. Finally, we note that 
     \[f \circ (j \circ i) = (f \circ j) \circ i = (k \circ d) \circ i = k \circ (d \circ i) = 0\]
-    so that we can conclude that $j \circ i$ is a kernel of $f$. Since $f$ is epic and $j \circ i$ is its kernel, we conclude that $A \xrat{j\circ i} Y \xrath{f} E$ is a short exact sequence in $\cat{C}$. As such, inflations are closed under composition. Proving [E1$\op$] is dual.
+    so that we can conclude that $j \circ i$ is a kernel of $f$. Since $f$ is an epimorphism and $j \circ i$ is its kernel, we conclude that $A \xrat{j\circ i} Y \xrath{f} E$ is a short exact sequence in $\cat{C}$. As such, inflations are closed under composition. Proving [E1$\op$] is dual.
 \end{preuve}
 \begin{rmk}
     A slightly modified converse statement is also true, and is known as the \emph{Gabriel-Quillen embedding theorem}. It states that, if $(\cat{A}, \cat{E})$ is an exact category with $\cat{A}$ small, there is an embedding (i.e. a faithful functor that is injective on the objects) $\cat{A} \xhookrightarrow{} \cat{B}$ into an abelian category such that $\cat{E}$ is the class of all short exact sequences in $\cat{B}$.
@@ -401,7 +401,7 @@ As was shown by B. Keller in \cite[Appendix~A]{Keller1990}, some of the axioms r
     Indeed, that both compositions with $\hat{j'}$ are zero is direct since $(\hat{j'}, \hat{e'})$ is a conflation. 
     And since $ - e\circ (g \circ \hat{e'}) = -e \circ (1_C - \hat{j'} \circ r) = - e + d \circ r$, we get that 
     \[(- e\circ g \circ \hat{e'}) \circ j = (-e + d \circ r) \circ j = - e\circ j + d \circ b = f_3 \circ \hat{d'}.\]
-    so that it solves the pushout problem. Similarly, $f_3 \circ (\hat{e'} \circ j) = f_3 \circ \hat{d'}$, so it solves the pushout problem as well. Thus, $- e \circ g \circ \hat{e'} = f_3 \circ \hat{e'}$ and therefore $- e \circ g = f_3$ since $\hat{e'}$ is epic.
+    so that it solves the pushout problem. Similarly, $f_3 \circ (\hat{e'} \circ j) = f_3 \circ \hat{d'}$, so it solves the pushout problem as well. Thus, $- e \circ g \circ \hat{e'} = f_3 \circ \hat{e'}$ and therefore $- e \circ g = f_3$ since $\hat{e'}$ is an epimorphism.
 
     Now we are ready to show that $P$ is the pullback of $d$ along $f_3$. Consider the commutative diagram
     % https://q.uiver.app/#q=WzAsNSxbMSwxLCJQIl0sWzIsMSwiWiciXSxbMSwyLCJZIl0sWzIsMiwiWiJdLFswLDAsIkQiXSxbMCwxLCJcXGhhdHtkJ30iXSxbMCwyLCJcXGhhdHtmXzJ9IiwyXSxbMiwzLCJkIiwyXSxbMSwzLCJmXzMiXSxbNCwxLCJ6IiwxLHsiY3VydmUiOi0yfV0sWzQsMiwieSIsMSx7ImN1cnZlIjoyfV1d
