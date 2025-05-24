@@ -29,7 +29,7 @@ Fundamentally, this tells us that every monomorphism and every epimorphism fits 
 Let us quickly recall what it means for a class of composable morphisms to be closed under isomorphisms.
 
 \begin{defn}
-    Let $\cat{E}$ be a class of composable morphisms, i.e. a set of pairs $(f,g)$ where the codomain of $f$ is the domain of $g$. We say $\cat{E}$ is \emph{closed under isomorphisms} if, for any commutative diagram 
+    Let $\cat{E}$ be a class of composable morphisms, i.e.\ a set of pairs $(f,g)$ where the codomain of $f$ is the domain of $g$. We say $\cat{E}$ is \emph{closed under isomorphisms} if, for any commutative diagram 
    % https://q.uiver.app/#q=WzAsNixbMCwwLCJBIl0sWzEsMCwiQiJdLFsyLDAsIkMiXSxbMCwxLCJBJyJdLFsxLDEsIkInIl0sWzIsMSwiQyciXSxbMCwxLCJmIl0sWzEsMiwiZyJdLFswLDMsImEiLDJdLFszLDQsImYnIiwyXSxbNCw1LCJnJyIsMl0sWzEsNCwiYiIsMl0sWzIsNSwiYyJdXQ==
     \[\begin{tikzcd}[ampersand replacement=\&,cramped]
         A \& B \& C \\
@@ -43,13 +43,13 @@ Let us quickly recall what it means for a class of composable morphisms to be cl
         \arrow["{g'}"', from=2-2, to=2-3]
     \end{tikzcd}\]
 
-    where $(f,g) \in \cat{E}$ and the vertical maps are isomorphisms, $(f',g') \in \cat{E}$.
+    where $(f,g) \in \cat{E}$ and the vertical maps are isomorphisms, we have $(f',g') \in \cat{E}$.
 \end{defn}
 
 There are many properties we can conclude about kernels and cokernels using the previous results and this definition. These properties are what will motivate the definition of exact categories.
 
 \begin{prop} \label{prop:ab_is_exact}
-    Let $\cat{A}$ be an abelian category and let $\cat{E}$ be the class of short exact sequences. $\cat{E}$ is closed under isomorphisms. Furthermore, the following hold:
+    Let $\cat{A}$ be an abelian category and let $\cat{E}$ be the class of short exact sequences in $\cat{A}$. Then $\cat{E}$ is closed under isomorphisms. Furthermore, the following hold:
     \begin{itemize}[align=right]
         \item[\textnormal{[E0]}] For any object $A \in \cat{A}$, the identity morphism $1_A$ is a kernel;
         \item[\textnormal{[E0${\op}$]}] For any object $A \in \cat{A}$, the identity morphism $1_A$ is a cokernel;
@@ -65,27 +65,27 @@ There are many properties we can conclude about kernels and cokernels using the 
 
     [E0] and [E0${\op}$] follow directly from the fact that the identity morphism is both the kernel and cokernel of the zero map.
 
-    We can deduce [E1] and [E1${\op}$] by recalling that composing monomorphisms (respectively epimorphisms) gives us monomorphisms and that monomorphisms are kernels of their cokernel (respectively epimorphisms are cokernels of their kernel).
+    We can deduce [E1] and [E1${\op}$] by recalling that composing monomorphisms (reps.\ epimorphisms) gives us monomorphisms (resp.\ epimorphisms) and that monomorphisms are kernels of their cokernel (resp.\ epimorphisms are cokernels of their kernel).
 
     As for [E2], recall that kernels are always monomorphisms. Thus, by \cref{prop:popb_abelian}, the pushout of a kernel is a monomorphism as well. But then, by \cref{prop:popb_abelian} again, it is a kernel of its cokernel, thus it is a kernel.
     The proof for [E2${\op}$] is similar.
 \end{preuve}
 
 \begin{rmk}
-    We can in a very similar way prove that the pullback of a kernel (respectively the pushout of a cokernel) is a kernel (respectively cokernel), however we choose not to include this as it turns out to be unnecessary for many results.
+    We can in a very similar way prove that the pullback of a kernel (respectively the pushout of a cokernel) is a kernel (respectively cokernel). However, we choose not to include this as it turns out to be unnecessary for many results.
 \end{rmk}
 
 \subsection{Exact categories}
-Based on the observations from the last section, one can define a more general notion that encapsulates the idea of short exact sequences, namely exact categories. To do so, let us first define kernel-cokernel pairs.
+Based on the observations for abelian categories from the last section, one can define a more general notion that encapsulates the idea of short exact sequences, namely exact categories. To do so, let us first define kernel-cokernel pairs.
 
 \begin{defn}
     Let $\cat{A}$ be an additive category. A \emph{kernel-cokernel pair} $(i,p)$ in $\cat{A}$ is a pair of composable morphisms $A \xra{i} B \xra{p} C$ such that $i$ is a kernel of $p$ and $p$ is a cokernel of $i$.
 \end{defn}
 
-In the context of abelian categories, we notice that kernel-cokernel pairs indeed give rise to short exact sequences in the usual sense. In a general additive category, however, we cannot say the same since we have no guarantee that kernels and cokernels even exist for arbitrary morphisms, and thus we are unsure that $\Img{i}$ exists. But we will use our intuition from abelian categories to expand the notion of short exact sequences to additive categories. First, let us fix some terminology.
+In the context of abelian categories, we notice that kernel-cokernel pairs indeed give rise to short exact sequences in the usual sense. In a general additive category, however, we cannot say the same since we have no guarantee that kernels and cokernels even exist for arbitrary morphisms, and thus images need not exist. But we will use the intuition developed in the context of abelian categories to generalize the concept of short exact sequences to the setting of additive categories. First, let us fix some terminology.
 
 \begin{defn}
-    Let $\cat{A}$ be an additive category and $\cat{E}$ be a class of kernel-cokernel pairs in $\cat{A}$. We call a morphism $i: A \xra{} B$ an \emph{inflation} (or \emph{admissible monomorphism}) if there exists a morphism $p: B \xra{} C$ such that $(i,p) \in \cat{E}$. Dually, we call a morphism $q: B \xra{} C$ a \emph{deflation} (or \emph{admissible epimorphism}) if there exists a morphism $j: A \xra{} B$ such that $(j,q) \in \cat{E}$. We use $A \xrat{i} B$ for inflations, and $B \xrath{p} C$ for deflations. We say $\cat{E}$ is \emph{closed under isomorphisms} if whenever we have $A \xra{i} B \xra{p} C \in \cat{E}$ fitting in a commutative diagram
+    Let $\cat{A}$ be an additive category and $\cat{E}$ be a class of kernel-cokernel pairs in $\cat{A}$. We call a morphism $i: A \xra{} B$ an \emph{inflation} (or \emph{admissible monomorphism}) if there exists a morphism $p: B \xra{} C$ such that $(i,p) \in \cat{E}$. Dually, we call a morphism $q: B \xra{} C$ a \emph{deflation} (or \emph{admissible epimorphism}) if there exists a morphism $j: A \xra{} B$ such that $(j,q) \in \cat{E}$. We use the notation $A \xrat{i} B$ for inflations, and $B \xrath{p} C$ for deflations. We say that $\cat{E}$ is \emph{closed under isomorphisms} if whenever we have $A \xra{i} B \xra{p} C \in \cat{E}$ fitting in a commutative diagram
     % https://q.uiver.app/#q=WzAsNixbMCwwLCJBIl0sWzEsMCwiQiJdLFsyLDAsIkMiXSxbMCwxLCJBJyJdLFsxLDEsIkInIl0sWzIsMSwiQyciXSxbMCwxLCJpIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibW9ubyJ9fX1dLFsxLDIsInAiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbMCwzLCJhIiwyXSxbMyw0LCJqIiwyXSxbNCw1LCJxIiwyXSxbMSw0LCJiIiwyXSxbMiw1LCJjIl1d
 \[\begin{tikzcd}[ampersand replacement=\&,cramped]
 	A \& B \& C \\
@@ -101,7 +101,7 @@ In the context of abelian categories, we notice that kernel-cokernel pairs indee
     with $a$, $b$, and $c$ isomorphisms, then $(j,q) \in \cat{E}$.
 \end{defn}
 
-It is usually convenient to require being closed under isomorphisms, as objects with universal properties are generally unique up to isomorphism. In particular, recall that all kernel objects of a specific morphism are isomorphic. In the case of a class of kernel-cokernel pairs $\cat{E}$, being closed under isomorphisms implies that all kernels of a deflation are inflations. Indeed, consider $B \xrath{p} C$ a deflation and $A \xrat{i} B$ an inflation such that $(i,p) \in \cat{E}$. Let $A' \xra{j} B$ be another kernel of $p$ and $A \xra{a} A'$ be the isomorphism between both kernels. The sequence $A' \xra{j} B \xra{p} C$ fits in the commutative diagram
+It is usually convenient to require being closed under isomorphisms, as objects with universal properties are generally unique up to isomorphism. In particular, recall that all kernel objects of a specific morphism are isomorphic. In the case of a class of kernel-cokernel pairs $\cat{E}$, being closed under isomorphisms implies that all kernels of a deflation are inflations. Indeed, consider $p: B \xrath{} C$ a deflation and $i: A \xrat{} B$ an inflation such that $(i,p) \in \cat{E}$. Let $j: A' \xra{} B$ be another kernel of $p$ and $a: A \xra{} A'$ be the isomorphism between both kernels. The sequence $A' \xra{j} B \xra{p} C$ fits in the commutative diagram
 % https://q.uiver.app/#q=WzAsNixbMCwwLCJBIl0sWzEsMCwiQiJdLFsyLDAsIkMiXSxbMCwxLCJBJyJdLFsxLDEsIkIiXSxbMiwxLCJDIl0sWzAsMSwiaSIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1vbm8ifX19XSxbMSwyLCJwIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV0sWzAsMywiYSIsMl0sWzMsNCwiaiIsMl0sWzQsNSwicCIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dLFsxLDQsIiIsMix7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsNSwiIiwwLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
 \[\begin{tikzcd}[ampersand replacement=\&,cramped]
 	A \& B \& C \\
@@ -115,7 +115,7 @@ It is usually convenient to require being closed under isomorphisms, as objects 
 	\arrow["p"', two heads, from=2-2, to=2-3]
 \end{tikzcd}\]
 \begin{sloppypar}
-    Since all vertical arrows are isomorphisms, we conclude that ${(j,p) \in \cat{E}}$. The proof that all cokernels of an inflation are deflations is dual.
+    Since all vertical arrows are isomorphisms, we conclude that ${(j,p) \in \cat{E}}$, so $j$ is an inflation. The proof that all cokernels of an inflation are deflations is dual.
 \end{sloppypar}
 
 We can now proceed to define exact categories, basing our definition on the properties we established for abelian categories.
@@ -131,31 +131,31 @@ We can now proceed to define exact categories, basing our definition on the prop
         \item[{[E2${\op}$]}] The pullback of a deflation along any morphism yields a deflation.
     \end{itemize}
     The last two axioms can be summarized by the following commutative diagrams:
-    % https://q.uiver.app/#q=WzAsMTAsWzAsMCwiQyJdLFsxLDAsIkQiXSxbMSwxLCJEJyJdLFswLDEsIkMnIl0sWzIsMCwiXFxidWxsZXQiXSxbMiwxXSxbMywwLCJDJyJdLFs0LDAsIkQnIl0sWzMsMSwiQyJdLFs0LDEsIkQiXSxbMCwxLCJmIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibW9ubyJ9fX1dLFsxLDIsImQiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMCwzLCJjIiwyXSxbMywyLCJmJyIsMix7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1vbm8ifSwiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzQsNSwiXFx0ZXh0e2FuZH0iLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNiw3LCJmJyIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbNiw4LCJjIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzgsOSwiZiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dLFs3LDksImQiLDJdLFsyLDAsIiIsMSx7InN0eWxlIjp7Im5hbWUiOiJjb3JuZXIifX1dLFs2LDksIiIsMSx7InN0eWxlIjp7Im5hbWUiOiJjb3JuZXIifX1dXQ==
-\[\begin{tikzcd}[ampersand replacement=\&]
-	C \& D \& {} \& {C'} \& {D'} \\
-	{C'} \& {D'} \& {} \& C \& D
-	\arrow["f", tail, from=1-1, to=1-2]
-	\arrow["c"', from=1-1, to=2-1]
-	\arrow["d", dashed, from=1-2, to=2-2]
-	\arrow["{\text{and}}"{description}, draw=none, from=1-3, to=2-3]
-	\arrow["{f'}"', dashed, two heads, from=1-4, to=1-5]
-	\arrow["c", dashed, from=1-4, to=2-4]
-	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-4, to=2-5]
-	\arrow["d"', from=1-5, to=2-5]
-	\arrow["{f'}"', dashed, tail, from=2-1, to=2-2]
-	\arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=1-1]
-	\arrow["f", two heads, from=2-4, to=2-5]
-\end{tikzcd}\]
+    % https://q.uiver.app/#q=WzAsMTAsWzAsMCwiQyJdLFsxLDAsIkQiXSxbMSwxLCJEJyJdLFswLDEsIkMnIl0sWzIsMCwiXFxidWxsZXQiXSxbMiwxXSxbMywwLCJDJyJdLFs0LDAsIkQnIl0sWzMsMSwiQyJdLFs0LDEsIkQiXSxbMCwxLCJmIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibW9ubyJ9fX1dLFsxLDIsImQiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMCwzLCJjIiwyXSxbMywyLCJmJyIsMix7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1vbm8ifSwiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzQsNSwiXFx0ZXh0e1xcTGFyZ2UgYW5kfSIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs2LDcsImYnIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dLFs2LDgsImMiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbOCw5LCJmIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV0sWzcsOSwiZCIsMl0sWzIsMCwiIiwxLHsic3R5bGUiOnsibmFtZSI6ImNvcm5lciJ9fV0sWzYsOSwiIiwxLHsic3R5bGUiOnsibmFtZSI6ImNvcm5lciJ9fV1d
+    \[\begin{tikzcd}[ampersand replacement=\&]
+        C \& D \& {} \& {C'} \& {D'} \\
+        {C'} \& {D'} \& {} \& C \& D
+        \arrow["f", tail, from=1-1, to=1-2]
+        \arrow["c"', from=1-1, to=2-1]
+        \arrow["d", dashed, from=1-2, to=2-2]
+        \arrow["{\text{\large and}}"{description}, draw=none, from=1-3, to=2-3]
+        \arrow["{f'}"', dashed, two heads, from=1-4, to=1-5]
+        \arrow["c", dashed, from=1-4, to=2-4]
+        \arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-4, to=2-5]
+        \arrow["d"', from=1-5, to=2-5]
+        \arrow["{f'}"', dashed, tail, from=2-1, to=2-2]
+        \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=1-1]
+        \arrow["f", two heads, from=2-4, to=2-5]
+    \end{tikzcd}\]
     
-    If $\cat{E}$ is an exact structure on $\cat{A}$, we say $(\cat{A}, \cat{E})$ is an \emph{exact category} and the elements of $\cat{E}$ are called \emph{conflations} (or \emph{short exact sequences}).
+    If $\cat{E}$ is an exact structure on $\cat{A}$, we say that $(\cat{A}, \cat{E})$ is an \emph{exact category} and the elements of $\cat{E}$ are called \emph{conflations} (or \emph{short exact sequences}).
 \end{defn}
 
 \subsection{Extension-closed subcategories}
-In \cref{section:chapone_motivation}, we saw that all abelian categories are exact categories, with a possible exact structure being all short exact sequences. We can generalize this example of exact categories to extension-closed subcategories of abelian categories. Let us first clarify what this means.
+It follows immediately from \cref{section:chapone_motivation} that all abelian categories are exact categories, with a possible exact structure being all short exact sequences. However, one may also look at specific subcategories of an abelian category, namely full extension-closed subcategories, to get examples of non-abelian exact categories. Let us first clarify what this means.
 
 \begin{defn}
-Let $\cat{A}$ be an abelian category and $\cat{C}\subseteq \cat{A}$ be a full additive subcategory of $\cat{A}$. $\cat{C}$ is said to be \emph{closed under extension} if, for any short exact sequence in $\cat{A}$
+Let $\cat{A}$ be an abelian category and $\cat{C}\subseteq \cat{A}$ be a full additive subcategory of $\cat{A}$. $\cat{C}$ is said to be \emph{closed under extension} if, for any short exact sequence
 % https://q.uiver.app/#q=WzAsNSxbMCwwLCIwIl0sWzEsMCwiQSJdLFsyLDAsIkIiXSxbMywwLCJDIl0sWzQsMCwiMCJdLFswLDFdLFsxLDJdLFsyLDNdLFszLDRdXQ==
 \[\begin{tikzcd}[ampersand replacement=\&]
 	0 \& A \& B \& C \& 0
@@ -165,10 +165,12 @@ Let $\cat{A}$ be an abelian category and $\cat{C}\subseteq \cat{A}$ be a full ad
 	\arrow[from=1-4, to=1-5]
 \end{tikzcd}\]
 
-such that $A$ and $C$ are both in $\cat{C}$, then $B$ is also in $\cat{C}$.
+in $\cat{A}$ such that $A$ and $C$ are both in $\cat{C}$, then $B$ is also in $\cat{C}$.
 
 In that context, we say that $B$ is an \emph{extension of $C$ by $A$}.
 \end{defn}
+
+As mentioned previously, this is the only requirement for a full subcategory of an abelian category to be exact, with the exact structure inherited from the short exact sequences in $\cat{A}$.
 
 \begin{prop}
     Let $\cat{A}$ be an abelian category and $\cat{C} \subseteq \cat{A}$ be a full additive subcategory of $\cat{A}$ that is closed under extensions. Let $\cat{E}$ be the collection of short exact sequences in $\cat{A}$ such that all three objects are in $\cat{C}$. Then $\left(\cat{C}, \cat{E}\right)$ is an exact category.
@@ -177,11 +179,11 @@ In that context, we say that $B$ is an \emph{extension of $C$ by $A$}.
 \begin{preuve}
     We prove each of the axioms one by one.
 
-    $\cat{E}$ is closed under isomorphisms since short exact sequences in $\cat{A}$ are closed under isomorphisms and $\cat{C}$ is full. 
+    Note that $\cat{E}$ is closed under isomorphisms since short exact sequences in $\cat{A}$ are closed under isomorphisms. 
 
-    Since $\cat{C}$ is an additive subcategory, it contains the zero object. As such, for any object $B \in \cat{C}$, the sequences $\ses{0}{B}{B}{}{1_B}$ and $\ses{B}{B}{0}{1_B}{}$ are short exact and contained in $\cat{C}$, i.e. identity morphisms are both deflations and inflations.
+    Since $\cat{C}$ is an additive subcategory, it contains the zero object. As such, for any object $B \in \cat{C}$, the sequences $\ses{0}{B}{B}{}{1_B}$ and $\ses{B}{B}{0}{1_B}{}$ are short exact and contained in $\cat{C}$, i.e.\ identity morphisms are both deflations and inflations. Thus, both [E0] and [E0$\op$] are satisfied.
 
-    Now let us consider the axiom [E2]. Let $X \xrat{i} Y \xrath{d} Z$ be a short exact sequence in $\cat{C}$ and $f: A \xra{} X$. We can consider the pushout diagram in the ambient category $\cat{A}$:
+    Now let us consider the axiom [E2]. Let $X \xrat{i} Y \xrath{d} Z$ be a short exact sequence in $\cat{C}$ and $f: X \xra{} A$. We can consider the pushout diagram
     % https://q.uiver.app/#q=WzAsNixbMCwwLCJYIl0sWzEsMCwiWSJdLFsyLDAsIloiXSxbMCwxLCJBIl0sWzEsMSwiQiJdLFsyLDEsIkMiXSxbMCwxLCJpIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibW9ubyJ9fX1dLFsxLDIsImQiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbMCwzLCJmIiwyXSxbMyw0LCJqIl0sWzQsNSwiZSJdLFsxLDQsImYnIiwyXSxbNCwwLCIiLDEseyJzdHlsZSI6eyJuYW1lIjoiY29ybmVyIn19XSxbMiw1LCJmJyciLDJdXQ==
     \[\begin{tikzcd}[ampersand replacement=\&]
         X \& Y \& Z \\
@@ -196,7 +198,7 @@ In that context, we say that $B$ is an \emph{extension of $C$ by $A$}.
         \arrow["e", from=2-2, to=2-3]
     \end{tikzcd}\]
 
-    where $C = \Cok{j}$. From basic results in abelian categories, we know that $j$ is a monomorphism, and that we can choose $C = Z$ (see \cite[Proposition~13.7]{homalg} for the latter). Thus the sequence $A \xrat{j} B \xrath{e} Z$ is short exact, with both $A$ and $Z$ in $\cat{C}$, which implies that $B \in \cat{C}$ since it is extension-closed. We therefore get a short exact sequence in $\cat{C}$, and $j$ is an inflation. The proof for [E2$\op$] is dual.
+     in the ambient category $\cat{A}$, where $C = \Cok{j}$. Recall, from \cref{prop:popb_abelian}, that $j$ is a monomorphism. Furthermore, it is well known that we can choose $C = Z$; see \cite[Proposition~13.7]{homalg}. Thus the sequence $A \xrat{j} B \xrath{e} Z$ is short exact in $\cat{A}$, with both $A$ and $Z$ in $\cat{C}$, which implies that $B \in \cat{C}$ since $\cat{C}$ is extension-closed. We therefore get a short exact sequence in $\cat{C}$, and $j$ is an inflation. The proof for [E2$\op$] is dual.
 
     To prove [E1], let us consider short exact sequences $A \xrat{i} B \xrath{d} C$ and $B \xrat{j} Y \xrath{e} Z$ in $\cat{C}$. Then we can construct the following pushout in the ambient category:
     % https://q.uiver.app/#q=WzAsNSxbMCwwLCJBIl0sWzEsMCwiQiJdLFsyLDAsIlkiXSxbMSwxLCJDIl0sWzIsMSwiRSJdLFswLDEsImkiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtb25vIn19fV0sWzEsMiwiaiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1vbm8ifX19XSxbMSwzLCJkIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV0sWzMsNCwiayIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1vbm8ifX19XSxbMiw0LCJmIl0sWzQsMSwiIiwxLHsic3R5bGUiOnsibmFtZSI6ImNvcm5lciJ9fV1d
@@ -212,34 +214,34 @@ In that context, we say that $B$ is an \emph{extension of $C$ by $A$}.
     \end{tikzcd}\]
     By \cref{prop:popb_abelian}, we know that $f$ is an epimorphism. It then remains to prove that $j \circ i$ is a kernel of $f$. Since $j$ is a monomorphism, one can show that the square is also a pullback (see \cite[Corollary~13.6]{homalg} for a proof). 
     Consider $g: X \xra{} Y$ such that $f \circ g = 0$. Using the pullback property on $g: X \xra{} Y$ and $0: X \xra{} C$, we get a unique map $\hat{g}: X \xra{} B$ such that $j \circ \hat{g} = g$ and $d \circ \hat{g} = 0$.
-    Now using that $i$ is a kernel of $d$, we get a unique map $\hat{\hat{g}}: X \xra{} A$ such that $i \circ \hat{\hat{g}} = \hat{g}$. In particular, $(j \circ i) \circ \hat{\hat{g}} = g$, and $\hat{\hat{g}}$ is the unique map satisfying this property. Finally, we note that 
-    \[f \circ (j \circ i) = (f \circ j) \circ i = (k \circ d) \circ i = k \circ (d \circ i) = 0\]
-    so that we can conclude that $j \circ i$ is a kernel of $f$. Since $f$ is an epimorphism and $j \circ i$ is its kernel, we conclude that $A \xrat{j\circ i} Y \xrath{f} E$ is a short exact sequence in $\cat{C}$. As such, inflations are closed under composition. Proving [E1$\op$] is dual.
+    Now, using that $i$ is a kernel of $d$, we get a unique map $\hat{\hat{g}}: X \xra{} A$ such that $i \circ \hat{\hat{g}} = \hat{g}$. In particular, $(j \circ i) \circ \hat{\hat{g}} = g$, and $\hat{\hat{g}}$ is the unique map satisfying this property. Finally, we note that 
+    \[f \circ (j \circ i) = (f \circ j) \circ i = (k \circ d) \circ i = k \circ (d \circ i) = 0,\]
+    so we can conclude that $j \circ i$ is a kernel of $f$. Since $f$ is an epimorphism and $j \circ i$ is its kernel, we conclude that $A \xrat{j\circ i} Y \xrath{f} E$ is a short exact sequence in $\cat{C}$. As such, inflations are closed under composition. Proving [E1$\op$] is dual.
 \end{preuve}
 \begin{rmk}
-    A slightly modified converse statement is also true, and is known as the \emph{Gabriel-Quillen embedding theorem}. It states that, if $(\cat{A}, \cat{E})$ is an exact category with $\cat{A}$ small, there is an embedding (i.e. a faithful functor that is injective on the objects) $\cat{A} \xhookrightarrow{} \cat{B}$ into an abelian category such that $\cat{E}$ is the class of all short exact sequences in $\cat{B}$.
+    A slightly modified converse statement is also true, and is known as the \emph{Gabriel-Quillen embedding theorem}. It states that, if $(\cat{A}, \cat{E})$ is an exact category with $\cat{A}$ small, there exists an abelian category $\cat{B}$ and a fully faithful exact functor $i: \cat{A} \xhookrightarrow{} \cat{B}$ that reflects exactness. Furthermore, $\cat{A}$ is closed under extension in $\cat{B}$.
 \end{rmk}
 
 \subsection{Examples}
-The previous statement is quite useful for finding exact categories that are not abelian categories. Here are a few fundamental general examples.
+The previous statement is quite useful for finding examples of exact categories that are not abelian categories. Here are a few fundamental general examples.
 
 \begin{expls}
 
 \begin{itemize}
-    \item Let $R$ be a non-noetherian unital ring. Consider the category of finitely generated (left or right) $R$-modules $\text{mod}R$ (seen as a subcategory of $\text{Mod}R$). It is well known that this category is closed under extensions. However, it is not abelian. Indeed, consider a non-finitely generated ideal $I \subseteq R$ (which exists since $R$ is non-noetherian). Then the kernel of the quotient map is $R \xrath{} R/I$ is the ideal $I$. In that case, both $R$ and $R/I$ are finitely generated $R$-modules, but $I$ is by definition not finitely generated. Thus $\text{mod}R$ does not contain the kernel of all its maps, and cannot be abelian;
-    \item Let $R$ be any ring. Consider the full subcategory of $\text{mod}R$ consisting of all projectives $\cat{P}(R)$. Let $P, P' \in \cat{P}(R)$ be two projective $R$-modules. It is well known from homological algebra that $\text{Ext}_R^1(P', P) = 0$. But then, considering $\text{Ext}_R^1$ as the Yoneda extension functor, this implies that any short exact sequence $0 \xra{} P \xra{} E \xra{} P' \xra{} 0$ splits, i.e. $E = P \oplus P'$. Since the direct sum of two projectives is projective, this shows that $\cat{P}(R)$ is closed under extensions. However, it is not necessarily abelian. For example, in the category $\text{mod}\mathbb{Z}$, the cokernel of the map $\mathbb{Z} \xra{\cdot 2} \mathbb{Z}$ is $\mathbb{Z}/2\mathbb{Z}$, which is not projective, so $\cat{P}(\mathbb{Z})$ is not abelian.
+    \item Let $R$ be a non-noetherian unital ring. Consider the category of finitely generated left $R$-modules $\text{mod}R$, seen as a subcategory of $\text{Mod}R$. It is well known that this category is closed under extensions. However, it is not abelian. Indeed, consider a non-finitely generated ideal $I \subseteq R$ (which exists since $R$ is non-noetherian). Then the kernel of the quotient map is $R \xrath{} R/I$ is the ideal $I$. In that case, both $R$ and $R/I$ are finitely generated $R$-modules, but $I$ is by definition not finitely generated. Thus $\text{mod}R$ does not contain the kernel of all its maps, and cannot be abelian.
+    \item Let $R$ be any ring. Consider the full subcategory of $\text{mod}R$ consisting of all projectives $\cat{P}(R)$. Let $P, P' \in \cat{P}(R)$ be two projective $R$-modules. It is well known from homological algebra that $\text{Ext}_R^1(P', P) = 0$. But then, considering $\text{Ext}_R^1$ as the Yoneda extension functor, this implies that any short exact sequence $0 \xra{} P \xra{} E \xra{} P' \xra{} 0$ splits, i.e.\ $E \cong P \oplus P'$. Since the direct sum of two projectives is projective, this shows that $\cat{P}(R)$ is closed under extensions. However, it is not necessarily abelian. For example, in the category $\text{mod}\mathbb{Z}$, the cokernel of the map $\mathbb{Z} \xra{\cdot 2} \mathbb{Z}$ is $\mathbb{Z}/2\mathbb{Z}$, which is not projective, so $\cat{P}(\mathbb{Z})$ is not abelian.
 \end{itemize}
 \end{expls}
 
 \subsection{Reducing the axioms}
-As was shown by B. Keller in \cite[Appendix~A]{Keller1990}, some of the axioms required in the classical definition of exact categories are redundant.
+As was shown by B. Keller in \cite[Appendix~A]{Keller1990}, some of the axioms required in the classical definition of exact categories are redundant. We finish this chapter by providing parts of the proof of this result.
 
 \begin{prop}
-    Let $\cat{A}$ be an additive category and $\cat{E}$ be a class of kernel-cokernel pairs in $\cat{A}$ that is closed under isomorphisms. Assume that $\cat{E}$ satisfies \emph{[E1$\op$]}, \emph{[E2]} as well as
+    Let $\cat{A}$ be an additive category and $\cat{E}$ be a class of kernel-cokernel pairs in $\cat{A}$ that is closed under isomorphisms. Assume that $\cat{E}$ satisfies \emph{[E1$\op$]} and \emph{[E2]}, as well as
 
     \begin{itemize}[align = right]
         \item[\emph{[E0']}] $1_0$ is a deflation;
-        \item[\emph{[E2$\op$']}] For any $f : C \rightarrow Z$ and deflation $d : Y \xrath{} Z$, there is a commutative square
+        \item[\emph{[E2$\op$']}] For any $f : Z' \rightarrow Z$ and deflation $d : Y \xrath{} Z$, there is a commutative square
         % https://q.uiver.app/#q=WzAsNCxbMCwwLCJCIl0sWzEsMCwiQyJdLFsxLDEsIloiXSxbMCwxLCJZIl0sWzAsMSwiZCciLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbMSwyLCJmIl0sWzMsMiwiZCIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dLFswLDMsImYnIiwyXV0=
         \[\begin{tikzcd}[ampersand replacement=\&, cramped]
             Y' \& Z' \\
@@ -268,7 +270,7 @@ As was shown by B. Keller in \cite[Appendix~A]{Keller1990}, some of the axioms r
 	\arrow["d", two heads, from=2-2, to=2-3]
 \end{tikzcd}\]
 
-    $f_1$ exists as the map between kernels. As such we can build the pushout of $i'$ along $f_1$, which we will name $P$. This will be the pullback of $d$ along $f_3$. To prove that, construct the maps $\hat{d'}: P \xra{} Z'$ and $\hat{f_2}: P \xra{} Y$ by applying the pushout property to the following commutative diagrams:
+    Note that the left part of the diagram is obtained by taking inflations associated to $d'$ and $d$, and that $f_1$ exists as the map between kernels. Since we have two morphisms starting in $K$, one of which being an inflation, we can build the pushout of $i'$ along $f_1$, which we will name $P$. Our strategy will be to show that $P$ is the pullback of $d$ along $f_3$. To do so, we first construct the morphisms $\hat{d'}: P \xra{} Z'$ and $\hat{f_2}: P \xra{} Y$ by applying the pushout property to the following commutative diagrams:
     % https://q.uiver.app/#q=WzAsMTEsWzAsMCwiSyJdLFsxLDAsIlknIl0sWzAsMSwiWCJdLFsxLDEsIlAiXSxbMiwyLCJaJyJdLFszLDEsIlxcdGV4dHthbmR9Il0sWzQsMCwiSyJdLFs1LDAsIlknIl0sWzQsMSwiWCJdLFs1LDEsIlAiXSxbNiwyLCJZIl0sWzAsMSwiaSciLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtb25vIn19fV0sWzAsMiwiZl8xIiwyXSxbMiwzLCJcXGhhdHtpJ30iLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtb25vIn19fV0sWzEsMywiXFxoYXR7Zl8xfSJdLFszLDAsIiIsMSx7InN0eWxlIjp7Im5hbWUiOiJjb3JuZXIifX1dLFsxLDQsImQiLDEseyJjdXJ2ZSI6LTJ9XSxbMiw0LCIwIiwxLHsiY3VydmUiOjJ9XSxbMyw0LCJcXGV4aXN0cyFhIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzYsNywiaSciLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtb25vIn19fV0sWzYsOCwiZl8xIiwyXSxbOCw5LCJcXGhhdHtpJ30iLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtb25vIn19fV0sWzcsOSwiXFxoYXR7Zl8xfSJdLFs3LDEwLCJmXzIiLDEseyJjdXJ2ZSI6LTJ9XSxbOSwxMCwiXFxleGlzdHMhIGIiLDFdLFs4LDEwLCJpIiwxLHsiY3VydmUiOjJ9XSxbOSw2LCIiLDIseyJzdHlsZSI6eyJuYW1lIjoiY29ybmVyIn19XV0=
 \[\begin{tikzcd}[ampersand replacement=\&, cramped]
 	K \& {Y'} \&\&\& K \& {Y'} \\
@@ -310,7 +312,7 @@ As was shown by B. Keller in \cite[Appendix~A]{Keller1990}, some of the axioms r
         \arrow["d"{description}, from=3-1, to=3-3]
     \end{tikzcd}\]
 
-    Clearly $(d \circ i) \circ f_1 = 0 = f_3 \circ (d' \circ i')$, so that the big square commutes. Thus there exists a unique map $p: P \xra{} Z$ such that $p \circ \hat{f_1} = f_3 \circ d'$ and $p \circ \hat{i'} = d \circ i = 0$. But note that $f_3 \circ (\hat{d'} \circ \hat{f_1}) = f_3 \circ d'$ and $f_3 \circ (\hat{d'} \circ \hat{i'}) = 0$ by definition of $\hat{d'}$, so $f_3 \circ \hat{d'} = p$. Similarly, $d \circ (\hat{f_2} \circ \hat{f_1}) = d \circ f_2 = f_3 \circ d'$ by commutativity and $d \circ (\hat{f_2} \circ \hat{i'}) = d \circ i = 0$, so $d \circ \hat{f_2} = p = f_3 \circ \hat{d'}$. 
+    Clearly $(d \circ i) \circ f_1 = 0 = f_3 \circ (d' \circ i')$, so the big square commutes. Thus there exists a unique map $p: P \xra{} Z$ such that $p \circ \hat{f_1} = f_3 \circ d'$ and $p \circ \hat{i'} = d \circ i = 0$. But note that $f_3 \circ (\hat{d'} \circ \hat{f_1}) = f_3 \circ d'$ and $f_3 \circ (\hat{d'} \circ \hat{i'}) = 0$ by definition of $\hat{d'}$, so $f_3 \circ \hat{d'} = p$. Similarly, $d \circ (\hat{f_2} \circ \hat{f_1}) = d \circ f_2 = f_3 \circ d'$ by commutativity and $d \circ (\hat{f_2} \circ \hat{i'}) = d \circ i = 0$, so $d \circ \hat{f_2} = p = f_3 \circ \hat{d'}$. 
 
     Next, we will show that $\hat{d'}$ is a cokernel of $\hat{i'}$. Consider a morphism $g: P \xra{} D$ for some $D \in \cat{A}$ such that $g \circ \hat{i'} = 0$. Clearly, this implies that $g \circ (\hat{f_1} \circ i') = g \circ ( \hat{i'} \circ f_1 ) = 0$. Using that $d'$ is a cokernel of $i'$, there exists a unique morphism $k: Z' \xra{} D$ such that $k \circ d' = g \circ \hat{f_1}$. What is left to show is that $k \circ \hat{d'} = g$, but this is true since they are both solutions to the pushout problem
         % https://q.uiver.app/#q=WzAsNSxbMSwwLCJZJyJdLFswLDAsIksiXSxbMCwxLCJYIl0sWzEsMSwiUCJdLFsyLDIsIkQiXSxbMSwwLCJpJyJdLFsxLDIsImZfMSIsMl0sWzIsMywiXFxoYXR7aSd9IiwyXSxbMCwzLCJcXGhhdHtmfSIsMl0sWzMsMSwiIiwyLHsic3R5bGUiOnsibmFtZSI6ImNvcm5lciJ9fV0sWzMsNCwia1xcaGF0e2QnfSA9IGciLDFdLFswLDQsIlxcaGF0e2ZfMX0gZyA9IGtkJyIsMSx7ImN1cnZlIjotMn1dLFsyLDQsIjAiLDEseyJjdXJ2ZSI6Mn1dXQ==
@@ -328,7 +330,7 @@ As was shown by B. Keller in \cite[Appendix~A]{Keller1990}, some of the axioms r
         \arrow["{k\hat{d'} = g}"{description}, from=2-2, to=3-3]
     \end{tikzcd}\]
 
-    Therefore, there exists a unique map $k$ such that $k \circ \hat{d'} = g$, i.e. $\hat{d'}$ is a cokernel of $\hat{i'}$. This implies the top row in the commutative diagram
+    Therefore, there exists a unique map $k$ such that $k \circ \hat{d'} = g$, i.e.\ $\hat{d'}$ is a cokernel of $\hat{i'}$. This implies the top row in the commutative diagram
     % https://q.uiver.app/#q=WzAsNixbMCwwLCJYIl0sWzEsMCwiUCJdLFsyLDAsIlonIl0sWzAsMSwiWCJdLFsxLDEsIlkiXSxbMiwxLCJaIl0sWzAsMSwiXFxoYXR7aSd9IiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibW9ubyJ9fX1dLFswLDMsIiIsMSx7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsNCwiaSIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1vbm8ifX19XSxbNCw1LCJkIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV0sWzEsNCwiXFxoYXR7Zl8yfSIsMl0sWzIsNSwiZl8zIiwyXSxbMSwyLCJcXGhhdHtkJ30iLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJlcGkifX19XV0=
     \[\begin{tikzcd}[ampersand replacement=\&,cramped]
         X \& P \& {Z'} \\
@@ -423,7 +425,7 @@ As was shown by B. Keller in \cite[Appendix~A]{Keller1990}, some of the axioms r
     In addition, since $\hat{e'} \circ g \circ \hat{e'} = \hat{e'} \circ (1_C - \hat{j'} \circ r) = \hat{e'}$ as $(\hat{j'}, \hat{e'})$ is a conflation, we get that $\hat{e'} \circ g = 1_{Z'}$. Finally,
     \[ \hat{d'} \circ h = \hat{e'} \circ j \circ h = \hat{e'} \circ \hat{j'} \circ y + \hat{e'} \circ g \circ z = z.\]
 
-    Thus, we get that $\hat{d'} \circ h = z$ and $\hat{f_2} \circ h = y$, i.e. $h$ solves the pullback problem. This allows us to conclude that the square
+    Thus, we get that $\hat{d'} \circ h = z$ and $\hat{f_2} \circ h = y$, i.e.\ $h$ solves the pullback problem. This allows us to conclude that the square
     % https://q.uiver.app/#q=WzAsNCxbMCwwLCJQIl0sWzEsMCwiWiciXSxbMCwxLCJZIl0sWzEsMSwiWiJdLFswLDEsIlxcaGF0e2QnfSIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dLFswLDIsIlxcaGF0e2ZfMn0iLDJdLFsyLDMsImQiLDIseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbMSwzLCJmXzMiXV0=
 \[\begin{tikzcd}[ampersand replacement=\&,cramped]
 	P \& {Z'} \\
@@ -437,7 +439,7 @@ As was shown by B. Keller in \cite[Appendix~A]{Keller1990}, some of the axioms r
 
     We will not prove that, if [E0'], [E1$\op$], [E2] and [E2$\op$] hold, then so does [E1], but refer the reader to \cite[Appendix~A.1]{Keller1990}.
 
-    Thus it only remains to show that [E0'] implies both [E0] and [E0$\op$].
+    Thus, it only remains to show that [E0'] implies both [E0] and [E0$\op$].
     First, note that $1_0$ is also an inflation, since it is its own kernel, and it is a deflation. Next, note that the commutative square
     % https://q.uiver.app/#q=WzAsNCxbMCwwLCJYIl0sWzEsMCwiWCJdLFswLDEsIjAiXSxbMSwxLCIwIl0sWzAsMSwiMV9YIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV0sWzIsMywiMCIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dLFsxLDMsIjAiXSxbMCwyLCIwIiwyXSxbMCwzLCIiLDEseyJzdHlsZSI6eyJuYW1lIjoiY29ybmVyIn19XV0=
     \[\begin{tikzcd}[ampersand replacement=\&,cramped]
