@@ -67,7 +67,7 @@ There are many properties we can conclude about kernels and cokernels using the 
 
     We can deduce [E1] and [E1${\op}$] by recalling that composing monics (respectively epics) gives us monics and that monics are kernels of their cokernel (respectively epics are cokernels of their kernel).
 
-    As for [E2], recall that kernels are always monic. Thus, by \ref{prop:popb_abelian}, the pushout of a kernel is monic as well. But then, by \ref{prop:popb_abelian} again, it is a kernel of its cokernel, thus it is a kernel.
+    As for [E2], recall that kernels are always monic. Thus, by \cref{prop:popb_abelian}, the pushout of a kernel is monic as well. But then, by \cref{prop:popb_abelian} again, it is a kernel of its cokernel, thus it is a kernel.
     The proof for [E2${\op}$] is similar.
 \end{preuve}
 
@@ -152,7 +152,7 @@ We can now proceed to define exact categories, basing our definition on the prop
 \end{defn}
 
 \subsection{Extension-closed subcategories}
-In \ref{section:chapone_motivation}, we saw that all abelian categories are exact categories, with a possible exact structure being all short exact sequences. We can generalize this example of exact categories to extension-closed subcategories of abelian categories. Let us first clarify what this means.
+In \cref{section:chapone_motivation}, we saw that all abelian categories are exact categories, with a possible exact structure being all short exact sequences. We can generalize this example of exact categories to extension-closed subcategories of abelian categories. Let us first clarify what this means.
 
 \begin{defn}
 Let $\cat{A}$ be an abelian category and $\cat{C}\subseteq \cat{A}$ be a full additive subcategory of $\cat{A}$. $\cat{C}$ is said to be \emph{closed under extension} if, for any short exact sequence in $\cat{A}$
@@ -210,7 +210,7 @@ In that context, we say that $B$ is an \emph{extension of $C$ by $A$}.
         \arrow["k", tail, from=2-2, to=2-3]
         \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-3, to=1-2]
     \end{tikzcd}\]
-    By \ref{prop:popb_abelian}, we know that $f$ is epic. It then remains to prove that $j \circ i$ is a kernel of $f$. Since $j$ is monic, one can show that the square is also a pullback (see \cite[Corollary~13.6]{homalg} for a proof). 
+    By \cref{prop:popb_abelian}, we know that $f$ is epic. It then remains to prove that $j \circ i$ is a kernel of $f$. Since $j$ is monic, one can show that the square is also a pullback (see \cite[Corollary~13.6]{homalg} for a proof). 
     Consider $g: X \xra{} Y$ such that $f \circ g = 0$. Using the pullback property on $g: X \xra{} Y$ and $0: X \xra{} C$, we get a unique map $\hat{g}: X \xra{} B$ such that $j \circ \hat{g} = g$ and $d \circ \hat{g} = 0$.
     Now using that $i$ is a kernel of $d$, we get a unique map $\hat{\hat{g}}: X \xra{} A$ such that $i \circ \hat{\hat{g}} = \hat{g}$. In particular, $(j \circ i) \circ \hat{\hat{g}} = g$, and $\hat{\hat{g}}$ is the unique map satisfying this property. Finally, we note that 
     \[f \circ (j \circ i) = (f \circ j) \circ i = (k \circ d) \circ i = k \circ (d \circ i) = 0\]

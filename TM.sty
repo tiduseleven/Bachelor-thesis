@@ -43,7 +43,6 @@
 
 % Divers
 \usepackage{ifthen}		% Tests
-\usepackage{cleveref} % better references
 \usepackage{mathtools} % more symbols
 \usepackage{units}    % nice fractions
 \usepackage{calc}		% Calculs avec latex
@@ -61,6 +60,7 @@
 
 % Fontes
 \usepackage{calligra}
+
 
 %---------------------------------------------------------------
 %----------- Définition de nouvelles commandes -----------------
@@ -298,9 +298,7 @@
 \theorembodyfont{\itshape}
 %----------------
 \newtheorem{thm}{Theorem}[section] 
-\newtheorem{cor}[thm]{Corollary}
 \newtheorem{prop}[thm]{Proposition}
-\newtheorem{lemme}[thm]{Lemma}
 
 %----------------
 \theorembodyfont{\normalfont}
@@ -479,3 +477,10 @@
 % --------------------------------------------------------
 }
 \let\lrcorner\amslrcorner
+
+\usepackage{cleveref} % better references
+\crefname{thm}{proposition}{propositions}
+\Crefname{thm}{Proposition}{Propositions}
+
+\crefname{prop}{proposition}{propositions}
+\Crefname{prop}{Proposition}{Propositions}
