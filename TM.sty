@@ -277,7 +277,7 @@
 %---------------------------------------------------------------
 %------------------Environnements-------------------------------
 %---------------------------------------------------------------
-\usepackage{cleveref} % better references
+\usepackage[english]{cleveref} % better references
 %Enumeration
   \renewcommand{\theenumi}{\rm(\alph{enumi})}%énumération littérale par défaut
   \renewcommand{\labelenumi}{\theenumi}
@@ -299,17 +299,45 @@
 \theorembodyfont{\itshape}
 %----------------
 \newtheorem{thm}{Theorem}[section] 
+%\crefname{thm}{Proposition}{Propositions}
+
 \newtheorem{prop}[thm]{Proposition}
+\crefname{prop}{Proposition}{Propositions}
 
 %----------------
 \theorembodyfont{\normalfont}
 %----------------
+
 \newtheorem{definition}[thm]{Definition}
+\crefname{definition}{Definition}{Definitions}
+
 \newenvironment{defn}{\begin{singlespace}\begin{definition}}{\end{definition}\end{singlespace}}
+\crefname{defn}{Definition}{Definitions}
+
 \newtheorem{expl}[thm]{Example}
+\crefname{expl}{Remark}{Remarks}
+
+
 \newtheorem{expls}[thm]{Examples}
+\crefname{expls}{Remark}{Remarks}
+
 \newtheorem{rmks}[thm]{Remarks}
+\crefname{rmks}{Remark}{Remarks}
+
 \newtheorem{rmk}[thm]{Remark}
+\crefname{rmk}{Remark}{Remarks}
+
+
+
+
+
+
+
+
+
+
+
+
 %----------------
 \theoremheaderfont{\itshape}
 %----------------
@@ -480,17 +508,3 @@
 \let\lrcorner\amslrcorner
 
 
-\crefname{thm}{Proposition}{Propositions}
-\Crefname{thm}{Proposition}{Propositions}
-
-\crefname{prop}{Proposition}{Propositions}
-\Crefname{prop}{Proposition}{Propositions}
-
-\crefname{rmk}{Remark}{Remarks}
-\Crefname{rmk}{Remark}{Remarks}
-
-\crefname{defn}{Definition}{Definitions}
-\Crefname{defn}{Definition}{Definitions}
-
-\crefname{definition}{Definition}{Definitions}
-\Crefname{definition}{Definition}{Definitions}
