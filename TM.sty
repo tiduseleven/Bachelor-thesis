@@ -56,6 +56,7 @@
 \let\amslrcorner\lrcorner
 \usepackage{makeidx}		% pour permettre de construire un index
 \usepackage{mathabx}
+\usepackage[pdftex,pagebackref=true,plainpages=false,colorlinks=true,pdfborder=0,linkcolor=blue, citecolor=blue, urlcolor=blue]{hyperref}
 \makeindex
 
 % Fontes
@@ -276,7 +277,7 @@
 %---------------------------------------------------------------
 %------------------Environnements-------------------------------
 %---------------------------------------------------------------
-
+\usepackage{cleveref} % better references
 %Enumeration
   \renewcommand{\theenumi}{\rm(\alph{enumi})}%énumération littérale par défaut
   \renewcommand{\labelenumi}{\theenumi}
@@ -440,7 +441,7 @@
 
 %%% passer les références en lien
 %\usepackage[pdftex,pagebackref=true,plainpages=false,colorlinks=false,pdfborder=0]{hyperref}
-\usepackage[pdftex,pagebackref=true,plainpages=false,colorlinks=true,pdfborder=0,linkcolor=blue, citecolor=blue, urlcolor=blue]{hyperref}
+%\usepackage[pdftex,pagebackref=true,plainpages=false,colorlinks=true,pdfborder=0,linkcolor=blue, citecolor=blue, urlcolor=blue]{hyperref}
 %plainpages=false: activer les liens même si la numérotation est réinitialisée après le titre
 %autres options... backref, pagebackref (liens en retour de l'index vers les chapitres/pages) urlcolor=blue,citecolor=red
 
@@ -478,9 +479,18 @@
 }
 \let\lrcorner\amslrcorner
 
-\usepackage{cleveref} % better references
-\crefname{thm}{proposition}{propositions}
+
+\crefname{thm}{Proposition}{Propositions}
 \Crefname{thm}{Proposition}{Propositions}
 
-\crefname{prop}{proposition}{propositions}
+\crefname{prop}{Proposition}{Propositions}
 \Crefname{prop}{Proposition}{Propositions}
+
+\crefname{rmk}{Remark}{Remarks}
+\Crefname{rmk}{Remark}{Remarks}
+
+\crefname{defn}{Definition}{Definitions}
+\Crefname{defn}{Definition}{Definitions}
+
+\crefname{definition}{Definition}{Definitions}
+\Crefname{definition}{Definition}{Definitions}
