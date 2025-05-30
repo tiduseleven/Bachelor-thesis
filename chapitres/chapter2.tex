@@ -423,7 +423,7 @@ In the context of module categories, \cref{def:gencogen} is always satisfied for
 By adding some criteria on how the Ext functor acts with the subcategory, we come to the definition of $n$-cluster tilting subcategories.
 
 \begin{defn}
-Let $\cat{A}$ be an abelian category and $\cat{D}$ be a full subcategory of $\cat{A}$. $\cat{D}$ is an \emph{$n$-cluster tilting subcategory} of $\cat{A}$ if
+Let $\cat{A}$ be an abelian category and $\cat{D}$ be a full generating-cogenerating subcategory of $\cat{A}$. The subcategory $\cat{D}$ is an \emph{$n$-cluster tilting subcategory} of $\cat{A}$ if
 \begin{itemize}
     \item it is functorially finite;
     \item $\cat{D} = \left\{C \in \cat{A} \ \middle|\  \text{Ext}_{\cat{A}}^i(C, D) = 0 \ \forall D \in \cat{D}\ \forall i \in \left\{1, \ldots, n-1\right\} \right\}$;
@@ -431,7 +431,7 @@ Let $\cat{A}$ be an abelian category and $\cat{D}$ be a full subcategory of $\ca
 \end{itemize}
 \end{defn}
 
-Finding $n$-cluster tilting categories is a good way to create examples of $n$-exact categories, as was proven in \cite[Theorem~3.16]{Jasso2016Aug}:
+Finding $n$-cluster tilting categories is a good way to create examples of $n$-exact categories, as was proven in \cite[Theorem~3.16]{Jasso2016Aug}.
 
 \begin{thm}
     Let $\cat{A}$ be an abelian category and $\cat{D}$ be an $n$-cluster tilting subcategory of $\cat{A}$. Then $\cat{D}$ is an $n$-exact category with the $n$-exact structure given by the class of all $n$-exact sequences in $\cat{D}$.
@@ -440,17 +440,16 @@ Finding $n$-cluster tilting categories is a good way to create examples of $n$-e
 \begin{rmks}
 
 \begin{itemize}
-    \item G. Jasso actually proved a stronger result, stating that $\cat{D}$ is even an $n$-abelian category. However, we will not go further into this, and only refer to \cite[Section~3.1]{Jasso2016Aug};
-    \item Under a few extra assumptions, the converse statement also holds (see COULDN'T FIND THE SOURCE);
-    \item A similar theory can be built on top of exact categories instead of abelian categories, which leads to obtaining $n$-exact categories that are not necessarily $n$-abelian (see \cite[Section~4.2]{Jasso2016Aug}). Again, a converse statement of sorts also exists, see \cite[Theorem~5.3]{kvamme2025higherextensionclosuredexact}.
+    \item Jasso actually proved a stronger result, stating that $\cat{D}$ is even an $n$-abelian category. However, we will not go further into this, and only refer to \cite[Section~3.1]{Jasso2016Aug};
+    \item For $n$-abelian categories, a slightly modified converse statement also holds;see \cite[Corollary~1.3 (ii)]{KVAMME2022106862};
+    \item A similar theory can be built for exact categories instead of abelian categories, which leads to obtaining $n$-exact categories that are not necessarily $n$-abelian; see \cite[Section~4.2]{Jasso2016Aug}. Again, a converse statement of sorts also exists; see \cite[Theorem~5.3]{kvamme2025higherextensionclosuredexact}.
 \end{itemize}
 \end{rmks}
 
 \subsection{Building concrete examples from AR-quivers of path algebras}
-When working in sufficiently nice module categories, it is quite easy to prove a subcategory is $n$-cluster tilting by working on the AR-quiver and interpreting the $\text{Ext}_\Lambda^i$-functor as $i$-extensions.
+When working in sufficiently nice module categories, it is quite easy to check whether a subcategory is $n$-cluster tilting by using the AR-quiver and interpreting the $\text{Ext}_\Lambda^i$-functor as $i$-extensions.
 
 \begin{expl}
-For the sake of simplicity, there are technical details left unaddressed.
 
     Consider $\Lambda = \nicefrac{k(1 \xra{\alpha} 2 \xra{\beta} 3)}{\langle \beta \alpha \rangle}$. Its AR-quiver is simply
 
@@ -467,22 +466,24 @@ For the sake of simplicity, there are technical details left unaddressed.
     \end{tikzcd}\]
 \end{expl}
 
-The green modules are indecomposible projective-injective (from left to right $P_2 = I_2$ and $P_1 = I_3$), the red one is an indecomposible projective ($P_3$) and the blue one is an indecomposible injective ($I_1$).
+The green modules are indecomposible projective-injectives (from left to right $P_2 = I_3$ and $P_1 = I_2$), the red one is an indecomposible projective ($P_3$) and the blue one is an indecomposible injective ($I_1$).
 
-Consider the full subcategory $\cat{M}$ of $\text{mod}\ \Lambda$ given by the additive closure of the colored indecomposibles, i.e.\ $M \in \cat{M}$ if and only if $M = P_3^{r_1} \oplus P_2^{r_2} \oplus P_1^{r_3} \oplus I_1^{r_4}$.
+\begin{sloppypar}
+Consider the full subcategory $\cat{M}$ of $\text{mod}\Lambda$ given by the additive closure of the colored indecomposibles, i.e.\ $M \in \cat{M}$ if and only if ${M \cong P_3^{r_1} \oplus P_2^{r_2} \oplus P_1^{r_3} \oplus I_1^{r_4}}$ for some integers $r_i \geq 0$.
+\end{sloppypar}
 
-First, it is functorially finite since $\Lambda$ is an Artin algebra of finite representation type. Let us show it is $2$-cluster tilting. To do so, one must show that both $\text{Ext}_\Lambda^{1}(M, \cat{M}) = 0$ and $\text{Ext}_\Lambda^1(\cat{M}, M) = 0$ for any $M \in \cat{M}$, and that both are non-zero if $M \not \in \cat{M}$. But this can be deduced graphically for the indecomposibles: the only possible $3$-element sequences in $\cat{M}$ with non-zero maps are $P_3 \xra{i_3} P_2 \xra{i_2p_2} P_1$ and ${P_2 \xra{i_2p_2} P_1 \xra{p_2} I_1}$. However, these are certainly not exact, if only for the fact that $l(P_3) + l(P_1) = 3 \neq 2 = l(P_2)$ and\break $l(P_2) + l(P_1) = 3 \neq 2 = l(P_1)$. 
+First, the subcategory $\cat{M}$ is functorially finite since $\Lambda$ is an Artin algebra of finite representation type. Let us next show that $\cat{M}$ is $2$-cluster tilting. To do so, one must show that both $\text{Ext}_\Lambda^{1}(M, \cat{M}) = 0$ and $\text{Ext}_\Lambda^1(\cat{M}, M) = 0$ for any $M \in \cat{M}$, and that both are non-zero if $M \not \in \cat{M}$. Note that, since $\text{Ext}_\Lambda^1$ is an additive functor, it is enough to check this for indecomposibles. For the former, note that the only possible $3$-term sequences made of indecomposible modules with end terms in $\cat{M}$ and non-zero maps are $P_3 \xra{i_3} P_2 \xra{i_2p_2} P_1$ and ${P_2 \xra{i_2p_2} P_1 \xra{p_2} I_1}$. However, these are certainly not exact, if only for the fact that \mbox{$l(P_3) + l(P_1) = 3 \neq 2 = l(P_2)$} and\break $l(P_2) + l(P_1) = 3 \neq 2 = l(P_1)$. 
 
-As for sequences ending or starting in an element $M \not\in \cat{M}$, the only indecomposible there is $S_2$. And the only sequence starting in $S_2$ (respectively ending in $S_2$) is $S_2 \xra{i_2} P_1 \xra{p_1} I_1$ (respectively $P_3 \xra{i_3} P_2 \xra{p_2} S_2$). But both of these sequences are almost split, and consequently not split. So they are non-zero as elements of $\text{Ext}_\Lambda^1(I_1, S_2)$ (respectively $\text{Ext}_\Lambda^1(S_2, P_3)$). The same argument holds for any non-indecomposible element as well, by simply reducing to sequences over indecomposibles.
+As for the latter, the only indecomposible candidate that is not in $\cat{M}$ is $S_2$. Moreover, there is a short exact sequence sequence starting in $S_2$ (resp.\ ending in $S_2$), namely $S_2 \xra{i_2} P_1 \xra{p_1} I_1$ (resp.\ $P_3 \xra{i_3} P_2 \xra{p_2} S_2$). But both of these sequences are almost split, and consequently not split. So they are non-zero as elements of $\text{Ext}_\Lambda^1(I_1, S_2)$ (resp.\ $\text{Ext}_\Lambda^1(S_2, P_3)$). Consequently, we have shown that $\text{Ext}_\Lambda^1(\cat{M},M) \neq 0$ and $\text{Ext}_\Lambda^1(M, \cat{M}) \neq 0$ for any module $M \not\in \cat{M}$.
 
-Having successfully proven that, this gives us the first example of a $2$-exact category, with the simplest $2$-exact sequence given by 
+Having demonstrated that $\cat{M}$ is $2$-cluster tilting, this gives us the first example of a $2$-exact category, with the simplest $2$-exact sequence given by 
 \[P_3 \xra{i_3} P_2 \xra{i_2 p_2} P_1 \xra{p_1} I_1.\]
 
-To see this is $2$-exact, one must check that $(i_3, i_2p_2)$ is a $2$-kernel of $p_1$, and that $(i_2p_2, p_1)$ is a $2$-cokernel of $i_3$. We will check the first statement, the second one being dual. Consider a map $f : C \xra{} P_1$ such that $p_1 f = 0$ and $C \in \text{mod}\ \Lambda$ is an indecomposable module (SHOULD THIS BE ONLY FOR $\cat{M}$??). Then its image is either $S_2$, or $0$. If its image is $0$, one can simply take $\hat{f}: C \xra{} P_2$ to be the zero-map. If its image is $S_2$, then $C$ is either $S_2$ or $P_2$. In the first case, that means that is (equivalent to) $id_{S_2}$, which is an issue. If $C = P_2$, then $f = i_2 p_2$ and one can simply take $\hat{f} = id_{P_2}$.
+To see that this sequence is $2$-exact, one must check that $(i_3, i_2p_2)$ is a $2$-kernel of $p_1$, and that $(i_2p_2, p_1)$ is a $2$-cokernel of $i_3$. We will check the first statement, the second one being dual. Consider a map $f : C \xra{} P_1$ such that $p_1 f = 0$ and $C \in \cat{M}$ is an indecomposable module. Then its image is either isomorphic to $S_2$, or $0$. If its image is $0$, one can simply take $\hat{f}: C \xra{} P_2$ to be the zero-map. If its image is $S_2$, then $C = P_2$ is, since this is the only indecomposible module in $\cat{M}$ with a non-zero map to $S_2$. Thus, one can simply take $\hat{f} = 1_{P_2}$.
 
-Next, consider a map $f: C \xra{} P_2$ from an indecomposible module $C \in \text{mod}\ \Lambda$ such that $i_2p_2f = 0$. Since $i_2$ is mono, $p_2f = 0$. But then since $i_3$ is a kernel of $p_2$, there exists a unique map $\hat{f}: C \xra{} P_3$ such that $i_3 \hat{f} = f$. This shows that $(i_3, i_2p_2)$ is a $2$-kernel of $p_1$.
+Next, consider a map $f: C \xra{} P_2$ from an indecomposible module $C \in \text{mod}\Lambda$ such that $i_2p_2f = 0$. Since $i_2$ is mono, $p_2f = 0$. But then since $i_3$ is a kernel of $p_2$, there exists a unique map $\hat{f}: C \xra{} P_3$ such that $i_3 \hat{f} = f$. This shows that $(i_3, i_2p_2)$ is a $2$-kernel of $p_1$.
 
-More generally, if one takes $\Lambda = \nicefrac{k(1 \xra{\alpha_1} \cdots \xra{\alpha_{n}} n+1)}{\langle\{\alpha_{i+1}\alpha_i\ | \ i \in \{1, \ldots, n\}\}\rangle}$, we get a natural $n$-tilting subcategory, and therefore an example of an $n$-exact category. However, we may also get some lower exact structures as well.
+More generally, if one takes $\Lambda = \nicefrac{k(1 \xra{\alpha_1} \cdots \xra{\alpha_{n}} n+1)}{\langle\{\alpha_{i+1}\alpha_i\ | \ i \in \{1, \ldots, n-1\}\}\rangle}$, we get a natural $n$-tilting subcategory of $\text{mod} \Lambda$, and therefore an example of an $n$-exact category. However, we may also get shorter exact sequences, leading to lower-degree exact structures as well.
 
 Consider $\Lambda= \nicefrac{k(1 \xra{\alpha_1} \cdots \xra{\alpha_{4}} 5)}{\langle\{\alpha_{i+1}\alpha_i\ | \ i \in \{1, \ldots, 4\}\}\rangle}$. The AR-quiver of this algebra is given by
 % https://q.uiver.app/#q=WzAsOSxbMiwxLCI0Il0sWzMsMCwiM1xcXFw0Il0sWzQsMSwiMyJdLFs1LDAsIjJcXFxcMyJdLFs2LDEsIjIiXSxbNywwLCIxXFxcXDIiXSxbOCwxLCIxIl0sWzAsMSwiNSJdLFsxLDAsIjRcXFxcNSJdLFswLDEsImlfNCJdLFsxLDIsInBfMyJdLFsyLDMsImlfMyJdLFszLDQsInBfMiJdLFs0LDUsImlfMiJdLFs1LDYsInBfMSJdLFs3LDgsImlfNSJdLFs4LDAsInBfNCJdLFs2LDQsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs0LDIsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsyLDAsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFswLDcsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
@@ -503,7 +504,7 @@ Consider $\Lambda= \nicefrac{k(1 \xra{\alpha_1} \cdots \xra{\alpha_{4}} 5)}{\lan
 	\arrow[dashed, from=2-9, to=2-7]
 \end{tikzcd}\]
 
-The color code is the same as before, $S_3$ is colored orange since we will also consider it in our submodule category.
+The color code is the same as before, $S_3$ is colored orange since we will also consider it in our subcategory.
 
 \begin{sloppypar}
 Let $\cat{M} \subseteq \text{mod}\ \Lambda$ be the full subcategory consisting of the additive closure of the colored indecomposible modules. Similarly to what was done before, we can prove that this is a $2$-cluster tilting subcategory. This time, there are two natural $2$-exact sequences: ${X: P_5 \xra{i_5} P_4 \xra{i_4 p_4} P_3 \xra{p_3} S_3}$ and $Y: S_3 \xra{i_3} P_2 \xra{i_2 p_2} P_1 \xra{p_1} S_1$. By \cref{prop:dir_sum_n_exact}, we also get for example that $X \oplus Y$ is $2$-exact.
